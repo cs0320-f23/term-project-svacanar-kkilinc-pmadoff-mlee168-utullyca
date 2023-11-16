@@ -1,0 +1,7 @@
+{
+    "OPENAI_API_KEY": "your_openai_key_here",
+    "GOOGLE_MAPS_API_KEY": "your_google_maps_key_here",
+    "DISPATCH_LAT": 0.0,
+    "DISPATCH_LNG": 0.0
+  }
+  
