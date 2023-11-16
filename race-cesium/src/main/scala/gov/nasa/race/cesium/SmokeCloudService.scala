@@ -1,3 +1,7 @@
+
+
+
+
 /*
  * Copyright (c) 2022, United States Government, as represented by the
  * Administrator of the National Aeronautics and Space Administration.
@@ -14,6 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
+
+
 package gov.nasa.race.cesium
 
 import akka.actor.Actor.Receive
@@ -71,23 +79,31 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
       file = Some(sla.cloudFile)
     }
   }
-
+  /**
+  * Example JSON:
+  * {
+  "smokeUrlName": "smoke-[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
+  "cloudUrlName": "cloud-[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
+  "uniqueId": "[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
+  "json": "[GENERATED_JSON_FROM_SMOKEAVAILABLE]"
+   }
+  **/
   case class SmokeCloudLayer(sla: SmokeAvailable) {
     // case class that takes in an available object - used to push data through the websocket
     val smokeUrlName = f"smoke-${sla.satellite}-${sla.date.format_yMd_Hms_z}"
     val cloudUrlName = f"cloud-${sla.satellite}-${sla.date.format_yMd_Hms_z}"
     val uniqueId = f"${sla.satellite}-${sla.date.format_yMd_Hms_z}" // used to distinctly identify data
-    val json = sla.toJsonWithTwoUrls(s"smoke-data/$smokeUrlName", s"smoke-data/$cloudUrlName", uniqueId)
+    val json = sla.toJsonWithTwoUrls(s"smoke-data/$smokeUrlName", s"smoke-data/$cloudUrlName", uniqueId) //makes for the satellietAvailable object
   }
 
   protected val layers: mutable.LinkedHashMap[String,Layer] = mutable.LinkedHashMap.empty // urlName -> Layer
   protected val smokeCloudLayers: mutable.LinkedHashMap[String,SmokeCloudLayer] = mutable.LinkedHashMap.empty // urlName -> SmokecloudLayer
 
   //--- obtaining and updating smoke fields
-
   override def receiveData: Receive = receiveSmokeData orElse super.receiveData
 
   def receiveSmokeData: Receive = { // action for recieving bus message with new data
+    // Create 3 new layers 
     case BusEvent(_,sla:SmokeAvailable,_) =>
       // create layers
       val cloudL = Layer(sla, "cloud") // create the cloud layer
@@ -97,43 +113,53 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
       addLayer(cloudL)
       addLayer(smokeL)
       addSmokeCloudLayer(smokeCloudSl)
-      // push to route server
-      push( TextMessage(smokeCloudSl.json))
+      //the server maintains a list of active WebSocket connections. Whenever the server needs to push data, it iterates over this list and sends data to each connected WebSocket client
+      push( TextMessage(smokeCloudSl.json)) // the server maintains a list of active WebSocket connections. Whenever the server needs to push data, it iterates over this list and sends data to each connected WebSocket client
   }
 
   // add new layer functions
   // WATCH OUT - these can be used concurrently so we have to sync
-  def addLayer(sl: Layer): Unit = synchronized { layers += (sl.urlName -> sl) }
+  def addLayer(sl: Layer): Unit = synchronized { layers += (sl.urlName -> sl) }  //  Adds an entry to the layers LinkedHashMap, with the key being sl.urlName and the value being sl.
   def currentSmokeLayerValues: Seq[Layer] = synchronized { layers.values.toSeq }
   // WATCH OUT - these can be used concurrently so we have to sync
   def addSmokeCloudLayer(sl: SmokeCloudLayer): Unit = synchronized { smokeCloudLayers += (sl.uniqueId -> sl) }
   def currentSmokeCloudLayerValues: Seq[SmokeCloudLayer] = synchronized { smokeCloudLayers.values.toSeq }
 
-  //--- route
+
+  //If a request does not match any of the routes, Akka HTTP will automatically respond with a 404 Not Found status. You can also explicitly define a "catch-all" route to handle unmatched routes with custom logic if desired.
   def smokeRoute: Route = {
+    // the function smokeRoute is defined as handling only GET requests, as indicated by the get directive.
     get {
-      pathPrefix("smoke-data" ~ Slash) {
-        extractUnmatchedPath { p =>
+      // Handles routes starting with "smoke-data/"
+      pathPrefix("smoke-data" ~ Slash) { // This directive captures the starting segment of the URL path. It is used to group multiple routes that share a common path prefix.
+        // Extract the remaining part of the URL
+        extractUnmatchedPath { p =>  // This directive is used to capture the rest of the URL path after the prefix. It puts the unmatched portion into a variable (p in this case).
           val pathName = p.toString()
-          layers.get(pathName) match { //serves the file to the url
-            case Some(sl) => {
-              // serves the layers file to its url - this is done for both smoke and cloud layers separately
-              completeWithFileContent(sl.file.get)
-            }
+          // Try to find the Layer object corresponding to this path
+          layers.get(pathName) match {
+            // If a Layer object is found, complete the request with the file content
+            case Some(sl) => completeWithFileContent(sl.file.get)
+            // If not found, return a 404 status
             case None => complete(StatusCodes.NotFound, pathName)
           }
         }
+      } ~ // This symbol is used to concatenate multiple routes. When a request comes in, Akka HTTP will try each of these routes in the order they are defined until it finds a match.
+      // Handles routes starting with "smoke-cloud/"
+      pathPrefix("smoke-cloud" ~ Slash) {
+        // Extract the remaining part of the URL
+        extractUnmatchedPath { p =>
+          val pathName = s"smoke-cloud/$p"
+          // Complete the request by sending the file content to the client
+          complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
+        }
       } ~
-        pathPrefix("smoke-cloud" ~ Slash) { // this is the client side shader code - used for client requests to the url
-          extractUnmatchedPath { p =>
-            val pathName = s"smoke-cloud/$p"
-            complete( ResponseData.forPathName(pathName, getFileAssetContent(pathName))) // sends file contents to the client
-          }
-        } ~
-        fileAssetPath(jsModule) ~ // serves the js module and icon to make available to the client
-        fileAssetPath(icon)
+      // Serves the JavaScript module to the client
+      fileAssetPath(jsModule) ~
+      // Serves the icon to the client
+      fileAssetPath(icon)
     }
   }
+
 
   override def route: Route = smokeRoute ~ super.route
 

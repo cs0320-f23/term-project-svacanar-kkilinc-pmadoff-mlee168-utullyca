@@ -39,6 +39,7 @@ import scala.collection.immutable.HashMap
 /** simple fire descriptions populated from json files in configured archive dir */
 case class FireSummary(id: String, name: String, year: Int, file: File )
 
+// Takes a JSON File and then parses it to get the FireSummary
 class FireSummaryParser () extends UTF8JsonPullParser {
   val FIRE_SUMMARY = asc("fireSummary")
   val NAME = asc("name")
@@ -74,6 +75,9 @@ class FireSummaryParser () extends UTF8JsonPullParser {
   }
 }
 
+
+// Configuration class for rendering objects in Cesium (cesium will take this and convert it to a js object)
+// Input from the config
 class FirePerimeterRendering (conf: Config) {
   val strokeWidth = conf.getDoubleOrElse("stroke-width", 2)
   val strokeColor = conf.getStringOrElse( "stroke-color", "orange")
@@ -88,6 +92,8 @@ object FireHistoryService {
   val jsModule = "ui_cesium_firehistory.js"
   val icon = "firehistory-icon.svg"
 }
+
+
 import FireHistoryService._
 
 
@@ -96,13 +102,19 @@ import FireHistoryService._
  */
 trait FireHistoryService extends CesiumService with FileServerRoute {
 
+
+  // uses the class instantiated above
+  //This is a custom helper function that tries to retrieve a configuration sub-object from the main Config object.
   val perimeterRender = new FirePerimeterRendering(config.getConfigOrElse("firehistory.perimeter-render", emptyConfig))
-  val fireHistoryDir: File = config.getExistingDir("firehistory.directory")
+  val fireHistoryDir: File = config.getExistingDir("firehistory.directory") // get the file for the history directory
+
+  //hashmap of firenames and their summaries (id, name, year, file)
   val fireHistories: HashMap[String,FireSummary] = loadFireHistories()
 
   def loadFireHistories(): HashMap[String,FireSummary] = {
-    val parser = new FireSummaryParser()
+    val parser = new FireSummaryParser() // pull parser
 
+    //
     FileUtils.getMatchingFilesIn(fireHistoryDir, "**/*-summary.json").foldLeft(HashMap.empty[String,FireSummary]) { (map, file) =>
       parser.parse(file) match {
         case Some(fs) => map + (fs.id -> fs)
@@ -112,57 +124,65 @@ trait FireHistoryService extends CesiumService with FileServerRoute {
   }
 
   //--- data management
-
   def getFirePerimeterFile (fireId: String, dtg: String): Option[File] = {
     None
   }
 
   //--- route
+  // the super route is defined in CesiumService
+  // The "super.route" is defined in the CesiumService trait that this class extends.
   override def route: Route = uiCesiumFireHistoryRoute ~ super.route
 
+  // This function defines a specific Akka HTTP route for handling fire history data.
   def uiCesiumFireHistoryRoute: Route = {
-    get {
-      pathPrefix("firehistory-data" ~ Slash) {
-        extractUnmatchedPath { p =>
+    get {  // HTTP GET requests
+      pathPrefix("firehistory-data" ~ Slash) {  // URL path starts with "/firehistory-data/"
+        extractUnmatchedPath { p =>  // Extract the remaining path after "firehistory-data/"
+
+          // Reads the fire history file content as bytes. The file is located in the fireHistoryDir directory.
           FileUtils.fileContentsAsBytes(new File(fireHistoryDir, p.toString())) match {
-            case Some(data) => complete(ResponseData.forPathName(pathName, data))
-            case None => complete(StatusCodes.NotFound, p.toString())
+            case Some(data) => complete(ResponseData.forPathName(pathName, data)) // Return file content if found.
+            case None => complete(StatusCodes.NotFound, p.toString()) // Return 404 if file not found.
           }
         }
       }
-    } ~ fileAssetPath(jsModule) ~ fileAssetPath(icon)
+    } ~ fileAssetPath(jsModule) ~ fileAssetPath(icon)  // Adding more routes for JS modules and icons
   }
 
-  //--- document fragments
-
+  // This function provides additional JavaScript modules to be added in the HTML header.
   override def getHeaderFragments: Seq[Text.TypedTag[String]] = super.getHeaderFragments :+ addJsModule(jsModule)
 
-  override def getConfig (requestUri: Uri, remoteAddr: InetSocketAddress): String = super.getConfig(requestUri,remoteAddr) + geoFireHistoryConfig(requestUri,remoteAddr)
+  // Generates JavaScript configuration for the client. It's sent to the frontend.
+  override def getConfig (requestUri: Uri, remoteAddr: InetSocketAddress): String = {
+    super.getConfig(requestUri, remoteAddr) + geoFireHistoryConfig(requestUri, remoteAddr)
+  }
 
+  // This function constructs JavaScript config for displaying fire history on a map.
   def geoFireHistoryConfig(requestUri: Uri, remoteAddr: InetSocketAddress): String = {
     val cfg = config.getConfig("firehistory")
-
     s"""export const firehistory = {
-   ${cesiumLayerConfig(cfg, "/overlay/firehistory", "static map overlays with historic fire data")},
-   zoomHeight: ${cfg.getIntOrElse("zoom-height", 80000)},
-   perimeterRender: ${perimeterRender.toJs}
- };"""
+       ${cesiumLayerConfig(cfg, "/overlay/firehistory", "static map overlays with historic fire data")},
+       zoomHeight: ${cfg.getIntOrElse("zoom-height", 80000)},
+       perimeterRender: ${perimeterRender.toJs}
+     };"""
   }
 
-  //--- websocket
-
+  // Websocket initialization function. 'ctx' stands for context, and 'queue' is a message queue for WebSocket messages.
   protected override def initializeConnection (ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = {
-    super.initializeConnection(ctx, queue)
-    initializeFireHistoryConnection(ctx,queue)
+    super.initializeConnection(ctx, queue)  // Initialization in the superclass (possibly for general WebSocket setup)
+    initializeFireHistoryConnection(ctx, queue)  // Additional WebSocket initialization specific to fire history data. (the queue is of type message)
   }
 
+  // This function sends fire history data through WebSockets to the client.
+  // 'ctx' provides WebSocket context info like remote address, while 'queue' is used to push messages to the client.
   def initializeFireHistoryConnection (ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = {
-    fireHistories.foreach { e =>
-      ifSome(FileUtils.fileContentsAsUTF8String(e._2.file)) { json =>
-        pushTo(ctx.remoteAddress, queue, TextMessage.Strict(json))
+    fireHistories.foreach { e =>  // Iterating through each fire history entry (each entry of firehistory is a FireSummary object)
+      ifSome(FileUtils.fileContentsAsUTF8String(e._2.file)) { json =>  // Convert file contents to UTF-8 JSON string
+        pushTo(ctx.remoteAddress, queue, TextMessage.Strict(json))  // Sending the JSON string via WebSocket
       }
     }
   }
+
 }
 
 class FireHistoryApp (val parent: ParentActor, val config: Config) extends DocumentRoute

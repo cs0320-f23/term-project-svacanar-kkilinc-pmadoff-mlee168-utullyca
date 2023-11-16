@@ -520,31 +520,38 @@ function isSelected (se) { // checks if entries are selected
 
 // websocket messages
 
-function handleWsSmokeLayerMessages(msgType, msg) { // handles new data from the websocket
-    switch (msgType) {
+// The function that serves as the main entry point for handling WebSocket messages related to smoke layers.
+// The function takes in two arguments: msgType representing the type of the message and msg containing the actual message payload.
+function handleWsSmokeLayerMessages(msgType, msg) { 
+    switch (msgType) { // Switch on the type of message received
         case "smokeLayer":
-            handleSmokeLayerMessage(msg.smokeLayer);
-            return true;
+            // If the message is of type "smokeLayer", then handle the smoke layer message.
+            handleSmokeLayerMessage(msg.smokeLayer); 
+            return true; // Returns true to indicate that the message was successfully processed.
         default:
-            return false;
-        }
-}
-
-function clearEntries() {
-    smokeCloudEntries.forEach((value, key) => {
-        value.clear();
-        value.smokeEntry.SetVisible(false);//;clear();
-        value.cloudEntry.SetVisible(false);
-    });
-}
-
-function handleSmokeLayerMessage(smokeLayer) { // handles new data from the websocket
-    let se = Entry.create(smokeLayer); // creates entry
-    smokeCloudEntries.set(smokeLayer.id, se); // saves entry
-    if (isSelected(se)) updateEntryView(); // updates entry view
-    if (followLatest == true) {
-        clearEntries(); // clears all visible entries
-        ui.selectFirstListItem(entryView); // selects entry - need to deselect current entry
+            return false; // Returns false to indicate that the message type was not recognized.
     }
 }
 
+// Clears all the entries and sets visibility of both smoke and cloud entries to false.
+function clearEntries() { 
+    smokeCloudEntries.forEach((value, key) => { // Iterates over each entry in smokeCloudEntries
+        value.clear(); // Clears the individual entry
+        value.smokeEntry.SetVisible(false); // Sets the smoke entry visibility to false
+        value.cloudEntry.SetVisible(false); // Sets the cloud entry visibility to false
+    });
+}
+
+// This function processes an individual smoke layer message.
+// The function takes in smokeLayer, which contains the data for a single smoke layer.
+function handleSmokeLayerMessage(smokeLayer) { 
+    let se = Entry.create(smokeLayer); // Creates a new Entry object from the received smokeLayer data
+    smokeCloudEntries.set(smokeLayer.id, se); // Stores the new entry in the smokeCloudEntries map using its id as the key
+
+    if (isSelected(se)) updateEntryView(); // If the new entry is selected, updates the entry view.
+
+    if (followLatest == true) { // Checks if followLatest flag is set to true
+        clearEntries(); // Clears all currently visible entries
+        ui.selectFirstListItem(entryView); // Selects the first entry in the entry view. Note: It implies the need to deselect the current entry.
+    }
+}

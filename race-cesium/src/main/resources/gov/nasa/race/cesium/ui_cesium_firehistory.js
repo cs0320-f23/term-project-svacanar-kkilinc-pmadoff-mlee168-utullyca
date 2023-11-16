@@ -1,3 +1,109 @@
+/**
+ *  ------------------------------
+ *  Description:
+ *  ------------------------------
+ *  
+ *  This script is part of a web-based application designed to visualize and analyze historical wildfire data. 
+ *  It fetches data from the "Fire Progression" database available at https://data-nifc.opendata.arcgis.com/ 
+ *  and is expected to transition to the "Historical Operational Data" database.
+ *  
+ *  Main Components:
+ *  1. Data Classes and Structures
+ *      - FireEntry class for storing fire perimeters and related information.
+ *      - Arrays for holding years and fire entries.
+ *  
+ *  2. Data Fetching and Parsing
+ *      - Uses the fetch API to load GeoJSON data for individual fire perimeters.
+ *  
+ *  3. WebSocket Interface
+ *      - Handles real-time messages related to fire history, updating the UI as necessary.
+ *  
+ *  4. User Interface (UI)
+ *      - UI components for selecting years, fires, and visualizing fire data.
+ *      - Allows for control over rendering settings such as stroke width, color, etc.
+ *  
+ *  Cesium Integration:
+ *  -------------------
+ *  Cesium is used for rendering GeoJSON data on a 3D map. The script makes use of Cesium's GeoJsonDataSource 
+ *  class to load and display data, allowing for a more interactive and visually compelling representation 
+ *  of fire perimeters.
+ *  
+ *  Overarching Goal:
+ *  ------------------
+ *  The primary goal of this script is to provide an intuitive and comprehensive tool for visualizing 
+ *  historical fire data. This includes the ability to:
+ *      - Browse fire history by year.
+ *      - View details of individual fires including their perimeters.
+ *      - Dynamically load fire perimeters and render them on a 3D map.
+ *      - Provide a UI for controlling various visualization parameters.
+ *  
+ *  Note: As the database source transitions, the underlying data structure and fetching mechanisms may change.
+ *    * Wildfire Data Processor for Frontend
+  * 
+  * Overview:
+  * This script is part of a larger ecosystem designed to deliver wildfire data to a frontend application.
+  * It receives raw wildfire data, processes it, and then produces Cesium-compatible objects that can be rendered
+  * in a 3D geospatial environment.
+  *
+  * Input/Output (IO):
+  * - Input: JSON messages containing raw wildfire data.
+  * - Output: JSON messages containing Cesium-compatible entities (like CZML or GeoJSON). These are sent to a WebSocket.
+  *
+  * Cesium Objects:
+  * This script generates Cesium entities like PointGraphics and BillboardGraphics. Each entity represents a wildfire event
+  * with its specific geographic coordinates and additional properties like size and intensity.
+  *
+  *
+  * User Direction:
+  * To use this script, ensure that RabbitMQ is up and running and that the Kafka topic to which you want to send 
+  * the Cesium entities is properly configured
+  * 
+  * 
+ *  Author: <Mason>
+ *  Date: <10/25/23>
+ *  
+ */
+
+// The script is designed for handling historical fire data from a database and rendering them on a UI.
+// It has several dependencies such as config, WebSocket (ws), UI utilities, and several UI component modules.
+// The script is majorly divided into different sections: 
+// 1. Data Models
+// 2. Data manipulation functions
+// 3. WebSocket handling
+// 4. UI Initialization and interaction.
+
+// --- Data Models Section ---
+// The FireEntry class serves as a data model for fire entries.
+// It receives fireSummary which is an object representing summary details about a fire.
+
+// --- Data Manipulation Section ---
+// Various utility functions like numberOfFiresInYear(), getFireDataItems(), and loadPerimeter() are defined here.
+// numberOfFiresInYear(yr) - Takes a year 'yr' as input and returns the number of fires in that year.
+// getFireDataItems(e) - Takes a fire entry 'e' and returns its various attributes in a 2D array.
+// loadPerimeter(e, perimeter) - Async function for fetching perimeter data and rendering it.
+
+// --- WebSocket Interface ---
+// handleWsFireHistoryMessages(msgType, msg) - This function serves as a WebSocket handler for fire history messages.
+// It receives messages from a WebSocket (imported as ws) and based on the message type, it triggers different actions.
+// In this script, it listens for a "fireSummary" message to handle new fire summary data.
+
+// --- UI Initialization ---
+// The UI is initialized using various functions like createIcon(), createWindow(), initFireYearView(), etc.
+// These functions set up the UI lists, sliders, checkboxes, and other elements.
+
+// The WebSocket (imported as ws) is used to handle real-time fire history data.
+// WebSocket messages are listened to by the handleWsFireHistoryMessages() function and handled accordingly.
+// It serves as the central point connecting the real-time data source (WebSocket) to the UI.
+
+// All data flow starts from the WebSocket. Once the data is received, it is processed, stored, and then rendered on the UI.
+// Functions like handleFireSummaryMessage() directly interact with the WebSocket data to populate the UI.
+
+// The functions like loadPerimeter() interact with a backend service to fetch geojson data for fire perimeters.
+// This is a different data source than the WebSocket but serves to enrich the information available for each fire entry.
+
+
+
+
 /*
  * this is still based on the "Fire Progression" database from https://data-nifc.opendata.arcgis.com/
  * we are moving to the "Historical Operational Data" database (which is structured around polygons/lines/points) the structure will change
