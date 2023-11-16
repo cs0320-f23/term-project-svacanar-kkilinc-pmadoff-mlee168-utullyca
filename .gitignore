@@ -1,4 +1,5 @@
 .DS_Store
+doc/manual/images/
 target/
 local-race-build.properties
 local-build.sbt
