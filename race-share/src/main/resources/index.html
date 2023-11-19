@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="share.css">
+        <script type="module" src="js/main.js" ></script>
+    </head>
+
+    <body onload="main.init();" onunload="main.shutdown();">
+
+        <iframe id="auth" src="auth.html" title="authentication interface" class="mask-overlay hidden"></iframe>
+
+        <div class="titlebar">
+            <div class="input-group">
+                <label class="input-label" for="nodeId">node:</label>
+                <input class="input-text id readonly" type="text" id="nodeId" readonly/>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="upstreamId">upstream:</label>
+                <input class="input-text id readonly" type="text" id="upstreamId" readonly/>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="columnListId">columns:</label>
+                <input class="input-text id readonly" type="text" id="columnListId" readonly ondblclick="main.showColumnList()"/>
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="rowListId">rows:</label>
+                <input class="input-text id readonly" type="text" id="rowListId" readonly ondblclick="main.showRowList()"/>
+            </div>
+        </div>
+
+        <div id="nodeListContainer" class="titlebar">
+            <!-- dynamically populated -->
+        </div>
+
+        <div id="editTools" class="toolbar">
+            <div class="input-group">
+                <label class="input-label" for="uid">user:</label>
+                <input class="input-text" type="text" id="uid" />
+            </div>
+            <input type="button" id="editButton" class="button" value="edit" onclick="main.setEditable();"/>
+            <input type="button" id="sendButton" class="button" value="publish" onclick="main.sendChanges();" disabled/>
+            <input type="button" id="readOnlyButton" class="button" value="endEdit" onclick="main.setReadOnly();" disabled/>
+            <input type="button" id="logoutButton" class="button" value="logout" onclick="main.logout();" disabled/>
+        </div>
+
+        <div id="filterTools" class="toolbar">
+            <div class="input-group">
+                <label class="input-label" for="columnFilter">column:</label>
+                <input class="input-text" type="text" id="columnFilter" />
+            </div>
+            <div class="input-group">
+                <label class="input-label" for="rowFilter">row:</label>
+                <input class="input-text" type="text" id="rowFilter"/>
+            </div>
+            <input type="button" id="filterButton" class="button" value="filter" onclick="main.setFilters();"/>
+            <input type="button" id="resetFilterButton" class="button" value="reset" onclick="main.clearFilters();"/>
+        </div>
+
+        <div id="statusTools" class="toolbar">
+            <div class="input-group">
+                <label class="input-label" for="status">status:</label>
+                <input class="input-text" type="text" id="status" disabled/>
+            </div>
+        </div>
+
+        <div id="tableContainer">
+            <table id="my_table">
+                <!-- dynamically populated -->
+            </table>
+        </div>
+
+        <div id="logContainer">
+            <!-- dynamically populated -->
+        </div>
+
+    </body>
+</html>

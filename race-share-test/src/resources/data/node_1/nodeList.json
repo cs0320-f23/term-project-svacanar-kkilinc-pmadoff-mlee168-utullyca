@@ -1,0 +1,22 @@
+{
+  "nodeList": {
+    "id": "/node_1/nodeList",
+    "info": "known nodes for /node_1",
+    "date": "2020-06-28T12:00:00.000",
+
+    "self": { "id": "/nodes/node_1", "info": "this is the node_1 node" },
+
+    "upstream": [
+      { "id": "/nodes/coordinator", "info": "this is the upstream coordinator", "host": "localhost", "port": 7800, "protocol": "ws", "addrMask": "all" }
+    ],
+
+    "peer": [
+      { "id": "/nodes/node_2", "info": "this is the node_2 node" },
+      { "id": "/nodes/node_3", "info": "this is the node_3 node" },
+      { "id": "/nodes/node_4", "info": "this is the node_4 node" },
+      { "id": "/nodes/node_5", "info": "this is the node_5 node" }
+    ],
+
+    "downstream": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "userPermissions": {
+    "id": "/node_2/userPermissions",
+    "date": "2020-06-29T16:06:02.000",
+
+    "userEntries": [
+      {
+        "uidPattern": "gonzo",
+        "permissions": [
+          { "columnPattern": "**/column_2", "rowPattern": "**" }
+        ]
+      },
+      {
+        "uidPattern": "igor",
+        "permissions": [
+          { "columnPattern": "**/column_3", "rowPattern": "**/{field_1,field_2}" }
+        ]
+      }
+    ]
+  }
+}

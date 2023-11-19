@@ -1,0 +1,22 @@
+{
+  "columnList": {
+    "id": "/coordinator/columns",
+    "info": "known columns for node coordinator",
+    "date": "2020-06-28T12:00:00.000",
+
+    "columns": [
+      { "id": "/columns/summary",  "info": "summary column",     "receive": "<owner>", "send": "<up>,../node_2",         "owner": "<self>" },
+      { "id": "/columns/column_1", "info": "this is column_1",   "receive": "<owner>", "send": "<down>",                 "owner": "../node_1" },
+
+      { "id": "/columns/column_2", "info": "this is column_2",   "receive": "<owner>,<self>", "send": "<down>",          "owner": "../node_2" },
+      { "id": "/columns/column_3", "info": "this is column_3",   "receive": "<owner>", "send": "<down>",                 "owner": "../node_2" },
+
+      { "id": "/columns/column_4", "info": "this is column_4",   "receive": "<owner>", "send": "<down>",                 "owner": "../node_3" },
+      { "id": "/columns/column_5", "info": "this is column_5",   "receive": "<owner>", "send": "<down>",                 "owner": "../node_4" },
+      { "id": "/columns/column_6", "info": "this is column_6",   "receive": "<owner>", "send": "<down>",                 "owner": "../node_5" },
+      { "id": "/columns/column_7", "info": "this is column_7",   "receive": "<owner>", "send": "../node_[!1]",           "owner": "../node_6" },
+      { "id": "/columns/column_8", "info": "this is column_8",   "receive": "<owner>", "send": "../node_[!1]",           "owner": "../node_7" },
+      { "id": "/columns/column_9", "info": "this is column_9",   "receive": "<owner>", "send": "../node_[!1]",           "owner": "../node_8" }
+    ]
+  }
+}

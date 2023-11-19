@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PROJECT=race-remote
+
+DIR="$(dirname ${BASH_SOURCE[0]})"
+SCRIPT=$DIR/../$PROJECT/target/universal/stage/bin/$PROJECT
+
+if [ -x $SCRIPT ]; then
+  $SCRIPT -main gov.nasa.race.remote.ConsoleRemoteLauncher $@
+else
+  echo "executable does not exist, run sbt $PROJECT/stage"
+fi
