@@ -1,0 +1,86 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.8.2 (Homebrew Java 17.0.8.1)
+[debug]       Load.loadUnit: plugins took 32.09975ms
+[debug]       Load.loadUnit: defsScala took 0.08325ms
+[debug] [Loading] Scanning directory /Users/kaankilinc/.sbt/1.0/plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/kaankilinc/.sbt/1.0/plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 4.907292 ms
+[debug]           Load.resolveProject(global-plugins) took 17.452542ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: /Users/kaankilinc/.sbt/1.0/plugins, plugins: List(<none>))) took 31.245041ms
+[debug] [Loading] Done in /Users/kaankilinc/.sbt/1.0/plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 38.225334ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.071209ms
+[debug]     Load.loadUnit(file:/Users/kaankilinc/.sbt/1.0/plugins/, ...) took 73.456791ms
+[debug]   Load.apply: load took 236.034916ms
+[debug]   Load.apply: resolveProjects took 1.897875ms
+[debug]   Load.apply: finalTransforms took 21.923416ms
+[debug]   Load.apply: config.delegates took 2.121917ms
+[debug]   Load.apply: Def.make(settings)... took 153.374209ms
+[debug]   Load.apply: structureIndex took 38.538958ms
+[debug]   Load.apply: mkStreams took 0.516833ms
+[info] loading global plugins from /Users/kaankilinc/.sbt/1.0/plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 981.270084ms
+[debug]           Load.loadUnit: plugins took 8.018333ms
+[debug]           Load.loadUnit: defsScala took 0.001417ms
+[debug] [Loading] Scanning directory /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project
+[debug]             Load.loadUnit: mkEval took 2.313042ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 0.840333 ms
+[info] loading settings for project term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build from plugins.sbt ...
+[debug]               Load.resolveProject(term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build) took 1.105209ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build, base: /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project, plugins: List(<none>))) took 2.231125ms
+[debug] [Loading] Done in /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project, returning: (term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 49.939542ms
+[debug]           Load.loadUnit: cleanEvalClasses took 1.585958ms
+[debug]         Load.loadUnit(file:/Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/, ...) took 59.885333ms
+[debug]       Load.apply: load took 62.168917ms
+[debug]       Load.apply: resolveProjects took 0.077167ms
+[debug]       Load.apply: finalTransforms took 3.983125ms
+[debug]       Load.apply: config.delegates took 0.191875ms
+[debug]       Load.apply: Def.make(settings)... took 45.155916ms
+[debug]       Load.apply: structureIndex took 15.794708ms
+[debug]       Load.apply: mkStreams took 0.001583ms
+[info] loading project definition from /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 719.539584ms
+[debug]     Load.loadUnit: defsScala took 0.001083ms
+[debug] [Loading] Scanning directory /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca
+[debug]       Load.loadUnit: mkEval took 0.117125ms
