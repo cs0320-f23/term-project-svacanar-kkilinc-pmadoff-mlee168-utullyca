@@ -1,0 +1,9 @@
+{
+  "date": "2023-04-15T12:00:00Z",
+  "Incident_ID": "WF12345",
+  "Call_ID": "CALL67890",
+  "Coordinates": [["34.0522", "-118.2437"]],
+  "Incident_Report": "Large wildfire spotted near Los Angeles",
+  "Severity_Rating": "High",
+  "Coordinate_Type": "GPS"
+}

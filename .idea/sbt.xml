@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="linkedExternalProjectsSettings">
+      <SbtProjectSettings>
+        <option name="converterVersion" value="1" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/project" />
+            <option value="$PROJECT_DIR$/race-adapter" />
+            <option value="$PROJECT_DIR$/race-air" />
+            <option value="$PROJECT_DIR$/race-air-test" />
+            <option value="$PROJECT_DIR$/race-cesium" />
+            <option value="$PROJECT_DIR$/race-cl" />
+            <option value="$PROJECT_DIR$/race-cl-test" />
+            <option value="$PROJECT_DIR$/race-client-ui" />
+            <option value="$PROJECT_DIR$/race-client-ui-test" />
+            <option value="$PROJECT_DIR$/race-core" />
+            <option value="$PROJECT_DIR$/race-core-test" />
+            <option value="$PROJECT_DIR$/race-earth" />
+            <option value="$PROJECT_DIR$/race-earth-test" />
+            <option value="$PROJECT_DIR$/race-launcher" />
+            <option value="$PROJECT_DIR$/race-net-dds" />
+            <option value="$PROJECT_DIR$/race-net-dds-test" />
+            <option value="$PROJECT_DIR$/race-net-http" />
+            <option value="$PROJECT_DIR$/race-net-http-test" />
+            <option value="$PROJECT_DIR$/race-net-jms" />
+            <option value="$PROJECT_DIR$/race-net-jms-test" />
+            <option value="$PROJECT_DIR$/race-net-kafka" />
+            <option value="$PROJECT_DIR$/race-net-kafka-test" />
+            <option value="$PROJECT_DIR$/race-net-smtp" />
+            <option value="$PROJECT_DIR$/race-share" />
+            <option value="$PROJECT_DIR$/race-share-test" />
+            <option value="$PROJECT_DIR$/race-space" />
+            <option value="$PROJECT_DIR$/race-space-test" />
+            <option value="$PROJECT_DIR$/race-swing" />
+            <option value="$PROJECT_DIR$/race-testkit" />
+            <option value="$PROJECT_DIR$/race-testkit-test" />
+            <option value="$PROJECT_DIR$/race-tools" />
+            <option value="$PROJECT_DIR$/race-ui" />
+            <option value="$PROJECT_DIR$/race-ww" />
+            <option value="$PROJECT_DIR$/race-ww-air" />
+          </set>
+        </option>
+        <option name="sbtVersion" value="1.8.2" />
+      </SbtProjectSettings>
+    </option>
+  </component>
+</project>
