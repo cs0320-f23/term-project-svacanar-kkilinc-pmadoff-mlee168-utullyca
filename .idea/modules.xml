@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race.iml" filepath="$PROJECT_DIR$/.idea/modules/race.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-adapter.iml" filepath="$PROJECT_DIR$/.idea/modules/race-adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-air.iml" filepath="$PROJECT_DIR$/.idea/modules/race-air.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-air-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-air-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-build.iml" filepath="$PROJECT_DIR$/.idea/modules/race-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-cesium.iml" filepath="$PROJECT_DIR$/.idea/modules/race-cesium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-cl.iml" filepath="$PROJECT_DIR$/.idea/modules/race-cl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-cl-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-cl-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-client-ui.iml" filepath="$PROJECT_DIR$/.idea/modules/race-client-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-client-ui-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-client-ui-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-core.iml" filepath="$PROJECT_DIR$/.idea/modules/race-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-core-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-core-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-earth.iml" filepath="$PROJECT_DIR$/.idea/modules/race-earth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-earth-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-earth-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/race-launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-dds.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-dds.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-dds-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-dds-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-http.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-http-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-http-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-jms.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-jms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-jms-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-jms-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-kafka.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-kafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-kafka-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-kafka-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-net-smtp.iml" filepath="$PROJECT_DIR$/.idea/modules/race-net-smtp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-share.iml" filepath="$PROJECT_DIR$/.idea/modules/race-share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-share-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-share-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-space.iml" filepath="$PROJECT_DIR$/.idea/modules/race-space.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-space-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-space-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-swing.iml" filepath="$PROJECT_DIR$/.idea/modules/race-swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-testkit.iml" filepath="$PROJECT_DIR$/.idea/modules/race-testkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-testkit-test.iml" filepath="$PROJECT_DIR$/.idea/modules/race-testkit-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-tools.iml" filepath="$PROJECT_DIR$/.idea/modules/race-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-ui.iml" filepath="$PROJECT_DIR$/.idea/modules/race-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-ww.iml" filepath="$PROJECT_DIR$/.idea/modules/race-ww.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/race-ww-air.iml" filepath="$PROJECT_DIR$/.idea/modules/race-ww-air.iml" />
+    </modules>
+  </component>
+</project>
