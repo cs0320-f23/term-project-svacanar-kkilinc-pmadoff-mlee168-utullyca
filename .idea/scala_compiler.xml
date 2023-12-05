@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca_2680" />
+    <profile name="sbt 2" modules="race,race-adapter,race-air,race-air-test,race-cesium,race-cl,race-cl-test,race-client-ui,race-client-ui-test,race-core,race-core-test,race-earth,race-earth-test,race-launcher,race-net-dds,race-net-dds-test,race-net-http,race-net-http-test,race-net-jms,race-net-jms-test,race-net-kafka,race-net-kafka-test,race-net-smtp,race-share,race-share-test,race-space,race-space-test,race-swing,race-testkit,race-testkit-test,race-tools,race-ui,race-ww,race-ww-air">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+    </profile>
+  </component>
+</project>

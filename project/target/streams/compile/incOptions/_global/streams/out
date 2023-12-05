@@ -1,0 +1,58 @@
+[debug] Created transactional ClassFileManager with tempDir = /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/target/scala-2.12/sbt-1.0/classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Registering generated classes:
+[debug] 	PluginSettings.class
+[debug] 	ShTask$.class
+[debug] 	RaceBuild$RaceProject.class
+[debug] 	RemoveIvyLocal.class
+[debug] 	ReCov$TestReport.class
+[debug] 	ShTask$Windows$.class
+[debug] 	AvroTask$.class
+[debug] 	MakeTask.class
+[debug] 	TreeTask$.class
+[debug] 	CommonRaceSettings.class
+[debug] 	ShTask$OS.class
+[debug] 	EditTask$.class
+[debug] 	ReCov$Requirement.class
+[debug] 	ReCov$TestReport$.class
+[debug] 	OSX.class
+[debug] 	Windows$.class
+[debug] 	Dependencies.class
+[debug] 	RaceBuild.class
+[debug] 	CargoTask$.class
+[debug] 	RemoveIvyLocal$.class
+[debug] 	LaikaCommands.class
+[debug] 	OSX$.class
+[debug] 	ShTask$Unix$.class
+[debug] 	OS.class
+[debug] 	Unknown.class
+[debug] 	MakeTask$.class
+[debug] 	ReCov$.class
+[debug] 	ReCov$Match.class
+[debug] 	Linux$.class
+[debug] 	EditTask.class
+[debug] 	Linux.class
+[debug] 	ReCov$Match$.class
+[debug] 	Windows.class
+[debug] 	CargoTask.class
+[debug] 	LaikaCommands$.class
+[debug] 	TreeTask.class
+[debug] 	ReCov.class
+[debug] 	ShTask.class
+[debug] 	TaskSettings$.class
+[debug] 	RaceBuild$.class
+[debug] 	AvroTask.class
+[debug] 	Unknown$.class
+[debug] 	PluginSettings$$anon$1.class
+[debug] 	TaskSettings.class
+[debug] 	SonatypeSettings$.class
+[debug] 	ReCov$Requirement$.class
+[debug] 	SonatypeSettings.class
+[debug] 	OS$.class
+[debug] 	CommonRaceSettings$.class
+[debug] 	Dependencies$.class
+[debug] 	LaikaCommands$$anonfun$$nestedInanonfun$slidesCmd$4$1.class
+[debug] 	PluginSettings$.class
+[debug] 	LaikaCommands$$anon$1.class
+[debug] Removing the temporary directory used for backing up class files: /Users/kaankilinc/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/target/scala-2.12/sbt-1.0/classes.bak
