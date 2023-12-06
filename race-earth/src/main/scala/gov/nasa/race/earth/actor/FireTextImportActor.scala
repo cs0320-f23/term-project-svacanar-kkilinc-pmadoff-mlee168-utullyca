@@ -31,3 +31,46 @@ class FireTextDataAcquisitionThread(actorRef: ActorRef, val pollingInterval: Tim
     }
   }
 }
+
+
+class FireTextImportActor(val config: Config) extends PublishingRaceActor {
+  val interval = Milliseconds(config.getDuration("polling-interval").toMillis)
+
+  val dataDir = FileUtils.ensureWritableDir(config.getString("data-dir")).getOrElse {
+    throw new RuntimeException("Failed to create or access the data directory.")
+  }
+  val filesAndFolders = dataDir.listFiles().map(_.getName).mkString(", ")
+  warning(s"Data directory set to: ${dataDir.getPath}. Contents: $filesAndFolders")
+  var dataAcquisitionThread: Option[FireTextDataAcquisitionThread] = None
+
+  override def onInitializeRaceActor(rc: RaceContext, actorConf: Config): Boolean = {
+    warning("Initializing FireTextImportActor.")
+    val thread = new FireTextDataAcquisitionThread(self, interval, dataDir)
+    thread.setLogging(this)
+    dataAcquisitionThread = Some(thread)
+    super.onInitializeRaceActor(rc, actorConf)
+  }
+
+  override def onStartRaceActor(originator: ActorRef): Boolean = {
+    warning("Starting FireTextImportActor.")
+    Thread.sleep(4000) // TODO: fix this thread sleep issue with FVImportActor, the mailbox mechanism should hadle this
+
+    ifSome(dataAcquisitionThread){ _.start() }
+    super.onStartRaceActor(originator)
+  }
+
+  override def onTerminateRaceActor(originator: ActorRef): Boolean = {
+    warning("Terminating FireTextImportActor.")
+    ifSome(dataAcquisitionThread){ _.terminate() }
+    super.onTerminateRaceActor(originator)
+  }
+
+  override def handleMessage: Receive = {
+    case r: FireTextData =>
+      warning(s"Processing received FireTextData: ${r.file.getName}")
+      val requestFile = RequestFile(url = "local", file = r.file)
+      val fileRetrieved = FileRetrieved(req = requestFile, date = DateTime.now)
+      publish(fileRetrieved)
+  }
+}
+
