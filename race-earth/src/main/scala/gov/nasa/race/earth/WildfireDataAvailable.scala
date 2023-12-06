@@ -39,20 +39,20 @@ case class WildfireDataAvailable(
                                   simReport: Option[String] = None, // Metadata for the simulation (num sims, etc)
                                   firePerimFile: Option[File] = None // GeoJSON file saved on local drive
                                 ) {
-// TODO: We actually don't want to expose the backend datalocations to the frontend
-// Take in arguments for the route where the frontend can access the files, right now its the actual filepath and this is wrong
-def toJsonWithTwoUrls(fireTextUrl: String, firePerimUrl: String, id: String): String = {
-  val geolocationJson = WildfireGeolocationData.toJson().dropRight(1)
-  // Wrap in a fireVoiceLayer identifier so that the frontend understands the message and handles rendering apprioately
-  s"""{
-     |  "fireVoiceLayer": {
-     |    "id": "$id",
-     |    $geolocationJson,
-     |    "fireTextUrl": "$fireTextUrl",
-     |    "firePerimUrl": "$firePerimUrl",
-     |    "simReportUrl": "${simReport.getOrElse("N/A")}"
-     |  }
-     |}""".stripMargin
+  // TODO: We actually don't want to expose the backend datalocations to the frontend
+  // Take in arguments for the route where the frontend can access the files, right now its the actual filepath and this is wrong
+  def toJsonWithTwoUrls(fireTextUrl: String, firePerimUrl: String, id: String): String = {
+    val geolocationJson = WildfireGeolocationData.toJson().dropRight(1)
+    // Wrap in a fireVoiceLayer identifier so that the frontend understands the message and handles rendering apprioately
+    s"""{
+       |  "fireVoiceLayer": {
+       |    "id": "$id",
+       |    $geolocationJson,
+       |    "fireTextUrl": "$fireTextUrl",
+       |    "firePerimUrl": "$firePerimUrl",
+       |    "simReportUrl": "${simReport.getOrElse("N/A")}"
+       |  }
+       |}""".stripMargin
   }
 
 
