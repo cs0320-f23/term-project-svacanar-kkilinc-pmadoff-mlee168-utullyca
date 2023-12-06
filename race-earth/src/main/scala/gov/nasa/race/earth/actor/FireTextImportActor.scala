@@ -13,9 +13,18 @@ import gov.nasa.race.uom.Time.Milliseconds
 
 case class FireTextData(file: File)
 
+/**
+ * This class is responsible for polling the data directory for new JSON files and sending them to the client.
+ * @param actorRef
+ * @param pollingInterval
+ * @param dataDir
+ */
 class FireTextDataAcquisitionThread(actorRef: ActorRef, val pollingInterval: Time, dataDir: File)
   extends ActorDataAcquisitionThread(actorRef) with PollingDataAcquisitionThread {
 
+  /**
+   * Poll the data directory for new JSON files and send them to the client.
+   */
   override protected def poll(): Unit = {
     warning("Polling for JSON files in the data directory.")
     val jsonFiles = dataDir.listFiles(_.getName.endsWith(".json"))
