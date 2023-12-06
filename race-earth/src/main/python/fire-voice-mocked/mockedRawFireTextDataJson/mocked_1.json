@@ -1,0 +1,10 @@
+{
+  "incident_id": "FH20231101",
+  "caller_name": "John Doe",
+  "call_time": "2023-11-01T15:30:00",
+  "location": "123 Main St, Springfield",
+  "description": "House fire reported with visible flames and smoke. No injuries reported. Caller is the neighbor.",
+  "severity": "high",
+  "units_dispatched": ["Engine 1", "Ladder 2", "Rescue 3"],
+  "dispatcher_notes": "Evacuate neighboring houses. Confirm with caller if everyone is out of the house."
+}
