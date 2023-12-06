@@ -32,7 +32,10 @@ class FireTextDataAcquisitionThread(actorRef: ActorRef, val pollingInterval: Tim
   }
 }
 
-
+/**
+ * This actor is responsible for polling the data directory for new JSON files and sending them to the client.
+ * @param config
+ */
 class FireTextImportActor(val config: Config) extends PublishingRaceActor {
   val interval = Milliseconds(config.getDuration("polling-interval").toMillis)
 
@@ -43,6 +46,12 @@ class FireTextImportActor(val config: Config) extends PublishingRaceActor {
   warning(s"Data directory set to: ${dataDir.getPath}. Contents: $filesAndFolders")
   var dataAcquisitionThread: Option[FireTextDataAcquisitionThread] = None
 
+  /**
+   * Initialize the FireTextImportActor by creating a new FireTextDataAcquisitionThread.
+   * @param rc RaceContext
+   * @param actorConf Config
+   * @return Boolean indicating if the actor was successfully initialized
+   */
   override def onInitializeRaceActor(rc: RaceContext, actorConf: Config): Boolean = {
     warning("Initializing FireTextImportActor.")
     val thread = new FireTextDataAcquisitionThread(self, interval, dataDir)
@@ -51,6 +60,11 @@ class FireTextImportActor(val config: Config) extends PublishingRaceActor {
     super.onInitializeRaceActor(rc, actorConf)
   }
 
+  /**
+   * Start the FireTextDataAcquisitionThread.
+   * @param originator ActorRef
+   * @return Boolean indicating if the actor was successfully started
+   */
   override def onStartRaceActor(originator: ActorRef): Boolean = {
     warning("Starting FireTextImportActor.")
     Thread.sleep(4000) // TODO: fix this thread sleep issue with FVImportActor, the mailbox mechanism should hadle this
@@ -59,12 +73,21 @@ class FireTextImportActor(val config: Config) extends PublishingRaceActor {
     super.onStartRaceActor(originator)
   }
 
+  /**
+   * Terminate the FireTextDataAcquisitionThread.
+   * @param originator ActorRef
+   * @return Boolean indicating if the actor was successfully terminated
+   */
   override def onTerminateRaceActor(originator: ActorRef): Boolean = {
     warning("Terminating FireTextImportActor.")
     ifSome(dataAcquisitionThread){ _.terminate() }
     super.onTerminateRaceActor(originator)
   }
 
+  /**
+   * Handle the FireTextData message by publishing the FileRetrieved message.
+   * @return Receive function
+   */
   override def handleMessage: Receive = {
     case r: FireTextData =>
       warning(s"Processing received FireTextData: ${r.file.getName}")

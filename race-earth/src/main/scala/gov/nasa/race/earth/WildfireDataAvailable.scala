@@ -9,6 +9,18 @@ import gov.nasa.race.http.{FileRetrieved, HttpActor}
 // First case class with just the fireTextFile
 
 // Second case class extending WildfireDataUnstructuredText with additional fields from the FireVoice API
+
+/**
+ * Case class for the FireVoice API data
+ * @param fireTextFile File
+ * @param date DateTime
+ * @param Incident_ID String
+ * @param Call_ID String
+ * @param Coordinates List[String] // Coordinates as List[String] with [latitude, longitude]
+ * @param Incident_Report String
+ * @param Severity_Rating String
+ * @param Coordinate_Type String
+ */
 case class WildfireGeolocationData(
                                     fireTextFile: Option[File] = None,
                                     date: Option[DateTime] = None,
@@ -19,6 +31,10 @@ case class WildfireGeolocationData(
                                     Severity_Rating: Option[String] = None,
                                     Coordinate_Type: Option[String] = None
                                   ) {
+  /**
+   * Convert the WildfireGeolocationData to a JSON string
+   * @return String JSON representation of the WildfireGeolocationData
+   */
   def toJson(): String = {
     val coordJson = Coordinates.map(_.map(c => s""""$c"""").mkString("[", ",", "]")).getOrElse("[]")
     s"""{
@@ -34,6 +50,13 @@ case class WildfireGeolocationData(
 }
 
 // Third case class that is the complete WildfireDataAvailable, including all previous data plus the CloudFire Actor data
+
+/**
+ * Case class for the complete WildfireDataAvailable, including all previous data plus the CloudFire Actor data
+ * @param WildfireGeolocationData
+ * @param simReport
+ * @param firePerimFile
+ */
 case class WildfireDataAvailable(
                                   WildfireGeolocationData: WildfireGeolocationData,
                                   simReport: Option[String] = None, // Metadata for the simulation (num sims, etc)
@@ -55,7 +78,11 @@ case class WildfireDataAvailable(
        |}""".stripMargin
   }
 
-
+  /**
+   * Convert the WildfireDataAvailable to a JSON string
+   * @param url String
+   * @return String JSON representation of the WildfireDataAvailable
+   */
   def toJsonWithUrl(url: String): String = {
     // Used for Layer HashMap that will serve individual files (can be any file). the id will be the call_id-incident_id
     // and will be set in the FireVoiceService Actor
