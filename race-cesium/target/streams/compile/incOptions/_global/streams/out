@@ -1,0 +1,63 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-cesium/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumHotspotRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FrpThreshold.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BrightThreshold.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumWindRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ImgLayer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	FrpThreshold$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumHotspotRoute$$anonfun$receiveHotspotData$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGoesrRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumJpssRoute$$anonfun$receiveJpssData$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumHotspotRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumBldgRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DefaultImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumLayerApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ImageryRendering.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GeoJsonRendering.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GeoLayer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumTrackRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WebMapTileServiceImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGoesrApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumHotspotApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TileMapServiceImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ImageryLayerRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ColorThreshold.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ImgLayer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CameraPosition.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumLayer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumLayer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGpsRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HotspotTimeStep$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGeoImgApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DefaultImageryRendering.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumLiveApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BrightThreshold$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumTrackApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	OpenStreetMapImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumWindApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CameraPosition$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	HotspotTimeStep.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GeoLayer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumLayerRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ArcGisMapServerImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGoesrRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumImageryLayerApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GeoLayerRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumJpssApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DefaultGeoJsonRendering.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGoesrRoute$$anonfun$receiveGoesrData$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumJpssRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumGeoLayerApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ImageryLayerRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	WebMapServiceImageryProvider.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumTrackRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CesiumJpssRoute$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GeoLayerRoute.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-cesium/target/scala-2.13/classes.bak[0m

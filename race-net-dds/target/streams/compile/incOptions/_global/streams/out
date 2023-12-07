@@ -1,0 +1,13 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-dds/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSReader.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSWriter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDS$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSClient.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSExportActor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSImportActor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDSExportActor$$anonfun$handleMessage$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DDS.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-dds/target/scala-2.13/classes.bak[0m

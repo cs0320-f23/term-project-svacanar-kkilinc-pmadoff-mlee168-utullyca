@@ -1,0 +1,38 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-launcher/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteSpec$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	package$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteProtocolLauncher$$anonfun$readLiveMessage$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleRemoteLauncher$$anonfun$main$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleRemoteLauncher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncherServer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteMainOpts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SSHSession.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SSHSession$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncherServer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleLauncherClient$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LauncherOpts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleRemoteLauncher$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteMain$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleLaunchPrompter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	package.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleLauncherClient.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteProtocolClient.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteProtocolLauncher$$anonfun$readStateMessage$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ServerLauncherOpts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SSLLauncherOpts.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	package$LaunchConfigSpec.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteProtocolLaunchee.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ConsoleLauncherClient$$anonfun$$nestedInanonfun$main$9$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteProtocolLauncher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncher$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncher$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	package$LaunchConfigSpec$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncher$RemoteLauncherSession.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteSpec.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteLauncherServer$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	RemoteMain.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-launcher/target/scala-2.13/classes.bak[0m

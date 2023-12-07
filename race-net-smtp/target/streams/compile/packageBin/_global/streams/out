@@ -1,0 +1,15 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/race-net-smtp_2.13-1.8.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov/nasa[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov/nasa[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov/nasa/race[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov/nasa/race[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov/nasa/race/smtp[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov/nasa/race/smtp[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov/nasa/race/smtp/SmtpActor$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov/nasa/race/smtp/SmtpActor$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov/nasa/race/smtp/SmtpActor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes/gov/nasa/race/smtp/SmtpActor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
