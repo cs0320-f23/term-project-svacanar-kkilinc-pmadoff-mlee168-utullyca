@@ -1,20 +1,2 @@
 [0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-jms/target/scala-2.13/classes.bak[0m
-[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor$$anonfun$handleMessage$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSArchiveActor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor$Listener.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	TranslatingJMSImportActor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor$ConnectionEntry$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor$RaceBrokerService.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor$ConnectionExceptionListener.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor$LiveConnection$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSImportActor$ConnectionEntry.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	ArchivingJMSImportActor.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	JMSExportActor$LiveConnection.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-jms/target/scala-2.13/classes.bak[0m
