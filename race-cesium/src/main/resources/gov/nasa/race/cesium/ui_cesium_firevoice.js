@@ -20,6 +20,32 @@ var currentContourRender = initDefaultColors(config.fireVoiceLayer.countourRende
 /**
  * Constants adapted from ui_cesium_smoke.js
  */
-const FireVoiceLayerType = {SMOKE : "smoke", CLOUD:"cloud"}
+const FireVoiceLayerType = {PERIM : "perim", TEXT:"text"}
 const LOADED = "○";
 const SHOWING = "●"
+
+/**
+ * Adapted from ui_cesium_smoke.js
+ * Each entry represents a satellite image
+ * Creates a new entry for the fire voice layer (smoke layer in cesium_smoke)
+ */
+class Entry{
+  static create (fireVoiceLayer){
+    return new Entry(fireVoiceLayer);
+  }
+
+  // This needs to be changed with the FireVoiceLayer class objects
+  /**
+   static compareFiltered (a,b) { // used to make the entry list stay in order
+   switch (util.compare(a.date,b.date)) {
+   case -1: return 1;
+   case 0: return util.compare(a.satellite, b.satellite); // this can't be used
+   case 1: return -1;
+   }
+   */
+  constructor(fireVoiceLayer) {
+    this.id = fireVoiceLayer.uniqueId;
+    this.perimEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.PERIM);
+    this.textEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.TEXT);
+  }
+}
