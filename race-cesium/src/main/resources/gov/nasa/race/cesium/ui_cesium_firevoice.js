@@ -76,9 +76,11 @@ class Entry{
  * FireVoiceEntry class - parent class for stored perim and text layers
  */
 class FireVoiceEntry {
-  static create (fireVoiceLayer, type) {
-    if (type == fireVoiceLayerType.PERIM) return new FirePerimEntry(fireVoiceLayer);
-    if (type == fireVoiceLayerType.TEXT) return new FireTextEntry(fireVoiceLayer);
+  static create(fireVoiceLayer, type) {
+    if (type == fireVoiceLayerType.PERIM) return new FirePerimEntry(
+        fireVoiceLayer);
+    if (type == fireVoiceLayerType.TEXT) return new FireTextEntry(
+        fireVoiceLayer);
 
   }
 
@@ -97,12 +99,20 @@ class FireVoiceEntry {
     this.show = false;
   }
 
-  setStatus (newStatus) {
+  /**
+   * Sets the visibility of the layer
+   * @param newStatus - boolean value of whether or not the layer is visible
+   */
+  setStatus(newStatus) {
     this.status = newStatus;
   }
 
-  setVisible (showIt) {
-    if (showIt !=  this.show) {
+  /**
+   * Sets the visibility of the layer
+   * @param showIt - boolean value of whether or not the layer is visible
+   */
+  setVisible(showIt) {
+    if (showIt != this.show) {
       this.show = showIt;
       if (showIt) {
         if (!this.dataSource) {
@@ -111,17 +121,119 @@ class FireVoiceEntry {
           this.dataSource.show = true;
           uiCesium.requestRender();
         }
-        this.setStatus( SHOWING);
+        this.setStatus(SHOWING);
       }
     }
     if (showIt == false) {
       if (this.dataSource) {
         this.dataSource.show = false;
         uiCesium.requestRender();
-        this.setStatus( LOADED);
+        this.setStatus(LOADED);
       }
     }
   }
+
+  /**
+   * Loads the contours from the url
+   * Can we use the same function as cesium_smoke since they deal with the map in a similar way?
+   * @returns {Promise<void>}
+   */
+  async loadContoursFromUrl() { // handles new data source
+    let renderOpts = this.getRenderOpts(); // get rendering options
+    //console.log("@@DEBUG ", this.url);
+    let response = await fetch(this.url); // pulls data from the server hosting it - see route definition in service
+    let data = await response.json();
+    Cesium.GeoJsonDataSource.load(data, renderOpts).then(  // loads data into a cesium data source object
+        ds => {
+          //console.log("@@DEBUG got data", this.url);
+          this.dataSource = ds;
+          this.postProcessDataSource(); // updates fill colors
+          uiCesium.addDataSource(ds); // adds data source to cesium
+          uiCesium.requestRender(); // updates the render
+        }
+    );
+  }
+
+  /**
+   * Gets the render options for the layer
+   * @returns {{strokeWidth: (number|string|*), alpha: *, stroke: *, clampToGround: boolean}} - the render options
+   */
+  getRenderOpts() { // provides default render options
+    return {
+      stroke: this.render.strokeColor,
+      strokeWidth: this.render.strokeWidth,
+      alpha: this.render.alpha,
+      clampToGround: false
+    };
+  }
+
+  /**
+   * Post processes the entities or polygons in the data source
+   * Changed from cesium_smoke to only handle the perim layer since the text layer is a label
+   * Empty and will be overridden by the perim child class
+   */
+  postProcessDataSource() {
+    //   postProcessDataSource() { // post processes the entities or polygons in the data source
+//     let entities = this.dataSource.entities.values;
+//     let render = this.render;
+//     for (const e of entities) { // update each entities color to match smoke/cloud colors
+//       if (this.type == fireVoiceLayerType.PERIM) {
+//         e.polygon.material = this.render.smokeColor;
+//       }
+//
+//       // TODO: Change this rendering (need to be for text)
+//       if (this.type == fireVoiceLayerType.TEXT) {
+//         e.polygon.material = this.render.cloudColor;
+//       }
+//       e.polygon.outline = true;
+//       e.polygon.outlineColor = this.render.strokeColor;
+//       e.polygon.outlineWidth = this.render.strokeWidth;
+//     }
+//   }
+//
+  }
+
+  /**
+   * Displays the text on the map
+   * Empty and will be overridden by the text child class
+   */
+  displayText() {
+  }
+
+  /**
+   * Updates the render parameters according to user input
+   */
+  renderChanged() {
+    this.render = {...currentContourRender}; // updates render parameters
+    this.getRenderOpts();
+    if (this.dataSource) {
+      this.postProcessDataSource(); // updates data fill
+      uiCesium.requestRender(); // requests new render
+    }
+  }
 }
+
+  /**
+   *
+   */
+  class FirePerimEntry extends FireVoiceEntry {
+  constructor(fireVoiceLayer) {
+      super(fireVoiceLayer);
+      this.url = fireVoiceLayer.perimUrl;
+      this.type = fireVoiceLayerType.PERIM;
+    }
+
+    postProcessDataSource() {
+      let entities = this.dataSource.entities.values;
+      for (const e of entities) { // update each entities color to match smoke/cloud colors
+        e.polygon.material = this.render.smokeColor;
+        e.polygon.outline = true;
+        e.polygon.outlineColor = this.render.strokeColor;
+        e.polygon.outlineWidth = this.render.strokeWidth;
+      }
+    }
+  }
+
+
 
 
