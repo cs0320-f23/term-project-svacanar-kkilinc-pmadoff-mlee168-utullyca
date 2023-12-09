@@ -45,7 +45,83 @@ class Entry{
    */
   constructor(fireVoiceLayer) {
     this.id = fireVoiceLayer.uniqueId;
-    this.perimEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.PERIM);
-    this.textEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.TEXT);
+    this.date = fireVoiceLayer.date;
+    // this.satellite = fireVoiceLayer.satellite;
+    // this.srs = fireVoiceLayer.srs;
+    this.perimEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.PERIM); //GeoJson
+    // This has to be represented within a label to  visualize the text on the map
+    this.textEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.TEXT); // Text
+  }
+
+  /**
+   * This is the function that is called when the user clicks on the entry
+   * It clears the current entry and sets the visibility to false
+   */
+  clear() {
+    this.perimEntry.SetVisible(false);
+    this.textEntry.SetVisible(false);
+    uiCesium.requestRender();
+  }
+
+  /**
+   * Updates the render for both layers of an entry
+   */
+  renderChanged () {
+    this.perimEntry.renderChanged();
+    this.textEntry.renderChanged();
   }
 }
+
+/**
+ * FireVoiceEntry class - parent class for stored perim and text layers
+ */
+class FireVoiceEntry {
+  static create (fireVoiceLayer, type) {
+    if (type == fireVoiceLayerType.PERIM) return new FirePerimEntry(fireVoiceLayer);
+    if (type == fireVoiceLayerType.TEXT) return new FireTextEntry(fireVoiceLayer);
+
+  }
+
+  /**
+   * From the JSON that is pushed over the websocket we get this information
+   * @param fireVoiceLayer - the JSON object that is pushed over the websocket
+   * @param type - the type of layer (perim or text)
+   */
+  constructor(fireVoiceLayer, type) {
+    this.date = fireVoiceLayer.date;
+    // this.satellite = fireVoiceLayer.satellite;  probably uses satellite for the geojson layer but what about the text layer?
+    // this.srs = fireVoiceLayer.srs;
+    this.url = undefined;
+    this.dataSource = undefined;
+    this.render = {...currentContourRender};
+    this.show = false;
+  }
+
+  setStatus (newStatus) {
+    this.status = newStatus;
+  }
+
+  setVisible (showIt) {
+    if (showIt !=  this.show) {
+      this.show = showIt;
+      if (showIt) {
+        if (!this.dataSource) {
+          this.loadContoursFromUrl();
+        } else {
+          this.dataSource.show = true;
+          uiCesium.requestRender();
+        }
+        this.setStatus( SHOWING);
+      }
+    }
+    if (showIt == false) {
+      if (this.dataSource) {
+        this.dataSource.show = false;
+        uiCesium.requestRender();
+        this.setStatus( LOADED);
+      }
+    }
+  }
+}
+
+
