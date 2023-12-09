@@ -173,24 +173,25 @@ class FireVoiceEntry {
    * Empty and will be overridden by the perim child class
    */
   postProcessDataSource() {
-    //   postProcessDataSource() { // post processes the entities or polygons in the data source
-//     let entities = this.dataSource.entities.values;
-//     let render = this.render;
-//     for (const e of entities) { // update each entities color to match smoke/cloud colors
-//       if (this.type == fireVoiceLayerType.PERIM) {
-//         e.polygon.material = this.render.smokeColor;
-//       }
-//
-//       // TODO: Change this rendering (need to be for text)
-//       if (this.type == fireVoiceLayerType.TEXT) {
-//         e.polygon.material = this.render.cloudColor;
-//       }
-//       e.polygon.outline = true;
-//       e.polygon.outlineColor = this.render.strokeColor;
-//       e.polygon.outlineWidth = this.render.strokeWidth;
-//     }
-//   }
-//
+    /**
+      postProcessDataSource() { // post processes the entities or polygons in the data source
+    let entities = this.dataSource.entities.values;
+    let render = this.render;
+    for (const e of entities) { // update each entities color to match smoke/cloud colors
+      if (this.type == fireVoiceLayerType.PERIM) {
+        e.polygon.material = this.render.smokeColor;
+      }
+
+      // TODO: Change this rendering (need to be for text)
+      if (this.type == fireVoiceLayerType.TEXT) {
+        e.polygon.material = this.render.cloudColor;
+      }
+      e.polygon.outline = true;
+      e.polygon.outlineColor = this.render.strokeColor;
+      e.polygon.outlineWidth = this.render.strokeWidth;
+    }
+  }
+  */
   }
 
   /**
@@ -219,7 +220,8 @@ class FireVoiceEntry {
   class FirePerimEntry extends FireVoiceEntry {
   constructor(fireVoiceLayer) {
       super(fireVoiceLayer);
-      this.url = fireVoiceLayer.perimUrl;
+      this.smokeFile = fireVoiceLayer.smokeFile;
+      this.url = fireVoiceLayer.smokeUrl;
       this.type = fireVoiceLayerType.PERIM;
     }
 
@@ -233,6 +235,50 @@ class FireVoiceEntry {
       }
     }
   }
+
+/**
+ * FireTextEntry class - child class for text layer
+ * This is the class that will be used to display the text on the map
+ */
+class FireTextEntry extends FireVoiceEntry {
+  /**
+   * Constructor for the text layer
+   * TODO: Could be missing elements
+   * @param fireVoiceLayer
+   */
+    constructor(fireVoiceLayer) {
+      super(fireVoiceLayer, fireVoiceLayerType.TEXT);
+      this.textFile = fireVoiceLayer.textFile;
+      this.url = fireVoiceLayer.fireTextUrl;
+      this.type =  fireVoiceLayerType.TEXT;
+    /**
+     * this.latitutde = fireVoiceLayer.latitude;
+     * this.longitude = fireVoiceLayer.longitude;
+     * this.text = fireVoiceLayer.textfile;
+     */
+  }
+
+    displayText() {
+      if (!this.textFile || this.textFile === "") return;
+
+      const position = Cesium.Cartesian3.fromDegrees(this.longitude, this.latitude);
+      const label = uiCesium.viewer.entities.add({
+        position: position,
+        label: {
+          text: this.textFile,
+          font: "20px sans-serif",
+          fillColor: Cesium.Color.WHITE,
+          outlineColor: Cesium.Color.BLACK,
+          outlineWidth: 4,
+          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+          pixelOffset: new Cesium.Cartesian2(0, -9),
+          heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+        },
+      });
+
+      uiCesium.viewer.entities.add(textEntity);
+    }
+}
 
 
 
