@@ -730,3 +730,18 @@ function clearEntries() {
     value.cloudEntry.SetVisible(false); // Sets the cloud entry visibility to false
   });
 }
+
+// This function processes an individual smoke layer message.
+// The function takes in fireVoiceLayer, which contains the data for a single smoke layer.
+function handleSmokeLayerMessage(fireVoiceLayer) {
+  // when we call
+  let se = Entry.create(fireVoiceLayer); // Creates a new Entry object from the received fireVoiceLayer data
+  fireVoiceDataEntries.set(fireVoiceLayer.id, se); // Stores the new entry in the fireVoiceDataEntries map using its id as the key
+
+  if (isSelected(se)) updateEntryView(); // If the new entry is selected, updates the entry view.
+
+  if (followLatest == true) { // Checks if followLatest flag is set to true
+    clearEntries(); // Clears all currently visible entries
+    ui.selectFirstListItem(entryView); // Selects the first entry in the entry view. Note: It implies the need to deselect the current entry.
+  }
+}
