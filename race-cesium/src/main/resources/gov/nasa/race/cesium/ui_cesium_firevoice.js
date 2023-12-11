@@ -366,5 +366,20 @@ function initCheckBoxes() { // init checkboxes to their default values
   ui.setCheckBox("smoke.G18", selectedSat.includes("G18"));
 }
 
+/**
+ * Creates entry view list object
+ * @returns {*}
+ */
+function initEntryView() {
+  let view = ui.getList("fireVoiceLayer.entries"); // sets identifier
+  if (view) {
+    ui.setListItemDisplayColumns(view, ["header"], [
+      { name: "sat", tip: "name of satellite", width: "5.5rem", attrs: [], map: e => e.satellite },
+      { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date)},
+    ]);
+  }
+  return view;
+}
+
 
 
