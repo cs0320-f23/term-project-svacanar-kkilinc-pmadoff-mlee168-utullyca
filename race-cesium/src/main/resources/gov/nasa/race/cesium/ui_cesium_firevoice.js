@@ -512,3 +512,50 @@ function contourFillColorChanged(event) {
   updateColors();
   uiCesium.requestRender();
 }
+
+/**
+ * Updates the alpha of the contours
+ * @param color - the color of the contours
+ * @param alpha - the alpha of the contours
+ * @returns {*}
+ */
+function convertColorToHaveAlpha(color, alpha){
+  return Cesium.Color.fromAlpha(Cesium.Color.fromCssColorString(color.slice(0,7)), alpha);
+}
+
+/**
+ * Updates the alpha of the contours
+ * @param color - the color of the contours
+ * @returns {*}
+ */
+function convertColorToStripAlpha(color) {
+  return color.toCssHexString().slice(0,7)
+}
+
+/**
+ * Updates the alpha of the contours
+ * @param event - the event that is triggered
+ */
+function updateColors(){ // updates color from user input
+  let sColor = currentContourRender.smokeColor; // get color
+  let sColorNoAlpha = convertColorToStripAlpha(sColor); // strip current alpha
+  currentContourRender.smokeColor =  convertColorToHaveAlpha(sColorNoAlpha, currentContourRender.alpha);
+  let cColor = currentContourRender.cloudColor; // get color
+  let cColorNoAlpha = convertColorToStripAlpha(cColor); // strip current alpha
+  currentContourRender.cloudColor =  convertColorToHaveAlpha(cColorNoAlpha, currentContourRender.alpha);
+}
+
+/**
+ * Handles the messages from the websocket
+ * @param event - the event that is triggered
+ */
+function contourAlphaChanged(event) {
+  let v = ui.getSliderValue(event.target);
+  currentContourRender.alpha = v;
+  // update colors with new alpha
+  updateColors();
+  let e = ui.getSelectedListItem(entryView);
+  if (e) {
+    e.renderChanged();
+  }
+}
