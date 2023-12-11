@@ -611,6 +611,21 @@ function toggleShowSource(event) { // from data selection checkboxes
     else selectedEntry.smokeEntry.SetVisible(false);
     if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
     else selectedEntry.cloudEntry.SetVisible(false);
+  }
+}
 
+/**
+ * Selects entry from the data entry list
+ * @param event
+ */
+function selectSmokeCloudEntry(event) {
+  selectedEntry = ui.getSelectedListItem(entryView);
+  if (selectedEntry) {
+    if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
+    if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
+    updateSelectionView(selectedEntry);
+  }
+  else {
+    clearEntries(); // ensure all entries are cleared if nothing is selected
   }
 }
