@@ -700,3 +700,33 @@ function selectSatellite(event) {
   updateEntryView();
   if (followLatest == true) ui.selectFirstListItem(entryView);
 }
+
+function isSelected (se) { // checks if entries are selected
+  return selectedSat.includes(se.satellite)
+}
+
+// websocket messages
+
+// The function that serves as the main entry point for handling WebSocket messages related to smoke layers.
+// The function takes in two arguments: msgType representing the type of the message and msg containing the actual message payload.
+// TODO: confused on how this works. the JSON pushed over the websocket does not have an explicity message type
+// ex: s"""{"msgType": "fireVoiceLayer", "fireVoiceLayer": {"id": "$id", "satellite":"$satellite", "date":${date.toEpochMillis}, "srs":"$srs", "smokeUrl":"$smokeUrl", "fireTextUrl":"$cloudUrl"}}"""
+function handleWsSmokeLayerMessages(msgType, msg) {
+  switch (msgType) { // Switch on the type of message received
+    case "fireVoiceLayer":
+      // If the message is of type "fireVoiceLayer", then handle the smoke layer message.
+      handleSmokeLayerMessage(msg.fireVoiceLayer);
+      return true; // Returns true to indicate that the message was successfully processed.
+    default:
+      return false; // Returns false to indicate that the message type was not recognized.
+  }
+}
+
+// Clears all the entries and sets visibility of both smoke and cloud entries to false.
+function clearEntries() {
+  fireVoiceDataEntries.forEach((value, key) => { // Iterates over each entry in fireVoiceDataEntries
+    value.clear(); // Clears the individual entry
+    value.smokeEntry.SetVisible(false); // Sets the smoke entry visibility to false
+    value.cloudEntry.SetVisible(false); // Sets the cloud entry visibility to false
+  });
+}
