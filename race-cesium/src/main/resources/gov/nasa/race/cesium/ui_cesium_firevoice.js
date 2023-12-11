@@ -489,3 +489,26 @@ function contourStrokeColorChanged(event) {
     }
   }
 }
+
+/**
+ * Updates the colors of the contours
+ * @param event
+ */
+function contourFillColorChanged(event) {
+  let e = ui.getSelectedListItem(entryView);
+  if (e) {
+    let clrSpec = event.target.value;
+    let boxSpec = event.target.id;
+    if (clrSpec) { // changes render color according to the fill box changed
+      if (boxSpec == "smoke.contour.smoke_color") {
+        currentContourRender.smokeColor = convertColorToHaveAlpha(clrSpec, currentContourRender.alpha);
+      }
+      if (boxSpec == "smoke.contour.cloud_color") {
+        currentContourRender.cloudColor = convertColorToHaveAlpha(clrSpec, currentContourRender.alpha);
+      }
+      e.renderChanged();
+    }
+  }
+  updateColors();
+  uiCesium.requestRender();
+}
