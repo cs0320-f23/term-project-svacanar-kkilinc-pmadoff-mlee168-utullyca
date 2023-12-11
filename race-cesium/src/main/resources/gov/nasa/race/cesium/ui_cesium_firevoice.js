@@ -671,3 +671,32 @@ function selectCloudEntries(event) { // selects cloud layers by updating selecte
     }
   }
 }
+
+/**
+ * Selects visible satellites to filter entry list
+ * @param event
+ */
+function selectSatellite(event) {
+  let cb = ui.getCheckBox(event.target);
+  let satName = ui.getCheckBoxLabel(cb)
+  if (ui.isCheckBoxSelected(event.target)){
+    if (!selectedSat.includes(satName)) selectedSat.push(satName);
+  }
+  else {
+    // update satellite list
+    var index = selectedSat.indexOf(satName);
+    if (index > -1) {
+      selectedSat.splice(index, 1);
+    }
+    // clear all entries visible from that sat
+  }
+  let e = ui.getSelectedListItem(entryView);
+  if (e) {
+    if (!selectedSat.includes(e.satellite)) {
+      e.clear();
+      clearSelectionView();
+    }
+  }
+  updateEntryView();
+  if (followLatest == true) ui.selectFirstListItem(entryView);
+}
