@@ -629,3 +629,29 @@ function selectSmokeCloudEntry(event) {
     clearEntries(); // ensure all entries are cleared if nothing is selected
   }
 }
+
+/**
+ * Updates selections to match the selected entry
+ * @param selectedEntry
+ */
+function updateSelectionView(selectedEntry) {
+  let sat = selectedEntry.satellite;
+  let date = selectedEntry.date;
+  selectionEntries.get("smoke").sat = sat;
+  selectionEntries.get("smoke").date = date;
+  selectionEntries.get("cloud").sat = sat;
+  selectionEntries.get("cloud").date = date;
+  displayEntries = util.filterMapValues(selectionEntries, se=> isSelectedEntry(selectedEntry, se));
+  ui.setListItems(selectionView, displayEntries);
+}
+
+/**
+ * Clears the selections
+ */
+function clearSelectionView() {
+  selectionEntries.get("smoke").sat = undefined;
+  selectionEntries.get("smoke").date = undefined;
+  selectionEntries.get("cloud").sat = undefined;
+  selectionEntries.get("cloud").date = undefined;
+  ui.setListItems(selectionView, selectionEntries);
+}
