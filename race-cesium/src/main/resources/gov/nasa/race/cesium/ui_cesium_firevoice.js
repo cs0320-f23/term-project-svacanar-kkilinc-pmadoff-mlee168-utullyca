@@ -398,6 +398,37 @@ function initSelectionView() {
   return view;
 }
 
-
+/**
+ * Creates the window
+ * @returns {*}
+ */
+function createWindow() {
+  return ui.Window("Smoke and Cloud Layers", "smoke", "smoke-icon.svg")(
+      ui.Panel("Data Selection", true)( // data selection panel
+          ui.RowContainer()(
+              ui.CheckBox("G16", selectSatellite, "smoke.G16"), // name, action on click, tracking id
+              ui.CheckBox("G17", selectSatellite, "smoke.G17"),
+              ui.CheckBox("G18", selectSatellite, "smoke.G18"),
+          ),
+          ui.RowContainer()(
+              ui.CheckBox("follow latest", toggleFollowLatest, "smoke.followLatest"), // name, action on click, tracking id
+              ui.Button("clear", clearSelections) // name, action on click
+          ),
+          ui.List("fireVoiceLayer.selection", 3) // tracking id, number of visible rows
+      ),
+      ui.Panel("Data Entries", true)( // data entry panel
+          ui.List("fireVoiceLayer.entries", 6, selectSmokeCloudEntry), // tracking id, number of visible rows, action on click
+          ui.ListControls("fireVoiceLayer.entries")
+      ),
+      ui.Panel("Contour Display")( // contour display panel
+          ui.Button("reset", resetDisplaySelections),
+          ui.Slider("alpha", "smoke.contour.alpha", contourAlphaChanged),
+          ui.Slider("stroke width", "smoke.contour.stroke_width", contourStrokeWidthChanged),
+          ui.ColorField("stroke color", "smoke.contour.stroke_color", true, contourStrokeColorChanged), // label, id, is input, action on click
+          ui.ColorField("smoke color", "smoke.contour.smoke_color", true, contourFillColorChanged),
+          ui.ColorField("cloud color", "smoke.contour.cloud_color", true, contourFillColorChanged),
+      ),
+  );
+}
 
 
