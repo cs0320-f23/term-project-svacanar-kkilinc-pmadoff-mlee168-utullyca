@@ -470,4 +470,22 @@ function initDefaultColors(renderConfig) {
   return result
 }
 
+function contourStrokeWidthChanged(event) {
+  let e = ui.getSelectedListItem(entryView);
+  if (e) {
+    let n = ui.getSliderValue(event.target);
+    currentContourRender.strokeWidth = n;
+    e.renderChanged();
+  }
+}
 
+function contourStrokeColorChanged(event) {
+  let e = ui.getSelectedListItem(entryView);
+  if (e) {
+    let clrSpec = event.target.value;
+    if (clrSpec) {
+      currentContourRender.strokeColor =  convertColorToHaveAlpha(clrSpec, currentContourRender.alpha);
+      e.renderChanged();
+    }
+  }
+}
