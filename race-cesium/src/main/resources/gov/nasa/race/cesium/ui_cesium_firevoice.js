@@ -280,3 +280,18 @@ class FireTextEntry extends FireVoiceEntry {
   }
 }
 
+const fireVoiceDataEntries = new Map(); // unique-key -> Entries; stores Entry objects
+
+var displayEntries = []; // instantiates variable used for temp entry storage
+var selectedEntry = undefined; // instantiates variable used for temp entry selection
+var selectedType = ["perim", "text"]; // instantiates list of selected layers
+//var selectedSat = ["G16", "G18"]; // instantiates list of selected satellites
+var followLatest = config.fireVoiceLayer.followLatest; // instantiates followlatest boolean
+
+var perimSelection = { // object for storing entry selections in selection panel
+  show: true,
+  type: fireVoiceLayerType.PERIM,
+  date: undefined,
+};
+
+
