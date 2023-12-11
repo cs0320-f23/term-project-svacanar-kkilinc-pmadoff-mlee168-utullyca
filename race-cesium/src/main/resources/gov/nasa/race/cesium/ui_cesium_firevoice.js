@@ -381,5 +381,23 @@ function initEntryView() {
   return view;
 }
 
+/**
+ * Creates selection view list object
+ * @returns {*}
+ */
+function initSelectionView() {
+  let view = ui.getList("fireVoiceLayer.selection"); // sets identifies
+  if (view) {
+    ui.setListItemDisplayColumns(view, ["header"], [
+      { name: "show", tip: "toggle visibility", width: "2.5rem", attrs: [], map: e => ui.createCheckBox(e.show, toggleShowSource) },
+      { name: "type", tip: "type of entry", width: "4rem", attrs: [], map: e => e.type },
+      { name: "sat", tip: "name of satellite", width: "3rem", attrs: [], map: e => e.sat },
+      { name: "date", width: "7rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date)},
+    ]);
+  }
+  return view;
+}
+
+
 
 
