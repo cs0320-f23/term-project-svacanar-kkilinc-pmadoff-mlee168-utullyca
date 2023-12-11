@@ -575,5 +575,42 @@ function resetDisplaySelections(event) {
   if (selectedEntry) {
     selectedEntry.renderChanged();
   }
-=
+}
+
+/**
+ * Interactions - behavior for clicking boxes and filtering entries
+ * @param event
+ */
+function clearSelections(event){
+  // clear viewed data
+  selectedEntry = ui.getSelectedListItem(entryView);
+  if (selectedEntry) selectedEntry.clear();
+  clearEntries();
+  clearSelectionView();
+  // clear all checkboxes
+  followLatest = false;
+  updateEntryView();
+  initCheckBoxes();
+}
+
+function toggleFollowLatest(event) {
+  followLatest = ui.isCheckBoxSelected(event.target);
+  if ((followLatest==true) && (ui.getSelectedListItemIndex(entryView) != 0)) {
+    ui.selectFirstListItem(entryView);
+  }
+}
+
+function toggleShowSource(event) { // from data selection checkboxes
+  let cb = ui.getCheckBox(event.target)
+  let cbName = ui.getListItemOfElement(cb).type;
+  if (cbName == fireVoiceLayerType.TEXT) selectCloudEntries(event); // updates according to the checkbox
+  if (cbName == fireVoiceLayerType.PERIM) selectSmokeEntries(event); // updates according to the checkbox
+  let e = ui.getSelectedListItem(entryView);
+  if (e) { // sets selected layers visible and unselected to not visible
+    if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
+    else selectedEntry.smokeEntry.SetVisible(false);
+    if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
+    else selectedEntry.cloudEntry.SetVisible(false);
+
+  }
 }
