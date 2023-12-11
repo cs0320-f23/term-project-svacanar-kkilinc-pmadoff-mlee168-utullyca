@@ -655,3 +655,19 @@ function clearSelectionView() {
   selectionEntries.get("cloud").date = undefined;
   ui.setListItems(selectionView, selectionEntries);
 }
+
+function isSelectedEntry(selectedEntry, selectionEntry) { // checks if the selection matches the selected entry
+  return ((selectedEntry.date == selectionEntry.date) && (selectedEntry.satellite = selectionEntry.sat));
+}
+
+function selectCloudEntries(event) { // selects cloud layers by updating selected type variable
+  if (ui.isCheckBoxSelected(event.target)){
+    if (!selectedType.includes("cloud")) selectedType.push("cloud");
+  }
+  else {
+    var index = selectedType.indexOf("cloud");
+    if (index > -1) {
+      selectedType.splice(index, 1);
+    }
+  }
+}
