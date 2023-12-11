@@ -280,6 +280,10 @@ class FireTextEntry extends FireVoiceEntry {
   }
 }
 
+/**
+ * FireVoiceLayer class - parent class for the fire voice layer
+ * @type {Map<any, any>}
+ */
 const fireVoiceDataEntries = new Map(); // unique-key -> Entries; stores Entry objects
 
 var displayEntries = []; // instantiates variable used for temp entry storage
@@ -288,10 +292,79 @@ var selectedType = ["perim", "text"]; // instantiates list of selected layers
 //var selectedSat = ["G16", "G18"]; // instantiates list of selected satellites
 var followLatest = config.fireVoiceLayer.followLatest; // instantiates followlatest boolean
 
-var perimSelection = { // object for storing entry selections in selection panel
+/**
+ * Object for storing entry selections in selection panel
+ * @type {{date: undefined, show: boolean, type: string}}
+ */
+var perimSelection = {
   show: true,
   type: fireVoiceLayerType.PERIM,
   date: undefined,
 };
+
+/**
+ * Object for storing entry selections in selection panel
+ * @type {{date: undefined, show: boolean, type: string}}
+ */
+var textSelection = {
+  show: true,
+  type: fireVoiceLayerType.TEXT,
+  date: undefined,
+};
+
+/**
+ * Use the ENUM again to define the entry selections
+ * @type {Map<string, {date: undefined, show: boolean, type: string}>}
+ */
+const selectionEntries = new Map([ // unique-key -> selections; stores selection objects
+  [fireVoiceLayerType.PERIM, perimSelection],
+  [fireVoiceLayerType.TEXT, textSelection]
+]);
+
+// UI initialization
+/**
+ * Initializes the window
+ */
+initWindow(); // initializes window
+initCheckBoxes(); // initializes checkboxes
+
+var entryView = initEntryView(); // variable storing Entries - modify this to add or remove entries
+var selectionView = initSelectionView(); // variable storing selections - modify this to change selections
+
+ws.addWsHandler(handleWsSmokeLayerMessages); // adds handler to websocket
+
+//--- end module initialization
+
+/**
+ * Initializes the window for the fire voice layer
+ */
+function initWindow() {
+  createIcon();
+  createWindow();
+  initContourDisplayControls();
+  console.log("ui_cesium_firelayer initialized");
+}
+
+/**
+ * Creates the icon for the fire voice layer window
+ * @returns {*}
+ */
+function createIcon() {
+
+  console.log("created smoke icon");
+  return ui.Icon("smoke-icon.svg", (e)=> ui.toggleWindow(e,'smoke'));
+}
+
+/**
+ * Creates the window for the fire voice layer
+ */
+//TODO: change all of the smoke renderings - to what?? - Peter
+function initCheckBoxes() { // init checkboxes to their default values
+  ui.setCheckBox("smoke.followLatest", followLatest);
+  ui.setCheckBox("smoke.G16", selectedSat.includes("G16"));
+  ui.setCheckBox("smoke.G17", selectedSat.includes("G17"));
+  ui.setCheckBox("smoke.G18", selectedSat.includes("G18"));
+}
+
 
 
