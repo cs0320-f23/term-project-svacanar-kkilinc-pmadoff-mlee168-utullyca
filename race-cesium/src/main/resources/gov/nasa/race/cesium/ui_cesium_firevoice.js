@@ -431,4 +431,43 @@ function createWindow() {
   );
 }
 
+/**
+ * Initializes the contour display
+ */
+function initContourDisplayControls() {
+
+  let e = ui.getSlider("smoke.contour.alpha"); // get slider from id
+  ui.setSliderRange(e, 0, 1.0, 0.1); //  set range
+  ui.setSliderValue(e, defaultContourRender.alpha); // set value
+
+  let s = ui.getSlider("smoke.contour.stroke_width");
+  ui.setSliderRange(s, 0, 3, 0.5);
+  ui.setSliderValue(s, defaultContourRender.strokeWidth);
+
+  let sc = ui.getField("smoke.contour.stroke_color"); // get color field from id
+  ui.setField(sc, convertColorToStripAlpha(defaultContourRender.strokeColor)); // set color field value
+
+  let colorSmoke = ui.getField("smoke.contour.smoke_color");
+  ui.setField(colorSmoke, convertColorToStripAlpha(defaultContourRender.smokeColor));
+
+  let colorCloud = ui.getField("smoke.contour.cloud_color");
+  ui.setField(colorCloud, convertColorToStripAlpha(defaultContourRender.cloudColor));
+}
+
+/**
+ * Initializes the default colors.
+ * @param renderConfig
+ * @returns {{strokeWidth: (*|number|string), cloudColor: *, alpha: (*|number|AlphaOption|boolean), smokeColor: *, strokeColor: *}}
+ */
+//--- contour controls
+function initDefaultColors(renderConfig) {
+  let width = renderConfig.strokeWidth;
+  let alpha = renderConfig.alpha;
+  let strokeColor = convertColorToHaveAlpha(convertColorToStripAlpha(renderConfig.strokeColor), alpha);
+  let smokeColor = convertColorToHaveAlpha(convertColorToStripAlpha(renderConfig.smokeColor), alpha);
+  let cloudColor = convertColorToHaveAlpha(convertColorToStripAlpha(renderConfig.cloudColor), alpha);
+  let result = {strokeWidth:width, strokeColor:strokeColor, cloudColor:cloudColor, smokeColor:smokeColor, alpha:alpha};//fillColors: fillColors, alpha:alpha};
+  return result
+}
+
 
