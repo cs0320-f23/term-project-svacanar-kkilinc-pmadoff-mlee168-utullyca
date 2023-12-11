@@ -552,10 +552,28 @@ function updateColors(){ // updates color from user input
 function contourAlphaChanged(event) {
   let v = ui.getSliderValue(event.target);
   currentContourRender.alpha = v;
-  // update colors with new alpha
+
+  /**
+   * Updates the colors with the alpha changes
+   */
   updateColors();
   let e = ui.getSelectedListItem(entryView);
   if (e) {
     e.renderChanged();
   }
+}
+
+/**
+ * resets the display settings to default
+ * @param event
+ */
+function resetDisplaySelections(event) {
+  currentContourRender = initDefaultColors(config.fireVoiceLayer.contourRender);
+  updateColors();
+  initContourDisplayControls();
+  selectedEntry = ui.getSelectedListItem(entryView);
+  if (selectedEntry) {
+    selectedEntry.renderChanged();
+  }
+=
 }
