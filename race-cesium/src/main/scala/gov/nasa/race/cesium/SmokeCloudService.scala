@@ -47,7 +47,8 @@ import scala.collection.mutable
 
 // define default contour rendering settings
 
-class DefaultContourRenderingS (conf: Config) {
+// TODO: change the name heree
+class DefaultContourRenderingSM (conf: Config) {
   val strokeWidth = conf.getDoubleOrElse("stroke-width", 1.5)
   val strokeColor = conf.getStringOrElse( "stroke-color", "grey")
   val smokeColor = conf.getStringOrElse( "smoke-color", "black")
@@ -80,14 +81,14 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
     }
   }
   /**
-  * Example JSON:
-  * {
+   * Example JSON:
+   * {
   "smokeUrlName": "smoke-[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
   "cloudUrlName": "cloud-[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
   "uniqueId": "[SATELLITE_ID]-[FORMATTED_DATE_TIME]",
   "json": "[GENERATED_JSON_FROM_SMOKEAVAILABLE]"
    }
-  **/
+   **/
   case class SmokeCloudLayer(sla: SmokeAvailable) {
     // case class that takes in an available object - used to push data through the websocket
     val smokeUrlName = f"smoke-${sla.satellite}-${sla.date.format_yMd_Hms_z}"
@@ -103,7 +104,7 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
   override def receiveData: Receive = receiveSmokeData orElse super.receiveData
 
   def receiveSmokeData: Receive = { // action for recieving bus message with new data
-    // Create 3 new layers 
+    // Create 3 new layers
     case BusEvent(_,sla:SmokeAvailable,_) =>
       // create layers
       val cloudL = Layer(sla, "cloud") // create the cloud layer
@@ -144,19 +145,19 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
           }
         }
       } ~ // This symbol is used to concatenate multiple routes. When a request comes in, Akka HTTP will try each of these routes in the order they are defined until it finds a match.
-      // Handles routes starting with "smoke-cloud/"
-      pathPrefix("smoke-cloud" ~ Slash) {
-        // Extract the remaining part of the URL
-        extractUnmatchedPath { p =>
-          val pathName = s"smoke-cloud/$p"
-          // Complete the request by sending the file content to the client
-          complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
-        }
-      } ~
-      // Serves the JavaScript module to the client
-      fileAssetPath(jsModule) ~
-      // Serves the icon to the client
-      fileAssetPath(icon)
+        // Handles routes starting with "smoke-cloud/"
+        pathPrefix("smoke-cloud" ~ Slash) {
+          // Extract the remaining part of the URL
+          extractUnmatchedPath { p =>
+            val pathName = s"smoke-cloud/$p"
+            // Complete the request by sending the file content to the client
+            complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
+          }
+        } ~
+        // Serves the JavaScript module to the client
+        fileAssetPath(jsModule) ~
+        // Serves the icon to the client
+        fileAssetPath(icon)
     }
   }
 
@@ -188,17 +189,17 @@ trait SmokeLayerService extends CesiumService with FileServerRoute with PushWSRa
   def smokeLayerConfig(requestUri: Uri, remoteAddr: InetSocketAddress): String = {
     // defines the config sent to the js module
     val cfg = config.getConfig("smokelayer")
-    val defaultContourRenderingS = new DefaultContourRenderingS(cfg.getConfigOrElse("contour.render", NoConfig))
+    val defaultContourRenderingSM = new DefaultContourRenderingSM(cfg.getConfigOrElse("contour.render", NoConfig))
 
     s"""
     export const smokelayer = {
-      contourRender: ${defaultContourRenderingS.toJsObject},
+      contourRender: ${defaultContourRenderingSM.toJsObject},
       followLatest: ${cfg.getBooleanOrElse("follow-latest", false)}
     };"""
   }
 }
 
 /**
-  * a single page application that processes smoke and cloud segmentation images
-  */
+ * a single page application that processes smoke and cloud segmentation images
+ */
 class CesiumSmokeApp(val parent: ParentActor, val config: Config) extends DocumentRoute with SmokeLayerService with ImageryLayerService

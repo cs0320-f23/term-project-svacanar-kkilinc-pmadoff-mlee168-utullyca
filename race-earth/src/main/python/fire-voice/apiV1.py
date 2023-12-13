@@ -17,11 +17,11 @@ How to Run:
 
 Endpoints:
 ----------
-1. `/process`: 
+1. `/process`:
     - GET: Confirms that the server is running. Returns HTTP 200.
     - POST: Takes a 'filepath' form parameter, processes the emergency call, and returns incident details as JSON.
-    
-2. `/stopServer`: 
+
+2. `/stopServer`:
     - GET: Shuts down the server.
 
 Logs:
@@ -70,15 +70,15 @@ fv = FireVoice(OPENAI_API_KEY, GOOGLE_MAPS_API_KEY, DISPATCH_LAT, DISPATCH_LNG)
 def process_call():
     """
     Function to process emergency calls.
-    
+
     If GET request is received:
     - Expected Output: HTTP 200 response to confirm server is running.
-    
+
     If POST request is received:
     - Expected Input: Form parameter 'filepath' indicating the path to the audio file.
     - Processes the audio file through the FireVoice system.
     - Expected Output: JSON response containing incident details, HTTP 200 status if successful.
-    - Errors: 
+    - Errors:
         - HTTP 400 if 'filepath' is not provided or any other bad request occurs.
         - HTTP 500 if processing fails or if there is an internal server error.
     """
@@ -86,28 +86,28 @@ def process_call():
     try:
         if request.method == 'GET':
             logging.info("Test GET Request (Validation of Server Running)")
-            response = Response(status=200) 
-            return response   
+            response = Response(status=200)
+            return response
         filepath = request.form.get('filepath')
-        
+
         if filepath is None:
             logging.error("No filepath provided.")
             abort(400, description="Missing filepath.")
-        
+
         logging.info(f"Processing call with filepath: {filepath}")
 
         call_id = fv.master_process_call(filepath)
-        
+
         if call_id is None:
             logging.error(f"Processing failed. Could not retrieve call_id for {filepath}.")
             abort(500, description="Processing failed. Missing call ID.")
-        
+
         incident_json = fv.retrieve_incident(call_id)
-        
+
         if incident_json is None:
             logging.error(f"Processing failed. Could not retrieve incident data for call_id: {call_id}.")
             abort(500, description="Processing failed. Missing incident data.")
-        
+
         logging.info(f"Successfully processed call for filepath: {filepath}")
         return jsonify(incident_json), 200
 
@@ -133,7 +133,7 @@ def stopServer():
     """
     logging.info("Server shutdown initiated")
     os.kill(os.getpid(), signal.SIGINT)
-    return jsonify({"success": True, "message": "Server has been shut down"})
+    # return jsonify({"success": True, "message": "Server has been shut down"})
 
 
 if __name__ == "__main__":

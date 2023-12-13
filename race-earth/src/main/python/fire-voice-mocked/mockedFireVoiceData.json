@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2023-04-15T12:00:00Z",
+    "Incident_ID": "WF001",
+    "Call_ID": "CALL1001-1",
+    "Coordinates": [[37.501517, -121.701133]],
+    "Incident_Report": "Wildfire detected near central location",
+    "Severity_Rating": "High",
+    "Coordinate_Type": "GPS"
+  },
+  {
+    "date": "2023-04-16T15:30:00Z",
+    "Incident_ID": "WF002",
+    "Call_ID": "CALL1002-2",
+    "Coordinates": [[37.502517, -121.700633], [37.503517, -121.702633]],
+    "Incident_Report": "Multiple fire outbreaks in the vicinity",
+    "Severity_Rating": "Moderate",
+    "Coordinate_Type": "GPS"
+  },
+  {
+    "date": "2023-04-17T09:45:00Z",
+    "Incident_ID": "WF003",
+    "Call_ID": "CALL1003-3",
+    "Coordinates": [[37.500517, -121.701633]],
+    "Incident_Report": "Brush fire reported near central location",
+    "Severity_Rating": "Low",
+    "Coordinate_Type": "GPS"
+  },
+  {
+    "date": "2023-04-18T21:20:00Z",
+    "Incident_ID": "WF004",
+    "Call_ID": "CALL1004-4",
+    "Coordinates": [[37.503017, -121.701133]],
+    "Incident_Report": "Urban fire emergency near central location",
+    "Severity_Rating": "Critical",
+    "Coordinate_Type": "GPS"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
+}
