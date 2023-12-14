@@ -97,16 +97,16 @@ class DefaultContourRenderingS (conf: Config) {
 
 object FireVoiceLayerService {
   val jsModule = "ui_cesium_fire_voice.js"
-  val icon ="fire-icon.svg"
+  val icon ="firehistory-icon.svg"
 }
 
 import FireVoiceLayerService._
 
 
-trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRaceRoute with CachedFileAssetRoute with PipedRaceDataClient with JsonProducer{
+trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRaceRoute with CachedFileAssetRoute with PipedRaceDataClient with JsonProducer {
   //////////////////////////////////////////////////////////////////
   // service definition
-  case class Layer (wfa: WildfireDataAvailable, scType: String) {
+  case class Layer(wfa: WildfireDataAvailable, scType: String) {
     // case class that takes in an available object and the type - used to push data through the route server
     // he code looks up the Layer object using this internal URL path and serves the corresponding File
     // rather an internal URL path for routing within the Akka HTTP framework
@@ -120,6 +120,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
       case "text" => file = wfa.WildfireGeolocationData.fireTextFile // Assuming fireTextFile is already an Option[File]
     }
   }
+
   //////////////////////////////////////////////////////////////////
   case class FirePerimLayer(wfa: WildfireDataAvailable) {
     // case class that takes in an available object - used to push data through the websocket
@@ -131,8 +132,8 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
   //////////////////////////////////////////////////////////////////
 
   // Two Different HashMaps for the two different data types
-  protected val layers: mutable.LinkedHashMap[String,Layer] = mutable.LinkedHashMap.empty // urlName -> Layer
-  protected val firePerimlayers: mutable.LinkedHashMap[String,FirePerimLayer] = mutable.LinkedHashMap.empty // urlName -> FirePerimLayer
+  protected val layers: mutable.LinkedHashMap[String, Layer] = mutable.LinkedHashMap.empty // urlName -> Layer
+  protected val firePerimlayers: mutable.LinkedHashMap[String, FirePerimLayer] = mutable.LinkedHashMap.empty // urlName -> FirePerimLayer
 
   //--- obtaining and updating fire fields
   override def receiveData: Receive = receiveFireData orElse super.receiveData
@@ -141,7 +142,8 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
   def receiveFireData: Receive = { // action for recieving bus message with new data
     // Create 3 new layers
     // All fields are compelete (CloudFireActor creates and published wfa)
-    case BusEvent(_,wfa:WildfireDataAvailable,_) =>
+    case BusEvent(_, wfa: WildfireDataAvailable, _) =>
+      warning(s"Received WildfireDataAvailable: $wfa")
       // create layers
       val textL = Layer(wfa, "text") // create the audio layer
       val perimL = Layer(wfa, "perim") // create the fire layer
@@ -158,32 +160,45 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
       addFirePerimLayer(firePerimSl)
       //the server maintains a list of active WebSocket connections. Whenever the server needs to push data, it iterates over this list and sends data to each connected WebSocket client
       //Here we are pushing the reference class (filepaths only:  no actual GeoJson content) geoJSON will be retreived by the httpRequest later
-      push( TextMessage(firePerimSl.json)) // the server maintains a list of active WebSocket connections. Whenever the server needs to push data, it iterates over this list and sends data to each connected WebSocket client
+
+      warning(s"Pushing combined data over websocket: ${firePerimSl.json}")
+      push(TextMessage(firePerimSl.json)) // the server maintains a list of active WebSocket connections. Whenever the server needs to push data, it iterates over this list and sends data to each connected WebSocket client
   }
 
   // add new layer functions
   // WATCH OUT - these can be used concurrently so we have to sync
   // Layers are based on the urlName
-  def addLayer(sl: Layer): Unit = synchronized { layers += (sl.urlName -> sl) }  //  Adds an entry to the layers LinkedHashMap, with the key being sl.urlName and the value being sl.
-  def currentFireLayerValues: Seq[Layer] = synchronized { layers.values.toSeq }
+  def addLayer(sl: Layer): Unit = synchronized {
+    layers += (sl.urlName -> sl)
+  } //  Adds an entry to the layers LinkedHashMap, with the key being sl.urlName and the value being sl.
+
+  def currentFireLayerValues: Seq[Layer] = synchronized {
+    layers.values.toSeq
+  }
 
 
   // WATCH OUT - these can be used concurrently so we have to sync
   // firePerimLayer indexed on unique id.
-  def addFirePerimLayer(sl: FirePerimLayer): Unit = synchronized { firePerimlayers += (sl.uniqueId -> sl) }
-  def currentFirePerimLayers: Seq[FirePerimLayer] = synchronized { firePerimlayers.values.toSeq }
+  def addFirePerimLayer(sl: FirePerimLayer): Unit = synchronized {
+    firePerimlayers += (sl.uniqueId -> sl)
+  }
+
+  def currentFirePerimLayers: Seq[FirePerimLayer] = synchronized {
+    firePerimlayers.values.toSeq
+  }
 
 
   //--- route
+
   /**
    * Defines the HTTP route handlers for fire-data related requests.
    * This function has multiple responsibilities:
    *   1. Serves files based on the provided path prefix "fire-data".
-   *   2. Handles client requests to "fire-audio" which serves client-side shader code.
-   *   3. Serves JavaScript modules and icons to the client.
+   *      2. Handles client requests to "fire-audio" which serves client-side shader code.
+   *      3. Serves JavaScript modules and icons to the client.
    *
    * The Scala code here is setting up the server-side logic to handle incoming HTTP requests. (The Browser will know to access these endpoints)
-   ** List of Defined Routes and Example Calls:
+   * * List of Defined Routes and Example Calls:
    *
    * 1. Route: "fire-data/{unmatched_path}"
    *    - Handles any GET request that starts with "fire-data/" and has some unmatched path after it.
@@ -203,6 +218,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
    *    - Example Call: GET "http://server_address/iconPath"
    *
    * Note: "server_address" is a placeholder for where the service is actually hosted.
+   *
    * @return Route The constructed Akka HTTP Route.
    */
 
@@ -214,15 +230,23 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
       // Handles requests for single files (json, geojson, etc)
       pathPrefix("fire-data-single" ~ Slash) { // This directive captures the starting segment of the URL path. It is used to group multiple routes that share a common path prefix.
         // Extract the remaining part of the URL
-        extractUnmatchedPath { p =>  // This directive is used to capture the rest of the URL path after the prefix. It puts the unmatched portion into a variable (p in this case).
+        extractUnmatchedPath { p => // This directive is used to capture the rest of the URL path after the prefix. It puts the unmatched portion into a variable (p in this case).
           val pathName = p.toString()
+          warning(s"Attempting to access single fire data for path: $pathName")
+
           // Try to find the Layer object corresponding to this path
           layers.get(pathName) match {
             // If a Layer object is found, complete the request with the file content
             // Here we are delivering the ACTUAL contents the GeoJSON data (not the reference class)
-            case Some(sl) => completeWithFileContent(sl.file.get) // file information is stored in the layer
+            case Some(sl) =>
+              warning(s"Found single fire data layer for path: $pathName")
+              completeWithFileContent(sl.file.get) // file information is stored in the layer
+
             // If not found, return a 404 status
-            case None => complete(StatusCodes.NotFound, pathName)
+            case None =>
+              warning(s"Single fire data layer not found for path: $pathName")
+              complete(StatusCodes.NotFound, pathName)
+
           }
         }
       } ~ // This symbol is used to concatenate multiple routes. When a request comes in, Akka HTTP will try each of these routes in the order they are defined until it finds a match.
@@ -231,6 +255,8 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
           // Extract the remaining part of the URL
           extractUnmatchedPath { p =>
             val pathName = s"fire-data-combined/$p"
+            warning(s"Attempting to access combined fire data for path: $pathName")
+
             // Complete the request by sending the file content to the client
             complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
           }
@@ -247,40 +273,55 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
 
   //--- websocket
   // Who calls this? is this just a default lifecycle method?
-  protected override def initializeConnection (ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = {
+  protected override def initializeConnection(ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = {
+    warning(s"WebSocket connection initializing with remote address: ${ctx.remoteAddress}")
     super.initializeConnection(ctx, queue)
-    initializeFireConnection(ctx,queue)
+    initializeFireConnection(ctx, queue)
+    warning("WebSocket connection initialized.")
   }
 
-  def initializeFireConnection (ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = synchronized {
-    // adds fire and audio layer objects to the websocket as messages
+  // Define the method that initializes the fire data connection over WebSocket
+  def initializeFireConnection(ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = synchronized {
     val remoteAddr = ctx.remoteAddress
-    currentFirePerimLayers.foreach( sl => pushTo(remoteAddr, queue, TextMessage(sl.json))) // pushes object to the UI
+    warning(s"Initializing fire connection for remote address: $remoteAddr")
+
+    currentFirePerimLayers.foreach { sl =>
+      warning(s"Sending initial fire perimeter layer data over WebSocket to $remoteAddr: ${sl.json}")
+      pushTo(remoteAddr, queue, TextMessage(sl.json))
+    }
+
+    warning(s"Fire connection initialized for $remoteAddr with ${currentFirePerimLayers.size} fire perimeter layers.")
   }
 
   //--- document content generated by js module
-  // Question: What is the purpose of these? dependencies?
-  // there could be multiple modules if we wanted.
-  override def getHeaderFragments: Seq[Text.TypedTag[String]] = super.getHeaderFragments:+addJsModule(jsModule)
-
+  override def getHeaderFragments: Seq[Text.TypedTag[String]] = {
+    val headerFragments = super.getHeaderFragments :+ addJsModule(jsModule)
+    warning(s"Adding JS module to header fragments: $jsModule")
+    headerFragments
+  }
 
   //--- client config
-  override def getConfig (requestUri: Uri, remoteAddr: InetSocketAddress): String = super.getConfig(requestUri,remoteAddr) + fireLayerConfig(requestUri,remoteAddr)
+  override def getConfig(requestUri: Uri, remoteAddr: InetSocketAddress): String = {
+    val configStr = super.getConfig(requestUri, remoteAddr) + fireLayerConfig(requestUri, remoteAddr)
+    warning(s"Generating client config for requestUri $requestUri from remoteAddr $remoteAddr")
+    configStr
+  }
 
   def fireLayerConfig(requestUri: Uri, remoteAddr: InetSocketAddress): String = {
-    // defines the config sent to the js module
-    val cfg = config.getConfig("firelayer")
+    val cfg = config.getConfig("fireVoiceLayer")
     val defaultContourRenderingS = new DefaultContourRenderingS(cfg.getConfigOrElse("contour.render", NoConfig))
-
-    s"""
-    export const firelayer = {
-      contourRender: ${defaultContourRenderingS.toJsObject},
-      followLatest: ${cfg.getBooleanOrElse("follow-latest", false)}
-    };"""
+    val configJson =
+      s"""
+  export const fireVoiceLayer = {
+    contourRender: ${defaultContourRenderingS.toJsObject},
+    followLatest: ${cfg.getBooleanOrElse("follow-latest", false)}
+  };"""
+    warning(s"Fire layer client config generated: $configJson")
+    configJson
   }
 }
 
 /**
  * a single page application that processes fire and audio segmentation images
  */
-class CesiumFireVoiceApp(val parent: ParentActor, val config: Config) extends DocumentRoute with SmokeLayerService with ImageryLayerService
+class CesiumFireVoiceApp(val parent: ParentActor, val config: Config) extends DocumentRoute with FireVoiceService with ImageryLayerService
