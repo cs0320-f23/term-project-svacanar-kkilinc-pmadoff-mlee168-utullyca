@@ -63,8 +63,8 @@ class Entry{
      * It clears the current entry and sets the visibility to false
      */
     clear() {
-        this.perimEntry.SetVisible(false);
-        this.textEntry.SetVisible(false);
+        this.perimEntry.setVisible(false);
+        this.textEntry.setVisible(false);
         uiCesium.requestRender();
     }
 
@@ -97,13 +97,29 @@ class FireVoiceEntry {
      * @param type - the type of layer (perim or text)
      */
     constructor(fireVoiceLayer, type) {
+        this.id = fireVoiceLayer.id;
         this.date = fireVoiceLayer.date;
+        this.incidentId = fireVoiceLayer.Incident_ID;
+        this.callId = fireVoiceLayer.Call_ID;
+        this.coordinates = fireVoiceLayer.Coordinates; // This is an array of objects
+        this.incidentReport = fireVoiceLayer.Incident_Report;
+        this.severityRating = fireVoiceLayer.Severity_Rating;
+        this.coordinateType = fireVoiceLayer.Coordinate_Type;
+
+        // URLs
+        this.fireTextUrl = fireVoiceLayer.fireTextUrl;
+        this.firePerimUrl = fireVoiceLayer.firePerimUrl;
+        this.simReportUrl = fireVoiceLayer.simReportUrl;
+
         // this.satellite = fireVoiceLayer.satellite;  probably uses satellite for the geojson layer but what about the text layer?
         // this.srs = fireVoiceLayer.srs;
-        this.url = undefined;
+        this.url = type === fireVoiceLayerType.PERIM ? this.firePerimUrl : this.fireTextUrl;
         this.dataSource = undefined;
         this.render = {...currentContourRender};
         this.show = false;
+
+        console.log("FireVoiceEntry Fields:", this);
+
     }
 
     /**
@@ -119,28 +135,47 @@ class FireVoiceEntry {
      * Sets the visibility of the layer
      * @param showIt - boolean value of whether or not the layer is visible
      */
-    setVisible(showIt) {
+    async setVisible(showIt) {
         console.log("Setting visibility:", showIt);
-        if (showIt != this.show) {
-            this.show = showIt;
-            if (showIt) {
-                if (!this.dataSource) {
-                    this.loadContoursFromUrl();
-                } else {
-                    this.dataSource.show = true;
-                    uiCesium.requestRender();
+        showIt=true // for shits and giggles
+        this.show = showIt;
+
+        if (showIt) {
+            if (!this.dataSource) {
+                // Check the type of the entry and call the appropriate loading method
+                if (this instanceof FirePerimEntry) {
+                    await this.loadContoursFromUrl().catch(error => console.error("Error loading contours:", error));
+                } else if (this instanceof FireTextEntry) {
+                    await this.loadTextDataFromUrl().catch(error => console.error("Error loading text data:", error));
                 }
-                this.setStatus(SHOWING);
+            } else {
+                this.dataSource.show = true;
+                uiCesium.requestRender();
             }
-        }
-        if (showIt == false) {
+        } else {
             if (this.dataSource) {
                 this.dataSource.show = false;
                 uiCesium.requestRender();
-                this.setStatus(LOADED);
             }
         }
     }
+
+    async loadTextDataFromUrl() {
+        if (!this.fireTextUrl) {
+            console.log("No text URL provided.");
+            return;
+        }
+
+        console.log("Loading text data from URL:", this.fireTextUrl);
+        let response = await fetch(this.fireTextUrl);
+        if (response.ok) {
+            let textData = await response.text();
+            this.displayText(textData);
+        } else {
+            console.log("Failed to load text data:", response.status);
+        }
+    }
+
 
     /**
      * Loads the contours from the url
@@ -239,12 +274,9 @@ class FireVoiceEntry {
  */
 class FirePerimEntry extends FireVoiceEntry {
     constructor(fireVoiceLayer) {
-        super(fireVoiceLayer);
-        console.log("Initializing FirePerimEntry:", fireVoiceLayer);
+        super(fireVoiceLayer, fireVoiceLayerType.PERIM);
 
-        this.smokeFile = fireVoiceLayer.smokeFile;
-        this.url = fireVoiceLayer.smokeUrl;
-        this.type = fireVoiceLayerType.PERIM;
+        console.log(`FirePerimEntry initialized: ID=${this.id}, URL=${this.url}`);
     }
 
     postProcessDataSource() {
@@ -263,31 +295,26 @@ class FirePerimEntry extends FireVoiceEntry {
  * This is the class that will be used to display the text on the map
  */
 class FireTextEntry extends FireVoiceEntry {
-    /**
-     * Constructor for the text layer
-     * TODO: Could be missing elements
-     * @param fireVoiceLayer
-     */
     constructor(fireVoiceLayer) {
         super(fireVoiceLayer, fireVoiceLayerType.TEXT);
-        this.textFile = fireVoiceLayer.textFile;
-        this.url = fireVoiceLayer.fireTextUrl;
-        this.type =  fireVoiceLayerType.TEXT;
-        /**
-         * this.latitutde = fireVoiceLayer.latitude;
-         * this.longitude = fireVoiceLayer.longitude;
-         * this.text = fireVoiceLayer.textfile;
-         */
+        console.log(`FireTextEntry initialized: ID=${this.id}, Text URL=${this.fireTextUrl}`);
     }
 
-    displayText() {
-        if (!this.textFile || this.textFile === "") return;
 
-        const position = Cesium.Cartesian3.fromDegrees(this.longitude, this.latitude);
+
+    displayText(textData) {
+        if (!textData) {
+            console.log("No text data to display.");
+            return;
+        }
+
+        // Assuming coordinates is an array with one element for simplicity
+        const coord = this.coordinates[0];
+        const position = Cesium.Cartesian3.fromDegrees(coord.longitude, coord.latitude);
         const textEntity = new Cesium.Entity({
             position: position,
             label: {
-                text: this.textFile,
+                text: textData,
                 font: "20px sans-serif",
                 fillColor: Cesium.Color.WHITE,
                 outlineColor: Cesium.Color.BLACK,
@@ -299,8 +326,10 @@ class FireTextEntry extends FireVoiceEntry {
         });
 
         uiCesium.viewer.entities.add(textEntity);
+        console.log("Text displayed on the map:", textData);
     }
 }
+
 
 /**
  * FireVoiceLayer class - parent class for the fire voice layer
@@ -367,7 +396,7 @@ console.log("entryView initialized:", entryView);
 var selectionView = initSelectionView(); // Variable storing selections - modify this to change selections
 console.log("selectionView initialized:", selectionView);
 
-ws.addWsHandler(handleWsSmokeLayerMessages); // Adds a handler to the WebSocket
+ws.addWsHandler(handleWsFireLayerMessages); // Adds a handler to the WebSocket
 console.log("WebSocket handler added.");
 
 //--- end module initialization
@@ -656,10 +685,10 @@ function toggleShowSource(event) { // from data selection checkboxes
     if (cbName == fireVoiceLayerType.PERIM) selectSmokeEntries(event); // updates according to the checkbox
     let e = ui.getSelectedListItem(entryView);
     if (e) { // sets selected layers visible and unselected to not visible
-        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
-        else selectedEntry.smokeEntry.SetVisible(false);
-        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
-        else selectedEntry.cloudEntry.SetVisible(false);
+        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.perimEntry.setVisible(true);
+        else selectedEntry.perimEntry.setVisible(false);
+        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.textEntry.setVisible(true);
+        else selectedEntry.textEntry.setVisible(false);
     }
 }
 
@@ -672,8 +701,8 @@ function selectSmokeCloudEntry(event) {
     console.log("Selected entry:", selectedEntry);
 
     if (selectedEntry) {
-        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
-        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
+        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.perimEntry.setVisible(true);
+        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.textEntry.setVisible(true);
         updateSelectionView(selectedEntry);
     }
     else {
@@ -762,6 +791,21 @@ function updateEntryView() { // updates entry view
 function isSelected (se) { // checks if entries are selected
     return selectedSat.includes(se.satellite)
 }
+// Clears all the entries and sets visibility of both smoke and cloud entries to false.
+function clearEntries() {
+    console.log("Clearing entries...");
+    fireVoiceDataEntries.forEach((value, key) => { // Iterates over each entry in fireVoiceDataEntries
+        value.clear(); // Clears the individual entry
+        value.perimEntry.setVisible(false); // Sets the smoke entry visibility to false
+        value.textEntry.setVisible(false); // Sets the cloud entry visibility to false
+    });
+}
+function printFireVoiceDataEntries() {
+    console.log("Printing fireVoiceDataEntries:");
+    fireVoiceDataEntries.forEach((entry, id) => {
+        console.log(`Entry with ID ${id}:`, entry);
+    });
+}
 
 // websocket messages
 
@@ -770,12 +814,12 @@ function isSelected (se) { // checks if entries are selected
 // TODO: confused on how this works. the JSON pushed over the websocket does not have an explicity message type
 // ex: s"""{"msgType": "fireVoiceLayer", "fireVoiceLayer": {"id": "$id", "satellite":"$satellite", "date":${date.toEpochMillis}, "srs":"$srs", "smokeUrl":"$smokeUrl", "fireTextUrl":"$cloudUrl"}}"""
 // Inside the WebSocket message handler:
-function handleWsSmokeLayerMessages(msgType, msg) {
+function handleWsFireLayerMessages(msgType, msg) {
     console.log("Received WebSocket message:", msgType, msg);
     switch (msgType) {
         case "fireVoiceLayer":
             console.log("Handling fireVoiceLayer message...");
-            handleSmokeLayerMessage(msg.fireVoiceLayer);
+            handleFireLayerMessage(msg.fireVoiceLayer);
             console.log("FireVoiceLayer message handled.");
             return true;
         // ... rest of the cases
@@ -785,25 +829,17 @@ function handleWsSmokeLayerMessages(msgType, msg) {
     }
 }
 
-// Clears all the entries and sets visibility of both smoke and cloud entries to false.
-function clearEntries() {
-    console.log("Clearing entries...");
-    fireVoiceDataEntries.forEach((value, key) => { // Iterates over each entry in fireVoiceDataEntries
-        value.clear(); // Clears the individual entry
-        value.smokeEntry.SetVisible(false); // Sets the smoke entry visibility to false
-        value.cloudEntry.SetVisible(false); // Sets the cloud entry visibility to false
-    });
-}
 
 // This function processes an individual smoke layer message.
 // The function takes in fireVoiceLayer, which contains the data for a single smoke layer.
-function handleSmokeLayerMessage(fireVoiceLayer) {
+function handleFireLayerMessage(fireVoiceLayer) {
     // When we call
     console.log("Received fireVoiceLayer data:", fireVoiceLayer);
     let se = Entry.create(fireVoiceLayer); // Creates a new Entry object from the received fireVoiceLayer data
     console.log("Created new Entry object:", se);
     fireVoiceDataEntries.set(fireVoiceLayer.id, se); // Stores the new entry in the fireVoiceDataEntries map using its id as the key
     console.log("Stored the new entry in fireVoiceDataEntries map with id:", fireVoiceLayer.id);
+    printFireVoiceDataEntries();
 
     if (isSelected(se)) {
         updateEntryView(); // If the new entry is selected, updates the entry view.

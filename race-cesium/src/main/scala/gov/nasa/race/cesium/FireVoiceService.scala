@@ -73,11 +73,12 @@ import gov.nasa.race.common.{JsonProducer, JsonWriter}
 import gov.nasa.race.config.ConfigUtils.ConfigWrapper
 import gov.nasa.race.config.NoConfig
 import gov.nasa.race.core.{BusEvent, ParentActor, PipedRaceDataClient}
-import gov.nasa.race.earth.WildfireDataAvailable
+import gov.nasa.race.earth.{WildfireDataAvailable, WildfireGeolocationData, Coordinate}
 import gov.nasa.race.http._
 import gov.nasa.race.ui._
 import gov.nasa.race.util.StringUtils
 import scalatags.Text
+import gov.nasa.race.uom.DateTime
 
 import java.net.InetSocketAddress
 import java.io.File
@@ -106,28 +107,30 @@ import FireVoiceLayerService._
 trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRaceRoute with CachedFileAssetRoute with PipedRaceDataClient with JsonProducer {
   //////////////////////////////////////////////////////////////////
   // service definition
+
+  // case class that takes in an available object and the type - used to push data through the route server
+  // he code looks up the Layer object using this internal URL path and serves the corresponding File
+  // rather an internal URL path for routing within the Akka HTTP framework
+  // wfa is input, the files are set to fields in layer, these files are then served in the route
+  // the later is looked up by tue
   case class Layer(wfa: WildfireDataAvailable, scType: String) {
-    // case class that takes in an available object and the type - used to push data through the route server
-    // he code looks up the Layer object using this internal URL path and serves the corresponding File
-    // rather an internal URL path for routing within the Akka HTTP framework
-    // wfa is input, the files are set to fields in layer, these files are then served in the route
-    // the later is looked up by tue
-    val urlName = f"$scType-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}" // url where the file will be available
-    val json = wfa.toJsonWithUrl(s"fire-data/$urlName") // The JSON is the route filepaths and is pushed over the websocket, this tells the frontend where to make HTTP requests when the data is needed
-    var file: Option[File] = None
-    scType match {
-      case "perim" => file = wfa.firePerimFile // Assuming firePerimFile is already an Option[File]
-      case "text" => file = wfa.WildfireGeolocationData.fireTextFile // Assuming fireTextFile is already an Option[File]
+    val urlName = scType match {
+      case "perim" => s"perim-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
+      case "text" => s"text-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
+    }
+    val file: Option[File] = scType match {
+      case "perim" => wfa.firePerimFile
+      case "text" => wfa.WildfireGeolocationData.fireTextFile
     }
   }
 
   //////////////////////////////////////////////////////////////////
   case class FirePerimLayer(wfa: WildfireDataAvailable) {
     // case class that takes in an available object - used to push data through the websocket
-    val fireUrlName = f"fire-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
-    val audioUrlName = f"audio-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
-    val uniqueId = f"${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}" // used to distinctly identify data
-    val json = wfa.toJsonWithTwoUrls(s"fire-data/$fireUrlName", s"fire-data/$audioUrlName", uniqueId) //makes for the satellietAvailable object
+    val fireUrlName = s"perim-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
+    val textUrlName = s"text-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
+    val uniqueId = s"${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
+    val json = wfa.toJsonWithTwoUrls(s"fire-data/$fireUrlName", s"fire-data/$textUrlName", uniqueId)
   }
   //////////////////////////////////////////////////////////////////
 
@@ -169,7 +172,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
   // WATCH OUT - these can be used concurrently so we have to sync
   // Layers are based on the urlName
   def addLayer(sl: Layer): Unit = synchronized {
-    layers += (sl.urlName -> sl)
+    layers += (preprocess_url(sl.urlName) -> sl)
   } //  Adds an entry to the layers LinkedHashMap, with the key being sl.urlName and the value being sl.
 
   def currentFireLayerValues: Seq[Layer] = synchronized {
@@ -187,6 +190,11 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
     firePerimlayers.values.toSeq
   }
 
+  // Function to standardize URLs for consistent comparison
+  def preprocess_url(url: String): String = {
+    // Example preprocessing steps (can be adjusted as needed)
+    url.trim.toLowerCase.replaceAll(" ", "")  // Remove leading/trailing spaces, convert to lower case, and remove spaces
+  }
 
   //--- route
 
@@ -225,7 +233,24 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
   //If a request does not match any of the routes, Akka HTTP will automatically respond with a 404 Not Found status. You can also explicitly define a "catch-all" route to handle unmatched routes with custom logic if desired.
   // QUESTION: How do we ensure that overwrites to other data with the same prefix (fire-data) do not occur
   def fireVoiceRoute: Route = {
-    // the function fireVoiceRoute is defined as handling only GET requests, as indicated by the get directive.
+    get {
+      pathPrefix("fire-data" / Segment) { rawUniqueId =>
+        val uniqueId = preprocess_url(rawUniqueId)
+        warning(s"Received GET request for fire-data with processed unique ID: $uniqueId")
+
+        layers.get(uniqueId) match {
+          case Some(layer) =>
+            warning(s"Serving fire data for processed unique ID: $uniqueId")
+            completeWithFileContent(layer.file.get)
+
+          case None =>
+            // Log the available keys in the hashmap for debugging
+            val availableKeys = layers.keys.mkString(", ")
+            warning(s"Data not found for processed unique ID: $uniqueId. Available keys in hashmap: $availableKeys")
+            complete(StatusCodes.NotFound, uniqueId)
+        }
+      }
+    } ~    // the function fireVoiceRoute is defined as handling only GET requests, as indicated by the get directive.
     get {
       // Handles requests for single files (json, geojson, etc)
       pathPrefix("fire-data-single" ~ Slash) { // This directive captures the starting segment of the URL path. It is used to group multiple routes that share a common path prefix.
@@ -268,7 +293,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
     }
   }
 
-
+  // Include this route in your overall HTTP route setup
   override def route: Route = fireVoiceRoute ~ super.route
 
   //--- websocket
@@ -281,7 +306,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
   }
 
   // Define the method that initializes the fire data connection over WebSocket
-  def initializeFireConnection(ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = synchronized {
+  private def initializeFireConnection(ctx: WSContext, queue: SourceQueueWithComplete[Message]): Unit = synchronized {
     val remoteAddr = ctx.remoteAddress
     warning(s"Initializing fire connection for remote address: $remoteAddr")
 
@@ -289,6 +314,9 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
       warning(s"Sending initial fire perimeter layer data over WebSocket to $remoteAddr: ${sl.json}")
       pushTo(remoteAddr, queue, TextMessage(sl.json))
     }
+    // Call this function in the service's constructor or initialization block
+    warning("Initializing Default Data Swap")
+    initializeDefaultData()
 
     warning(s"Fire connection initialized for $remoteAddr with ${currentFirePerimLayers.size} fire perimeter layers.")
   }
@@ -319,6 +347,103 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
     warning(s"Fire layer client config generated: $configJson")
     configJson
   }
+  ////////////////////////////////////////////
+  // Initialize default data
+  private def createDefaultData(): Seq[WildfireDataAvailable] = {
+    val defaultFireTextFile1 = new File("race-earth/src/main/python/fire-voice-mocked/mockedRawFireTextDataJson/mocked_1.json")
+    val defaultFireTextFile2 = new File("race-earth/src/main/python/fire-voice-mocked/mockedRawFireTextDataJson/mocked_2.json")
+    val defaultFireTextFile3 = new File("race-earth/src/main/python/fire-voice-mocked/mockedRawFireTextDataJson/mocked_3.json")
+    // Add more file paths as needed
+
+    val defaultFirePerimFile1 = new File("race-earth/src/main/python/cloud-fire-mocked/mockedCloudFireData/perim_lat=39.027604_lon=-120.881455.json")
+    val defaultFirePerimFile2 = new File("race-earth/src/main/python/cloud-fire-mocked/mockedCloudFireData/perim_lat=39.034572_lon=-120.853744.json")
+    val defaultFirePerimFile3 = new File("race-earth/src/main/python/cloud-fire-mocked/mockedCloudFireData/perim_lat=39.024991_lon=-120.840288.json")
+    // Add more file paths as needed
+
+    val defaultWFADatas = Seq(
+      WildfireDataAvailable(
+        WildfireGeolocationData(
+          Some(defaultFireTextFile1),
+          Some(DateTime.now),
+          Some("INC123"),
+          Some("CALL123"),
+          Some(List(Coordinate(34.0522, -118.2437))),
+          Some("Report 1"),
+          Some("High"),
+          Some("GPS")
+        ),
+        Some("Simulation Report"),
+        Some(defaultFirePerimFile1)
+      ),
+      WildfireDataAvailable(
+        WildfireGeolocationData(
+          Some(defaultFireTextFile2),
+          Some(DateTime.now),
+          Some("INC124"),
+          Some("CALL124"),
+          Some(List(Coordinate(34.0523, -118.2438))),
+          Some("Report 2"),
+          Some("Medium"),
+          Some("GPS")
+        ),
+        Some("Simulation Report"),
+        Some(defaultFirePerimFile2)
+      ),
+      WildfireDataAvailable(
+        WildfireGeolocationData(
+          Some(defaultFireTextFile3),
+          Some(DateTime.now),
+          Some("INC125"),
+          Some("CALL125"),
+          Some(List(Coordinate(34.0524, -118.2439))),
+          Some("Report 3"),
+          Some("Low"),
+          Some("GPS")
+        ),
+        Some("Simulation Report"),
+        Some(defaultFirePerimFile3)
+      )
+      // Add more default WFA objects as needed
+    )
+
+    defaultWFADatas
+  }
+
+
+  // Add a function to initialize default data into layers and firePerimLayers
+  private def initializeDefaultData(): Unit = {
+    val defaultWFADatas = createDefaultData()
+
+    // Cannot use Self ! message passing because its not really an actor ya - heard
+    defaultWFADatas.foreach { wfa =>
+      val textL = Layer(wfa, "text")
+      val perimL = Layer(wfa, "perim")
+      val firePerimSl = FirePerimLayer(wfa)
+
+      warning("Default data initialized for Wildfire: " + wfa.toString)
+
+      addLayer(textL)
+      addLayer(perimL)
+      addFirePerimLayer(firePerimSl)
+
+      // Optionally, you can send these data to WebSocket clients
+      warning(s"Pushing combined data over websocket: ${firePerimSl.json}")
+      push(TextMessage(firePerimSl.json))
+    }
+    // Log the contents of the layers and firePerimlayers
+    // Log the contents of 'layers' each on a new line
+    warning("Contents of 'layers':")
+    for ((key, layer) <- layers) {
+      warning(s"Key: $key, Layer: $layer")
+    }
+
+    // Log the contents of 'firePerimlayers' each on a new line
+    warning("Contents of 'firePerimlayers':")
+    for ((key, firePerimLayer) <- firePerimlayers) {
+      warning(s"Key: $key, FirePerimLayer: $firePerimLayer")
+    }
+  }
+
 }
 
 /**

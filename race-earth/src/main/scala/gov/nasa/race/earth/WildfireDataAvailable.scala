@@ -18,14 +18,16 @@ case class WildfireGeolocationData(
                                     date: Option[DateTime] = None,
                                     Incident_ID: Option[String] = None,
                                     Call_ID: Option[String] = None,
-                                    Coordinates: Option[List[Coordinate]] = None, // Now Coordinates is a List of Coordinate objects
+                                    Coordinates: Option[List[Coordinate]] = None,
                                     Incident_Report: Option[String] = None,
                                     Severity_Rating: Option[String] = None,
                                     Coordinate_Type: Option[String] = None
                                   ) {
-  def toJson(): String = {
-    // Serialize Coordinates as a list of JSON objects
-    val coordJson = Coordinates.map(_.map(coord => s"""{"latitude": ${coord.latitude}, "longitude": ${coord.longitude}}""").mkString("[", ",", "]")).getOrElse("[]")
+  def toJson: String = {
+    val coordJson = Coordinates match {
+      case Some(coords) => coords.map(coord => s"""{"latitude": ${coord.latitude}, "longitude": ${coord.longitude}}""").mkString("[", ", ", "]")
+      case None => "[]"
+    }
     s"""{
        |  "date": "${date.map(_.toString).getOrElse("N/A")}",
        |  "Incident_ID": "${Incident_ID.getOrElse("N/A")}",
@@ -37,23 +39,24 @@ case class WildfireGeolocationData(
        |}""".stripMargin
   }
 }
-
 // Third case class that is the complete WildfireDataAvailable, including all previous data plus the CloudFire Actor data
 case class WildfireDataAvailable(
                                   WildfireGeolocationData: WildfireGeolocationData,
-                                  simReport: Option[String] = None, // Metadata for the simulation (num sims, etc)
-                                  firePerimFile: Option[File] = None // GeoJSON file saved on local drive
+                                  simReport: Option[String] = None,
+                                  firePerimFile: Option[File] = None
                                 ) {
-  // TODO: We actually don't want to expose the backend datalocations to the frontend
-  // Take in arguments for the route where the frontend can access the files, right now its the actual filepath and this is wrong
-
   def toJsonWithTwoUrls(fireTextUrl: String, firePerimUrl: String, id: String): String = {
-    val geolocationJson = WildfireGeolocationData.toJson().dropRight(1)
-    // Wrap in a fireVoiceLayer identifier so that the frontend understands the message and handles rendering apprioately
+    // Convert geolocation data to JSON object
+    val geolocationJson = WildfireGeolocationData.toJson
+
+    // Extract the JSON content inside the outermost curly braces
+    val innerJson = geolocationJson.substring(geolocationJson.indexOf("{") + 1, geolocationJson.lastIndexOf("}")).trim
+
+    // Properly format the JSON string
     s"""{
        |  "fireVoiceLayer": {
        |    "id": "$id",
-       |    $geolocationJson,
+       |    $innerJson,
        |    "fireTextUrl": "$fireTextUrl",
        |    "firePerimUrl": "$firePerimUrl",
        |    "simReportUrl": "${simReport.getOrElse("N/A")}"
@@ -61,13 +64,10 @@ case class WildfireDataAvailable(
        |}""".stripMargin
   }
 
-
-  def toJsonWithUrl (url: String ): String = {
-    // Used for Layer HashMap that will serve individual files (can be any file). the id will be the call_id-incident_id
-    // and will be set in the FireVoiceService Actor
+  def toJsonWithUrl(url: String): String = {
     s"""{
        |  "fireVoiceLayer": {
-       |     "url":"$url"
+       |     "url": "$url"
        |  }
        |}""".stripMargin
   }
