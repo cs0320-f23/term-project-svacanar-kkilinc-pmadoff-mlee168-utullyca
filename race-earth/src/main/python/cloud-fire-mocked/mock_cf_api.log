@@ -447,3 +447,68 @@
 2023-12-13 19:59:00,635:INFO: * Restarting with stat
 2023-12-13 19:59:00,960:WARNING: * Debugger is active!
 2023-12-13 19:59:00,967:INFO: * Debugger PIN: 663-272-555
+2023-12-14 01:36:40,455:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2023-12-14 01:36:40,455:INFO:[33mPress CTRL+C to quit[0m
+2023-12-14 01:36:40,458:INFO: * Restarting with stat
+2023-12-14 01:36:40,768:WARNING: * Debugger is active!
+2023-12-14 01:36:40,774:INFO: * Debugger PIN: 663-272-555
+2023-12-14 01:36:50,125:INFO:Check available request received
+2023-12-14 01:36:50,132:INFO:127.0.0.1 - - [14/Dec/2023 01:36:50] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:36:54,178:INFO:Check available request received
+2023-12-14 01:36:54,179:INFO:127.0.0.1 - - [14/Dec/2023 01:36:54] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:36:54,190:INFO:Check available request received
+2023-12-14 01:36:54,192:INFO:127.0.0.1 - - [14/Dec/2023 01:36:54] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:36:54,197:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.700633'), ('lat', '37.502517')])
+2023-12-14 01:36:54,199:INFO:Responding with random mock data
+2023-12-14 01:36:54,199:INFO:Responding with random mock data
+2023-12-14 01:36:54,200:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.702633'), ('lat', '37.503517')])
+2023-12-14 01:36:54,211:INFO:127.0.0.1 - - [14/Dec/2023 01:36:54] "GET /geolocate_fire?lon=-121.700633&lat=37.502517 HTTP/1.1" 200 -
+2023-12-14 01:36:54,211:INFO:Responding with random mock data
+2023-12-14 01:36:54,211:INFO:Responding with random mock data
+2023-12-14 01:36:54,218:INFO:127.0.0.1 - - [14/Dec/2023 01:36:54] "GET /geolocate_fire?lon=-121.702633&lat=37.503517 HTTP/1.1" 200 -
+2023-12-14 01:36:59,131:INFO:Check available request received
+2023-12-14 01:36:59,131:INFO:127.0.0.1 - - [14/Dec/2023 01:36:59] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:36:59,132:INFO:Check available request received
+2023-12-14 01:36:59,133:INFO:127.0.0.1 - - [14/Dec/2023 01:36:59] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:36:59,133:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.700633'), ('lat', '37.502517')])
+2023-12-14 01:36:59,134:INFO:Responding with random mock data
+2023-12-14 01:36:59,134:INFO:Responding with random mock data
+2023-12-14 01:36:59,135:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.702633'), ('lat', '37.503517')])
+2023-12-14 01:36:59,137:INFO:127.0.0.1 - - [14/Dec/2023 01:36:59] "GET /geolocate_fire?lon=-121.700633&lat=37.502517 HTTP/1.1" 200 -
+2023-12-14 01:36:59,137:INFO:Responding with random mock data
+2023-12-14 01:36:59,137:INFO:Responding with random mock data
+2023-12-14 01:36:59,139:INFO:127.0.0.1 - - [14/Dec/2023 01:36:59] "GET /geolocate_fire?lon=-121.702633&lat=37.503517 HTTP/1.1" 200 -
+2023-12-14 01:37:04,142:INFO:Check available request received
+2023-12-14 01:37:04,142:INFO:127.0.0.1 - - [14/Dec/2023 01:37:04] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:37:04,143:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.701133'), ('lat', '37.503017')])
+2023-12-14 01:37:04,143:INFO:Responding with random mock data
+2023-12-14 01:37:04,143:INFO:Responding with random mock data
+2023-12-14 01:37:04,148:INFO:127.0.0.1 - - [14/Dec/2023 01:37:04] "GET /geolocate_fire?lon=-121.701133&lat=37.503017 HTTP/1.1" 200 -
+2023-12-14 01:37:09,152:INFO:Check available request received
+2023-12-14 01:37:09,153:INFO:127.0.0.1 - - [14/Dec/2023 01:37:09] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:37:09,154:INFO:Check available request received
+2023-12-14 01:37:09,154:INFO:127.0.0.1 - - [14/Dec/2023 01:37:09] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:37:09,155:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.700633'), ('lat', '37.502517')])
+2023-12-14 01:37:09,155:INFO:Responding with random mock data
+2023-12-14 01:37:09,156:INFO:Responding with random mock data
+2023-12-14 01:37:09,157:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.702633'), ('lat', '37.503517')])
+2023-12-14 01:37:09,158:INFO:127.0.0.1 - - [14/Dec/2023 01:37:09] "GET /geolocate_fire?lon=-121.700633&lat=37.502517 HTTP/1.1" 200 -
+2023-12-14 01:37:09,159:INFO:Responding with random mock data
+2023-12-14 01:37:09,159:INFO:Responding with random mock data
+2023-12-14 01:37:09,167:INFO:127.0.0.1 - - [14/Dec/2023 01:37:09] "GET /geolocate_fire?lon=-121.702633&lat=37.503517 HTTP/1.1" 200 -
+2023-12-14 01:37:14,164:INFO:Check available request received
+2023-12-14 01:37:14,165:INFO:127.0.0.1 - - [14/Dec/2023 01:37:14] "GET /check_available HTTP/1.1" 200 -
+2023-12-14 01:37:14,165:INFO:Received GET request with data: ImmutableMultiDict([('lon', '-121.701633'), ('lat', '37.500517')])
+2023-12-14 01:37:14,165:INFO:Responding with random mock data
+2023-12-14 01:37:14,167:INFO:Responding with random mock data
+2023-12-14 01:37:14,170:INFO:127.0.0.1 - - [14/Dec/2023 01:37:14] "GET /geolocate_fire?lon=-121.701633&lat=37.500517 HTTP/1.1" 200 -
+2023-12-14 13:13:02,118:INFO:Received GET request with data: ImmutableMultiDict([])
+2023-12-14 13:13:02,124:ERROR:Latitude or longitude parameter is missing
+2023-12-14 13:13:02,126:INFO:127.0.0.1 - - [14/Dec/2023 13:13:02] "[31m[1mGET /geolocate_fire HTTP/1.1[0m" 400 -
+2023-12-14 13:13:31,282:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2023-12-14 13:13:31,282:INFO:[33mPress CTRL+C to quit[0m
+2023-12-14 13:13:31,284:INFO: * Restarting with stat
+2023-12-14 13:13:31,611:WARNING: * Debugger is active!
+2023-12-14 13:13:31,618:INFO: * Debugger PIN: 663-272-555

@@ -130,7 +130,9 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
     val fireUrlName = s"perim-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
     val textUrlName = s"text-${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
     val uniqueId = s"${wfa.WildfireGeolocationData.Call_ID}-${wfa.WildfireGeolocationData.Incident_ID}"
-    val json = wfa.toJsonWithTwoUrls(s"fire-data/$fireUrlName", s"fire-data/$textUrlName", uniqueId)
+
+    // (text, perim, id)
+    val json = wfa.toJsonWithTwoUrls(s"fire-data/$textUrlName", s"fire-data/$fireUrlName", uniqueId)
   }
   //////////////////////////////////////////////////////////////////
 
