@@ -1,3 +1,5 @@
-[debug] not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/Users/sofiavacanarvaja/Desktop/CS32/race-route/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/"), "term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build")...
-[debug] Done updating ProjectRef(uri("file:/Users/sofiavacanarvaja/Desktop/CS32/race-route/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/"), "term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build")
+[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = false, force = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/"), "term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build")...[0m
+[0m[[0m[33mwarn[0m] [0m[0mUnrecognized repository Scala Plugin Bundled Repository, ignoring it[0m
+[0m[[0m[33mwarn[0m] [0m[0mUnrecognized repository Scala Plugin Bundled Repository, ignoring it[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/project/"), "term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca-build")[0m

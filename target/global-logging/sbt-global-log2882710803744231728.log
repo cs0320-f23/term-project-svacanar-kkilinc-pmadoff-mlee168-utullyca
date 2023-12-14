@@ -1,0 +1,43 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(run config/cesium/cesium-imglayer.conf, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Compile / run[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 260 Scala sources and 13 Java sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-core/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0m/Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-core/src/main/java/gov/nasa/race/track/avro/FullTrackPoint.java: Some input files use unchecked or unsafe operations.[0m
+[0m[[0m[0minfo[0m] [0m[0m/Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-core/src/main/java/gov/nasa/race/track/avro/FullTrackPoint.java: Recompile with -Xlint:unchecked for details.[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 11 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-launcher/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 38 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-swing/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 5 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-kafka/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-smtp/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-jms/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-dds/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 41 Scala sources and 3 Java sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-net-http/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 45 Scala sources and 1 Java source to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-ww/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 3 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-client-ui/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 72 Scala sources and 3 Java sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-air/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 23 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-share/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 8 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-space/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 23 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-earth/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 14 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-cesium/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 8 Scala sources to /Users/uly/Desktop/term-project-svacanar-kkilinc-pmadoff-mlee168-utullyca/race-ww-air/target/scala-2.13/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+[0m[[0m[33mwarn[0m] [0m[0mCanceling execution...[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m
+[0m[[0m[31merror[0m] [0m[0mCancelled: run config/cesium/cesium-imglayer.conf[0m
+[0m[[0m[31merror[0m] [0m[0mCancelled: run config/cesium/cesium-imglayer.conf[0m
+[0m[[0m[31merror[0m] [0m[0mUse 'last' for the full log.[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(idea-shell, None, None)[0m

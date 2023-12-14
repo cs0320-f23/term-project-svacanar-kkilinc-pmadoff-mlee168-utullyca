@@ -1,0 +1,35 @@
+<!-- RACE specific WorldWind system layer initialization
+     NOTE - this file has to be in config/worldwind.layer.xml since it is referenced from WorldWind's system config/worldwind.xml
+-->
+
+<LayerList>
+    <!-- not very useful for our purposes
+    <Layer className="gov.nasa.worldwind.layers.StarsLayer">
+        <Property name="Name" value="Stars"/>
+    </Layer>
+    -->
+
+    <Layer className="gov.nasa.worldwind.layers.SkyGradientLayer"/>
+
+    <Layer href="config/Earth/WorldMap.xml" actuate="onRequest">
+        <Property name="MinActiveAltitude" value="4e6"/>
+    </Layer>
+
+    <Layer className="gov.nasa.worldwind.layers.Earth.StamenTerrainLayer" actuate="onRequest">
+        <Property name="MaxActiveAltitude" value="4e6"/>
+        <!--
+        <Property name="MinActiveAltitude" value="3e5"/>
+        -->
+    </Layer>
+
+    <!--
+    <Layer className="gov.nasa.worldwind.layers.Earth.OSMHumanitarianLayer" actuate="onRequest">
+        <Property name="MaxActiveAltitude" value="3e5"/>
+    </Layer>
+    -->
+
+
+    <Layer className="gov.nasa.worldwind.layers.WorldMapLayer"/>
+    <Layer className="gov.nasa.worldwind.layers.ScalebarLayer"/>
+    <Layer className="gov.nasa.worldwind.layers.CompassLayer"/>
+</LayerList>
