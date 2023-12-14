@@ -343,7 +343,7 @@ class FireVoiceImportActor(val config: Config) extends FireVoiceActor with HttpA
           warning(s"download failed: $x")
       }
     } else {
-      warning("API is not available. Aborting makeRequest.")
+      warning("FireVoice API is not available. Aborting makeRequest.")
     }
   }
 

@@ -8,7 +8,7 @@ import gov.nasa.race
 import gov.nasa.race.ResultValue
 import gov.nasa.race.common.ConstAsciiSlice.asc
 import gov.nasa.race.common.{ExternalProc, StringJsonPullParser}
-import gov.nasa.race.core.{BusEvent, PublishingRaceActor, SubscribingRaceActor}
+import gov.nasa.race.core.{BusEvent, PublishingRaceActor, RaceContext, RegisterRaceActor, StartRaceActor, SubscribingRaceActor, TerminateRaceActor}
 import gov.nasa.race.util.FileUtils
 import gov.nasa.race.earth.{WildfireDataAvailable, WildfireGeolocationData, Coordinate}
 import gov.nasa.race.http.{FileRetrieved, HttpActor}
@@ -74,10 +74,17 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
   val rf = config.getString("read-from")
 
   // Again is this the correct logging?
-  val apiUrl = config.getString("api-url")
   val dataDir: File = new File(config.getString("data-dir"))
   val timeout = 35.seconds
   val geoJsonDirPath = Paths.get(config.getString("geojson-dir"))
+
+  val pythonPath: File = new File(config.getString("python-exe")) // Python executable (for versioning purposes)
+  val apiPath: File = new File(System.getProperty("user.dir"), config.getString("api-exe")) // Location of FV Flask Server
+  val apiCwd: File = new File(System.getProperty("user.dir"), config.getString("api-cwd")) // Working directory
+  val apiProcess = new CloudFireAPIProcess(pythonPath, Some(apiCwd), apiPath) // API wrapper to handle intialization
+  var apiAvailable: Boolean = true //false
+  val apiPort: String = config.getString("api-port") // Each port will specify a different endpoint
+  val apiPortAvailable: String = config.getString("api-port-available") // Each port will specify a different endpoint
 
   // Initialize directories for GeoJSON storage
   // Validate and log the contents of the GeoJSON directory
@@ -92,35 +99,184 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
   }
   // Log the configuration details
   warning(
-    s"CloudFireImportActor Configuration:\n" +
-      s"Write To: $wt\n" +
-      s"Read From: $rf\n" +
-      s"API URL: $apiUrl\n" +
-      s"Data Directory: ${dataDir.getAbsolutePath}\n" +
-      s"Timeout: $timeout\n" +
-      s"GeoJSON Directory Path: $geoJsonDirPath"
+    s"""CloudFireImportActor Configuration:
+       |Write To: $wt
+       |Read From: $rf
+       |Data Directory: ${dataDir.getAbsolutePath}
+       |Timeout: $timeout
+       |GeoJSON Directory Path: $geoJsonDirPath
+
+       |pythonPath: ${pythonPath.getAbsolutePath}
+       |apiPath: ${apiPath.getAbsolutePath}
+       |apiCwd: ${apiCwd.getAbsolutePath}
+       |apiPort: $apiPort
+       |apiAvailable: $apiAvailable""".stripMargin
   )
 
+  // Function to delete all files in the GeoJSON directory
+  // Initialize directories for GeoJSON storage and clean if already exists
+  override def onInitializeRaceActor(rc: RaceContext, actorConf: Config): Boolean = {
+    warning("onInitializeRaceActor: Initializing CloudFireImportActor.")
+    initializeAndCleanGeoJSONDirectory()
+    super.onInitializeRaceActor(rc, actorConf)
+  }
 
+
+  /**
+   * Start the Race Actor
+   *
+   * @param originator the ActorRef of the originator
+   * @return Boolean indicates success or failure
+   */
+  override def onStartRaceActor(originator: ActorRef): Boolean = {
+    warning("Entered onStartRaceActor function")
+    var runningProc: Process = startAPI // starts the Python server hosting model API and checks if it is available
+
+    try {
+      val result = super.onStartRaceActor(originator)
+      warning(s"Successfully started Race Actor ${result}")
+      result
+    } catch {
+      case e: Exception =>
+        error(s"Failed to start Race Actor: ${e.getMessage}")
+        false
+    }
+  }
+
+  /**
+   * Terminate the Race Actor (built-in akka method)
+   *
+   * @param originator the ActorRef of the originator
+   * @return Boolean indicates success or failure
+   */
+  override def onTerminateRaceActor(originator: ActorRef): Boolean = {
+    debug("Entered onTerminateRaceActor function")
+    try {
+      val stopFuture = stopAPI()
+      Await.result(stopFuture, 5.seconds) // Fulfill the promise?
+      stopFuture.onComplete {
+        case Success(v) =>
+          warning("CloudFire API shutdown status confirmed")
+        case Failure(x) =>
+          warning(s"CloudFire API shutdown status could not be confirmed: $x")
+      }
+      //runningProc.destroy()
+      val result = super.onTerminateRaceActor(originator)
+      warning("Successfully terminated Race Actor")
+      result
+    } catch {
+      case e: Exception =>
+        error(s"Failed to terminate Race Actor: ${e.getMessage}")
+        false
+    }
+  }
+
+  /**
+   * Stops the API service.
+   *
+   * This function sends a request to the API server instructing it to stop.
+   * It then sets `apiAvailable` to false to indicate that the API is no longer available.
+   *
+   * @return A future that resolves when the API server is successfully stopped.
+   */
+  def stopAPI(): Future[Unit] = { //Remember Future is for Aysnc operations (do we want this to be async though?)
+    Future {
+      // --> /stop_server and /process are flask endpoint (sends get request to stop_server endpoints)
+      httpRequestStrict(apiPort.replace("/process", "/stop_server"), HttpMethods.GET) { //.replace (how to access different endpoints)
+        case Success(strictEntity) =>
+          warning("Finished stopping CloudFire API server")
+          apiAvailable = false
+        case Failure(x) =>
+          warning(s"Failed to stop CloudFire API server: $x")
+          apiAvailable = false
+      }
+    }
+  }
+
+  /**
+   * Starts the API service.
+   *
+   * This function initiates the API process and waits for its availability.
+   *
+   * @return The process that runs the API service.
+   */
+  def startAPI: Process = {
+    warning("Attempting to Launch API using startAPI process")
+
+    // Invoke our API wrapper
+    val runningProc = apiProcess.customExec()
+    Thread.sleep(10000) // bad practice - need to remove? Also why not make a promise here?
+    val serviceFuture = IsServiceAvailable()
+    Await.result(serviceFuture, Duration.Inf)
+    serviceFuture.onComplete {
+      case Success(v) =>
+        warning("startAPI: CloudFire Python API status confirmed using startAPI process")
+      case Failure(x) =>
+        warning(s"startAPI: CloudFire Python API status could not be confirmed: $x")
+    }
+    runningProc
+  }
+
+  /**
+   * Checks if the API service is available.
+   *
+   * This function sends a request to the API server to check its availability.
+   * It then sets `apiAvailable` to indicate the status.
+   *
+   * @return A future that resolves when the check is complete.
+   */
+  def IsServiceAvailable(): Future[Unit] = {
+    Future {
+      httpRequestStrict(apiPortAvailable, HttpMethods.GET) { // the /process endpoint should be able to accept GET + POST requests (GET for availability)
+        case Success(strictEntity) =>
+          warning("IsServiceAvailable: Finished initiating CloudFire Flask API")
+          apiAvailable = true
+        case Failure(x) =>
+          warning(s"CloudFire Flask API is not initiated: $x")
+          apiAvailable = false
+      }
+    }
+  }
+
+
+
+
+  // Function to initialize and clean the GeoJSON directory
+  private def initializeAndCleanGeoJSONDirectory(): Unit = {
+    if (Files.exists(geoJsonDirPath)) {
+      warning(s"GeoJSON directory exists: $geoJsonDirPath. Cleaning up...")
+      cleanGeoJSONDirectory()
+    } else {
+      warning(s"GeoJSON directory does not exist, creating: $geoJsonDirPath")
+      Files.createDirectories(geoJsonDirPath)
+    }
+  }
 
   // Function to delete all files in the GeoJSON directory
   private def cleanGeoJSONDirectory(): Unit = {
     try {
       val files = geoJsonDirPath.toFile.listFiles()
-      if (files != null) {
-        for (file <- files) {
-          if (file.isFile) {
-            if (file.delete()) {
-              warning(s"Deleted file: ${file.getPath}")
-            } else {
-              error(s"Failed to delete file: ${file.getPath}")
-            }
+      if (files != null && files.nonEmpty) {
+        files.foreach { file =>
+          if (file.isFile && file.delete()) {
+            warning(s"Deleted file: ${file.getPath}")
+          } else {
+            warning(s"Failed to delete file: ${file.getPath}")
           }
         }
       }
+
+      // Recheck the directory to confirm deletion
+      val remainingFiles = geoJsonDirPath.toFile.listFiles()
+      if (remainingFiles == null || remainingFiles.isEmpty) {
+        warning("All files successfully deleted from GeoJSON directory.")
+      } else {
+        warning("Files remaining in GeoJSON directory after deletion attempt:")
+        remainingFiles.foreach(file => warning(s"  - ${file.getPath}"))
+      }
     } catch {
       case e: IOException =>
-        error(s"Error while cleaning GeoJSON directory: ${e.getMessage}")
+        warning(s"Error while cleaning GeoJSON directory: ${e.getMessage}")
     }
   }
 
@@ -137,6 +293,16 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
           Try {
             // As coordinate is already a Coordinate object, we can use it directly
             warning(s"Coordinates extracted: $coordinate")
+            warning("Checking API availability.")
+            val serviceFuture = IsServiceAvailable() // Returns a Future
+
+            Await.result(serviceFuture, 3.seconds) // Comment out bc we are using .onComplete (redundant?)
+            serviceFuture.onComplete {
+              case Success(_) =>
+                warning("CloudFire API is available, proceeding with HTTP request preparation.")
+              case Failure(x) =>
+                warning(s"CloudFire API HTTP status could not be confirmed: $x")
+            }
             fetchDataFromAPI(coordinate, wfa)
           }.recover {
             case e: Exception =>
@@ -151,70 +317,69 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
 
   def fetchDataFromAPI(coordinates: Coordinate, wfa: WildfireGeolocationData): Unit = {
     warning(s"Preparing to fetch wildfire data for Coordinates: $coordinates")
-    val apiEndpoint = s"$apiUrl?lon=${coordinates.longitude}&lat=${coordinates.latitude}"
+    val apiEndpoint = s"$apiPort?lon=${coordinates.longitude}&lat=${coordinates.latitude}"
     warning(s"Constructed API Endpoint: $apiEndpoint")
 
-    // Create directory structure: [dataDir]/[Incident_ID]/[Call_ID]
-    val incidentDir = Paths.get(dataDir.getPath, wfa.Incident_ID.getOrElse("unknown"))
-    val callDir = incidentDir.resolve(wfa.Call_ID.getOrElse("unknown"))
-    if (!Files.exists(callDir)) {
-      Files.createDirectories(callDir)
-      warning(s"Created directory: $callDir")
-    }
+    if (apiAvailable) {
+      // Create directory structure: [dataDir]/[Incident_ID]/[Call_ID]
+      val incidentDir = Paths.get(dataDir.getPath, wfa.Incident_ID.getOrElse("unknown"))
+      val callDir = incidentDir.resolve(wfa.Call_ID.getOrElse("unknown"))
+      if (!Files.exists(callDir)) {
+        Files.createDirectories(callDir)
+        warning(s"Created directory: $callDir")
+      }
 
-    // Generate a unique filename for each perimeter within a call
-    //    val timestamp = java.time.LocalDateTime.now.format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
-    //    val filename = s"perimeter-$timestamp.geojson"
-    //    val outputFile = callDir.resolve(filename).toFile
-    // Generate a unique filename based on latitude and longitude
-    val filename = s"perimeter-${coordinates.latitude}-${coordinates.longitude}.geojson"
-    val outputFile = callDir.resolve(filename).toFile
-    warning(s"Output file path set: ${outputFile.getPath}")
+      // Generate a unique filename for each perimeter within a call
+      //    val timestamp = java.time.LocalDateTime.now.format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
+      //    val filename = s"perimeter-$timestamp.geojson"
+      //    val outputFile = callDir.resolve(filename).toFile
+      // Generate a unique filename based on latitude and longitude
+      val filename = s"perimeter-${coordinates.latitude}-${coordinates.longitude}.geojson"
+      val outputFile = callDir.resolve(filename).toFile
+      warning(s"Output file path set: ${outputFile.getPath}")
 
-    warning(s"Initiating HTTP request to fetch GeoJSON data")
-    httpRequestFileWithTimeout(apiEndpoint, outputFile, timeout, HttpMethods.GET).onComplete {
-      case Success(file) =>
-        warning(s"Download complete: ${file.getPath}")
-        if (file.exists()) {
-          warning(s"File exists. Size: ${file.length()} bytes.")
-        } else {
-          warning(s"File not found: ${file.getPath}")
-        }
-        warning(s"Successfully downloaded GeoJSON data to: ${file.getPath}")
-        self ! GeoJSONData(wfa, outputFile)
-      case Failure(exception) =>
-        warning(s"Failed to fetch wildfire data: ${exception.getMessage}")
+      warning(s"Initiating HTTP request to fetch GeoJSON data")
+
+      // POST on the FLASK API
+      httpRequestFileWithTimeout(apiEndpoint, outputFile, timeout, HttpMethods.GET).onComplete {
+        case Success(file) =>
+          warning(s"Download complete: ${file.getPath}")
+          if (file.exists()) {
+            warning(s"File exists. Size: ${file.length()} bytes.")
+          } else {
+            warning(s"File not found: ${file.getPath}")
+          }
+          warning(s"Successfully downloaded GeoJSON data to: ${file.getPath}")
+          self ! GeoJSONData(wfa, outputFile)
+        case Failure(exception) =>
+          warning(s"Failed to fetch wildfire data: ${exception.getMessage}")
+      }
+    } else {
+      warning("CloudFire API is not available. Aborting fetchDataFromAPI.")
     }
   }
 
   def isValidGeoJSON(file: File): Boolean = {
-    if (!file.exists() || file.length() < 200) return false
+    if (!file.exists() || file.length() < 200) {
+      warning(s"File does not exist or is too small: ${file.getPath}")
+      val content = scala.io.Source.fromFile(file).getLines().mkString
+      warning(s"Invalid GeoJSON data in file ${file.getPath}: $content")
+
+      return false
+    }
 
     val content = scala.io.Source.fromFile(file).getLines().mkString
-    !content.contains("Internal Server Error")
+    if (content.contains("Internal Server Error")) {
+      warning(s"Invalid GeoJSON data in file ${file.getPath}: $content")
+      return false
+    }
+
+    true // Return true if none of the above conditions are met
   }
+
 
   // Assume Coordinates is a case class that exists
   // Assume GeoJsonData is a case class you would create to hold coordinates and the geoJson string
-
-  /**
-   * Saves GeoJSON data to a file.
-   *
-   * @param wfa     A WildfireDataAvailable object.
-   * @param geoJson A GeoJSON string.
-   * @return The file path where the data was saved.
-   *
-   *
-   *         This also may not need to be used because the saving is taken care of inside the httpRequesWithTimeout
-   */
-  def saveGeoJSONToFile(wfa: WildfireGeolocationData, geoJson: String): String = {
-    val filename = f"fire-${wfa.Call_ID}-${wfa.Incident_ID}.geojson"
-    debug(s"Generated filename: $filename")
-    val filePath = geoJsonDirPath.resolve(filename)
-    Files.write(filePath, geoJson.getBytes, StandardOpenOption.CREATE, StandardOpenOption.WRITE)
-    warning(s"Successfully written GeoJSON data to file: $filePath")
-    filePath.toString
-  }
 
   /**
    * Publishes wildfire perimeter data.
@@ -224,7 +389,7 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
    */
 
   def publishWildfireData(wfa: WildfireGeolocationData, firePerimFile: File): Unit = {
-    warning(s"Publishing Wildfire Data: Type - ${wfa.getClass.getSimpleName}, Content - $wfa")
+    warning(s"Publishing Wildfire Data: Type - ${wfa.getClass.getSimpleName}, Content - $wfa , File: $firePerimFile")
     val updatedWfa = WildfireDataAvailable(
       WildfireGeolocationData = wfa,
       simReport = null, // Set simReport to null
@@ -290,3 +455,69 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
   }
 }
 
+
+class CloudFireAPIProcess(val prog: File, override val cwd: Some[File], val apiPath: File) extends ExternalProc[Boolean] {
+
+
+  if (!prog.isFile) {
+    throw new RuntimeException(s"Python executable not found: $prog")
+  }
+
+  if (!apiPath.isFile) {
+    throw new RuntimeException(s"Smoke Segmentation API run script not found: $apiPath")
+  }
+
+  /**
+   * Constructs and returns the command to start the FireVoice API service.
+   * This command includes the path to the Python executable and the script
+   * that runs the API service, along with any required arguments and options.
+   *
+   * Example:
+   * Assuming /usr/bin/python3 is the path to Python executable and
+   * /path/to/firevoice_api.py is the path to the FireVoice API script,
+   * the returned command string would be "/usr/bin/python3 /path/to/firevoice_api.py".
+   *
+   * @return StringBuilder containing the full command to start the API service.
+   * @throws RuntimeException if the Python executable or API script is not found.
+   */
+  protected override def buildCommand: StringBuilder = {
+    //warning("Building command to start the FireVoice API process.")
+    args = List(
+      s"$apiPath"
+    )
+    val builtCommand = super.buildCommand
+    //warning(s"Command built: $builtCommand")
+    builtCommand
+  }
+
+  /**
+   * Provides the value to indicate a successful process run.
+   *
+   * This method is intended to be overridden for different types of external processes.
+   */
+  override def getSuccessValue: Boolean = {
+    // warning("Returning the success value for FireVoice API process.")
+    true
+  }
+
+  /**
+   * Executes the command to start the FireVoice API service in an external process.
+   * The process output (stdout and stderr) is optionally logged if a logger is available.
+   * The method returns a Process instance representing the running external service.
+   *
+   * Example:
+   * The external FireVoice API service is started, and its output is logged.
+   * The method returns a Process instance for further interaction or monitoring.
+   *
+   * @return Process instance representing the running external FireVoice API service.
+   */
+
+  def customExec(): Process = {
+    val proc = log match {
+      case Some(logger) => Process(buildCommand.toString(), cwd, env: _*).run(logger)
+      case None => Process(buildCommand.toString(), cwd, env: _*).run()
+    }
+    proc
+  }
+
+}
