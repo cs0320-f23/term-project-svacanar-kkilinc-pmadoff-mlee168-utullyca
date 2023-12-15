@@ -52,10 +52,12 @@ class Entry{
         this.id = fireVoiceLayer.uniqueId;
         this.date = fireVoiceLayer.date;
         // this.satellite = fireVoiceLayer.satellite;
-        // this.srs = fireVoiceLayer.srs;
+        this.incidentId = fireVoiceLayer.Incident_ID;
         this.perimEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.PERIM); //GeoJson
         // This has to be represented within a label to  visualize the text on the map
         this.textEntry = FireVoiceEntry.create(fireVoiceLayer, fireVoiceLayerType.TEXT); // Text
+        this.isVisible = false;
+
     }
 
     /**
@@ -72,6 +74,18 @@ class Entry{
      * Updates the render for both layers of an entry
      */
     renderChanged () {
+        this.perimEntry.renderChanged();
+        this.textEntry.renderChanged();
+    }
+
+    toggleVisibility() {
+        this.isVisible = !this.isVisible;
+        this.perimEntry.setVisible(this.isVisible);
+        this.textEntry.setVisible(this.isVisible);
+        uiCesium.requestRender();
+    }
+
+    updateRender() {
         this.perimEntry.renderChanged();
         this.textEntry.renderChanged();
     }
@@ -105,7 +119,7 @@ class FireVoiceEntry {
         this.incidentReport = fireVoiceLayer.Incident_Report;
         this.severityRating = fireVoiceLayer.Severity_Rating;
         this.coordinateType = fireVoiceLayer.Coordinate_Type;
-
+        //this.firstCoord = None;
         // URLs
         this.fireTextUrl = fireVoiceLayer.fireTextUrl;
         this.firePerimUrl = fireVoiceLayer.firePerimUrl;
@@ -170,7 +184,7 @@ class FireVoiceEntry {
         let response = await fetch(this.fireTextUrl);
         if (response.ok) {
             let textData = await response.text();
-            this.displayText(textData);
+            this.displayText(textData, this.firstCoord); // Pass the firstCoord to displayText
         } else {
             console.log("Failed to load text data:", response.status);
         }
@@ -191,7 +205,11 @@ class FireVoiceEntry {
 
         let data = await response.json();
         console.log("Contour data loaded:", data);
-
+        if (data && data.features && data.features.length > 0 && data.features[0].geometry.coordinates.length > 0) {
+            // Assuming the coordinates are in [longitude, latitude] format
+            let firstCoord = data.features[0].geometry.coordinates[0];
+            this.firstCoord = { longitude: firstCoord[0], latitude: firstCoord[1] };
+        }
         Cesium.GeoJsonDataSource.load(data, renderOpts).then(  // loads data into a cesium data source object
             ds => {
                 //console.log("@@DEBUG got data", this.url);
@@ -225,25 +243,6 @@ class FireVoiceEntry {
     postProcessDataSource() {
         console.log("Post processing data source for type:");
 
-        /**
-         postProcessDataSource() { // post processes the entities or polygons in the data source
-         let entities = this.dataSource.entities.values;
-         let render = this.render;
-         for (const e of entities) { // update each entities color to match smoke/cloud colors
-         if (this.type == fireVoiceLayerType.PERIM) {
-         e.polygon.material = this.render.smokeColor;
-         }
-
-         // TODO: Change this rendering (need to be for text)
-         if (this.type == fireVoiceLayerType.TEXT) {
-         e.polygon.material = this.render.cloudColor;
-         }
-         e.polygon.outline = true;
-         e.polygon.outlineColor = this.render.strokeColor;
-         e.polygon.outlineWidth = this.render.strokeWidth;
-         }
-         }
-         */
     }
 
     /**
@@ -302,15 +301,13 @@ class FireTextEntry extends FireVoiceEntry {
 
 
 
-    displayText(textData) {
-        if (!textData) {
-            console.log("No text data to display.");
+    displayText(textData, firstCoord) {
+        if (!textData || !firstCoord) {
+            console.log("No text data or coordinates to display.");
             return;
         }
 
-        // Assuming coordinates is an array with one element for simplicity
-        const coord = this.coordinates[0];
-        const position = Cesium.Cartesian3.fromDegrees(coord.longitude, coord.latitude);
+        const position = Cesium.Cartesian3.fromDegrees(firstCoord.longitude, firstCoord.latitude);
         const textEntity = new Cesium.Entity({
             position: position,
             label: {
@@ -387,7 +384,7 @@ initWindow(); // Initializes the window
 console.log("UI initialized successfully.");
 
 console.log("Initializing checkboxes...");
-initCheckBoxes(); // Initializes checkboxes
+//initCheckBoxes(); // Initializes checkboxes
 console.log("Checkboxes initialized successfully.");
 
 var entryView = initEntryView(); // Variable storing Entries - modify this to add or remove entries
@@ -423,86 +420,504 @@ function createIcon() {
     return ui.Icon("firehistory-icon.svg", (e)=> ui.toggleWindow(e,'smoke'));
 }
 
-/**
- * Creates the window for the fire voice layer
- */
-//TODO: change all of the smoke renderings - to what?? - Peter
-function initCheckBoxes() { // Init checkboxes to their default values
-    ui.setCheckBox("smoke.followLatest", followLatest);
-    ui.setCheckBox("smoke.G16", selectedSat.includes("G16"));
-    ui.setCheckBox("smoke.G17", selectedSat.includes("G17"));
-    ui.setCheckBox("smoke.G18", selectedSat.includes("G18"));
-    console.log("Checkbox values initialized.");
-}
-
-/**
- * Creates entry view list object
- * @returns {*}
- */
-function initEntryView() {
-    let view = ui.getList("fireVoiceLayer.entries"); // Sets identifier
-    if (view) {
-        ui.setListItemDisplayColumns(view, ["header"], [
-            { name: "sat", tip: "name of satellite", width: "5.5rem", attrs: [], map: e => e.satellite },
-            { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) },
-        ]);
-    }
-    console.log("Entry view initialized.");
-    return view;
-}
-
-/**
- * Creates selection view list object
- * @returns {*}
- */
-function initSelectionView() {
-    let view = ui.getList("fireVoiceLayer.selection"); // Sets identifier
-    if (view) {
-        ui.setListItemDisplayColumns(view, ["header"], [
-            { name: "show", tip: "toggle visibility", width: "2.5rem", attrs: [], map: e => ui.createCheckBox(e.show, toggleShowSource) },
-            { name: "type", tip: "type of entry", width: "4rem", attrs: [], map: e => e.type },
-            { name: "sat", tip: "name of satellite", width: "3rem", attrs: [], map: e => e.sat },
-            { name: "date", width: "7rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) },
-        ]);
-    }
-    console.log("Selection view initialized.");
-    return view;
-}
-
-/**
- * Creates the window
- * @returns {*}
- */
+/////////////////////////////
+/////////////////////////////
 function createWindow() {
-    return ui.Window("Fire Voice Generated Perimeters", "smoke", "firehistory-icon.svg")(
-        ui.Panel("Data Selection", true)( // Data selection panel
+    entryView = initEntryView();
+    selectionView = initSelectionView();
+
+    return ui.Window("Fire Voice Generated Perimeters", "fireVoiceLayer", "firehistory-icon.svg")(
+        ui.Panel("Data Selection", true)(
             ui.RowContainer()(
-                ui.CheckBox("G16", selectSatellite, "smoke.G16"), // Name, action on click, tracking id
-                ui.CheckBox("G17", selectSatellite, "smoke.G17"),
-                ui.CheckBox("G18", selectSatellite, "smoke.G18"),
+                ui.CheckBox("follow latest", toggleFollowLatest, "fireVoiceLayer.followLatest"),
+                ui.Button("clear", clearSelections)
             ),
-            ui.RowContainer()(
-                ui.CheckBox("follow latest", toggleFollowLatest, "smoke.followLatest"), // Name, action on click, tracking id
-                ui.Button("clear", clearSelections) // Name, action on click
-            ),
-            ui.List("fireVoiceLayer.selection", 3) // Tracking id, number of visible rows
+            selectionView
         ),
-        ui.Panel("Data Entries", true)( // Data entry panel
-            ui.List("fireVoiceLayer.entries", 6, selectSmokeCloudEntry), // Tracking id, number of visible rows, action on click
+        ui.Panel("Data Entries", true)(
+            entryView,
             ui.ListControls("fireVoiceLayer.entries")
-        ),
-        ui.Panel("Contour Display")( // Contour display panel
-            ui.Button("reset", resetDisplaySelections),
-            ui.Slider("alpha", "smoke.contour.alpha", contourAlphaChanged),
-            ui.Slider("stroke width", "smoke.contour.stroke_width", contourStrokeWidthChanged),
-            ui.ColorField("stroke color", "smoke.contour.stroke_color", true, contourStrokeColorChanged), // Label, id, is input, action on click
-            ui.ColorField("smoke color", "smoke.contour.smoke_color", true, contourFillColorChanged),
-            ui.ColorField("cloud color", "smoke.contour.cloud_color", true, contourFillColorChanged),
         )
     );
 }
 
-console.log("Window created.");
+function initEntryView() {
+    let view = ui.getList("fireVoiceLayer.entries");
+    if (view) {
+        ui.setListItemDisplayColumns(view, ["header"], [
+            { name: "incident_id", tip: "Incident ID", width: "8rem", attrs: [], map: e => e.incidentId },
+            { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) }
+        ]);
+    }
+    updateEntryView();
+    return view;
+}
+
+function initSelectionView() {
+    let view = ui.getList("fireVoiceLayer.selection");
+    if (view) {
+        ui.setListItemDisplayColumns(view, ["header"], [
+            { name: "show", tip: "Toggle visibility", width: "2.5rem", attrs: [], map: e => ui.createCheckBox(e.show, toggleShowSource, e.id) },
+            { name: "incident_id", tip: "Incident ID", width: "8rem", attrs: [], map: e => e.incidentId },
+            { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) }
+        ]);
+    }
+    return view;
+}
+function updateEntryView() {
+    let entries = Array.from(fireVoiceDataEntries.values()).map(e => ({
+        id: e.id,
+        incidentId: e.incidentId,
+        date: e.date,
+        show: e.isVisible
+    }));
+    ui.setListItems(entryView, entries);
+}
+function toggleFollowLatest(event) {
+    followLatest = ui.isCheckBoxSelected(event.target);
+    if (followLatest) {
+        ui.selectFirstListItem(entryView);
+    }
+}
+function clearSelections(event) {
+    fireVoiceDataEntries.forEach((entry) => entry.clear());
+    updateEntryView();
+}
+function selectSelection(event) {
+    let selectedId = ui.getListItemOfElement(event.target).id;
+    let selectedEntry = fireVoiceDataEntries.get(selectedId);
+    if (selectedEntry) {
+        selectedEntry.toggleVisibility();
+        updateEntryView();
+    }
+}
+function toggleShowSource(event, entryId) {
+    let entry = fireVoiceDataEntries.get(entryId);
+    if (entry) {
+        entry.isVisible = ui.isCheckBoxSelected(event.target);
+        entry.toggleVisibility();
+    }
+}
+
+////////////////////////////
+////////////////////////////
+
+/**
+ * Creates the window for the fire voice layer
+ */
+//TODO: change all of the smoke renderings - to what?? - Peter
+// Initializes the checkboxes (now only followLatest)
+// function initCheckBoxes() {
+//     ui.setCheckBox("fireVoiceLayer.followLatest", followLatest);
+//     console.log("Checkbox values initialized.");
+// }
+//
+// /**
+//  * Creates entry view list object
+//  * @returns {*}
+//  */
+// // Creates entry view list object
+// function initEntryView() {
+//     let view = ui.getList("fireVoiceLayer.entries");
+//     if (view) {
+//         ui.setListItemDisplayColumns(view, ["header"], [
+//             { name: "incident_id", tip: "Incident ID", width: "8rem", attrs: [], map: e => e.incidentId },
+//             { name: "call_id", tip: "Call ID", width: "8rem", attrs: [], map: e => e.callId },
+//             { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) },
+//         ]);
+//     }
+//     console.log("Entry view initialized.");
+//     return view;
+// }
+// /**
+//  * Creates selection view list object
+//  * @returns {*}
+//  */
+// // Initializes the selection view (now displays the view text button instead of satellite checkboxes)
+// function initSelectionView() {
+//     let view = ui.getList("fireVoiceLayer.selection");
+//     if (view) {
+//         ui.setListItemDisplayColumns(view, ["header"], [
+//             { name: "view_text", tip: "View associated text", width: "2.5rem", attrs: [], map: e => ui.createButton("View Text", () => viewText(e)) },
+//             { name: "incident_id", tip: "Incident ID", width: "8rem", attrs: [], map: e => e.incidentId },
+//             { name: "call_id", tip: "Call ID", width: "8rem", attrs: [], map: e => e.callId },
+//             { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date) },
+//         ]);
+//     }
+//     console.log("Selection view initialized.");
+//     return view;
+// }
+//
+// /**
+//  * Creates the window
+//  * @returns {*}
+//  */
+// // Creates the window with updated panels
+// function createWindow() {
+//     return ui.Window("Fire Voice Generated Perimeters", "fireVoiceLayer", "firehistory-icon.svg")(
+//         ui.Panel("Data Selection", true)(
+//             ui.RowContainer()(
+//                 ui.CheckBox("follow latest", toggleFollowLatest, "fireVoiceLayer.followLatest"),
+//                 ui.Button("clear", clearSelections)
+//             )
+//         ),
+//         ui.Panel("Data Entries", true)(
+//             ui.List("fireVoiceLayer.entries", 6, selectEntry),
+//             ui.ListControls("fireVoiceLayer.entries")
+//         ),
+//         ui.Panel("Contour Display")(
+//             ui.Button("reset", resetDisplaySelections),
+//             ui.Slider("alpha", "smoke.contour.alpha", contourAlphaChanged),
+//             ui.Slider("stroke width", "smoke.contour.stroke_width", contourStrokeWidthChanged),
+//             ui.ColorField("stroke color", "smoke.contour.stroke_color", true, contourStrokeColorChanged), // Label, id, is input, action on click
+//             ui.ColorField("smoke color", "smoke.contour.smoke_color", true, contourFillColorChanged),
+//             ui.ColorField("cloud color", "smoke.contour.cloud_color", true, contourFillColorChanged),
+//         )
+//     );
+// }
+//TODO: change all of the smoke renderings
+
+
+////////////////////////////////////////////////////
+//
+// function initCheckBoxes() { // init checkboxes to their default values
+//     ui.setCheckBox("smoke.followLatest", followLatest);
+//     ui.setCheckBox("smoke.G16", selectedSat.includes("G16"));
+//     ui.setCheckBox("smoke.G17", selectedSat.includes("G17"));
+//     ui.setCheckBox("smoke.G18", selectedSat.includes("G18"));
+// }
+//
+// function initEntryView() { // creates entry view list object
+//     let view = ui.getList("fireVoiceLayer.entries"); // sets identifier
+//     if (view) {
+//         ui.setListItemDisplayColumns(view, ["header"], [
+//             { name: "sat", tip: "name of satellite", width: "5.5rem", attrs: [], map: e => e.satellite },
+//             { name: "date", width: "11rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date)},
+//         ]);
+//     }
+//     return view;
+// }
+//
+// function initSelectionView() { // creates selection view list object
+//     let view = ui.getList("fireVoiceLayer.selection"); // sets identifies
+//     if (view) {
+//         ui.setListItemDisplayColumns(view, ["header"], [
+//             { name: "show", tip: "toggle visibility", width: "2.5rem", attrs: [], map: e => ui.createCheckBox(e.show, toggleShowSource) },
+//             { name: "type", tip: "type of entry", width: "4rem", attrs: [], map: e => e.type },
+//             { name: "sat", tip: "name of satellite", width: "3rem", attrs: [], map: e => e.sat },
+//             { name: "date", width: "7rem", attrs: ["fixed", "alignLeft"], map: e => util.toLocalMDHMString(e.date)},
+//         ]);
+//     }
+//     return view;
+// }
+//
+// function createWindow() { // creates window
+//     return ui.Window("Smoke and Cloud Layers", "smoke", "smoke-icon.svg")(
+//         ui.Panel("Data Selection", true)( // data selection panel
+//             ui.RowContainer()(
+//                 ui.CheckBox("G16", selectSatellite, "smoke.G16"), // name, action on click, tracking id
+//                 ui.CheckBox("G17", selectSatellite, "smoke.G17"),
+//                 ui.CheckBox("G18", selectSatellite, "smoke.G18"),
+//             ),
+//             ui.RowContainer()(
+//                 ui.CheckBox("follow latest", toggleFollowLatest, "smoke.followLatest"), // name, action on click, tracking id
+//                 ui.Button("clear", clearSelections) // name, action on click
+//             ),
+//             ui.List("fireVoiceLayer.selection", 3) // tracking id, number of visible rows
+//         ),
+//         ui.Panel("Data Entries", true)( // data entry panel
+//             ui.List("fireVoiceLayer.entries", 6, selectSmokeCloudEntry), // tracking id, number of visible rows, action on click
+//             ui.ListControls("fireVoiceLayer.entries")
+//         ),
+//         ui.Panel("Contour Display")( // contour display panel
+//             ui.Button("reset", resetDisplaySelections),
+//             ui.Slider("alpha", "smoke.contour.alpha", contourAlphaChanged),
+//             ui.Slider("stroke width", "smoke.contour.stroke_width", contourStrokeWidthChanged),
+//             ui.ColorField("stroke color", "smoke.contour.stroke_color", true, contourStrokeColorChanged), // label, id, is input, action on click
+//             ui.ColorField("smoke color", "smoke.contour.smoke_color", true, contourFillColorChanged),
+//             ui.ColorField("cloud color", "smoke.contour.cloud_color", true, contourFillColorChanged),
+//         ),
+//     );
+// }
+// console.log("Window created.");
+//
+//
+// function viewText(entry) {
+//     // Logic to display the text associated with the perimeter
+//     entry.textEntry.setVisible(true);
+// }
+// /**
+//  * resets the display settings to default
+//  * @param event
+//  */
+// function resetDisplaySelections(event) { // resets display settings to default
+//     currentContourRender = initDefaultColors(config.fireVoiceLayer.contourRender);
+//     updateColors();
+//     initContourDisplayControls();
+//     selectedEntry = ui.getSelectedListItem(entryView);
+//     if (selectedEntry) {
+//         selectedEntry.renderChanged();
+//     }
+//
+// }
+//
+// // interactions - behavior for clicking boxes and filtering entries
+// function clearSelections(event){
+//     // clear viewed data
+//     selectedEntry = ui.getSelectedListItem(entryView);
+//     if (selectedEntry) selectedEntry.clear();
+//     clearEntries();
+//     clearSelectionView();
+//     // clear all checkboxes
+//     followLatest = false;
+//     updateEntryView();
+//     initCheckBoxes();
+// }
+//
+// function toggleFollowLatest(event) {
+//     followLatest = ui.isCheckBoxSelected(event.target);
+//     if ((followLatest==true) && (ui.getSelectedListItemIndex(entryView) != 0)) {
+//         ui.selectFirstListItem(entryView);
+//     }
+// }
+//
+// function toggleShowSource(event) { // from data selection checkboxes
+//     let cb = ui.getCheckBox(event.target)
+//     let cbName = ui.getListItemOfElement(cb).type;
+//     if (cbName == fireVoiceLayerType.TEXT) selectCloudEntries(event); // updates according to the checkbox
+//     if (cbName == fireVoiceLayerType.PERIM) selectSmokeEntries(event); // updates according to the checkbox
+//     let e = ui.getSelectedListItem(entryView);
+//     if (e) { // sets selected layers visible and unselected to not visible
+//         if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
+//         else selectedEntry.smokeEntry.SetVisible(false);
+//         if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
+//         else selectedEntry.cloudEntry.SetVisible(false);
+//
+//     }
+// }
+// function selectSmokeCloudEntry(event) { // selects entry from the data entry list
+//     selectedEntry = ui.getSelectedListItem(entryView);
+//     if (selectedEntry) {
+//         if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.smokeEntry.SetVisible(true);
+//         if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.cloudEntry.SetVisible(true);
+//         updateSelectionView(selectedEntry);
+//     }
+//     else {
+//         clearEntries(); // ensure all entries are cleared if nothing is selected
+//     }
+// }
+//
+//
+// function updateSelectionView(selectedEntry) { // updates selections to match the selected entry
+//     let sat = selectedEntry.satellite;
+//     let date = selectedEntry.date;
+//     selectionEntries.get("smoke").sat = sat;
+//     selectionEntries.get("smoke").date = date;
+//     selectionEntries.get("cloud").sat = sat;
+//     selectionEntries.get("cloud").date = date;
+//     displayEntries = util.filterMapValues(selectionEntries, se=> isSelectedEntry(selectedEntry, se));
+//     ui.setListItems(selectionView, displayEntries);
+// }
+//
+// function clearSelectionView() { // clears selections
+//     selectionEntries.get("smoke").sat = undefined;
+//     selectionEntries.get("smoke").date = undefined;
+//     selectionEntries.get("cloud").sat = undefined;
+//     selectionEntries.get("cloud").date = undefined;
+//     ui.setListItems(selectionView, selectionEntries);
+//
+// }
+//
+// function isSelectedEntry(selectedEntry, selectionEntry) { // checks if the selection matches the selected entry
+//     return ((selectedEntry.date == selectionEntry.date) && (selectedEntry.satellite = selectionEntry.sat));
+// }
+//
+// function selectCloudEntries(event) { // selects cloud layers by updating selected type variable
+//     if (ui.isCheckBoxSelected(event.target)){
+//         if (!selectedType.includes("cloud")) selectedType.push("cloud");
+//     }
+//     else {
+//         var index = selectedType.indexOf("cloud");
+//         if (index > -1) {
+//             selectedType.splice(index, 1);
+//         }
+//     }
+// }
+//
+// function selectSatellite(event) { // selects visible satellites to filter entry list
+//     let cb = ui.getCheckBox(event.target);
+//     let satName = ui.getCheckBoxLabel(cb)
+//     if (ui.isCheckBoxSelected(event.target)){
+//         if (!selectedSat.includes(satName)) selectedSat.push(satName);
+//     }
+//     else {
+//         // update satellite list
+//         var index = selectedSat.indexOf(satName);
+//         if (index > -1) {
+//             selectedSat.splice(index, 1);
+//         }
+//         // clear all entries visible from that sat
+//     }
+//     let e = ui.getSelectedListItem(entryView);
+//     if (e) {
+//         if (!selectedSat.includes(e.satellite)) {
+//             e.clear();
+//             clearSelectionView();
+//         }
+//     }
+//     updateEntryView();
+//     if (followLatest == true) ui.selectFirstListItem(entryView);
+// }
+//
+// function selectSmokeEntries(event) { // selects smoke layers by updating selected type variable
+//     if (ui.isCheckBoxSelected(event.target)){
+//         if (!selectedType.includes("smoke")) selectedType.push("smoke");
+//     }
+//     else {
+//         var index = selectedType.indexOf("smoke");
+//         if (index > -1) {
+//             selectedType.splice(index, 1);
+//         }
+//     }
+// }
+//
+// function updateEntryView() { // updates entry view
+//     displayEntries = util.filterMapValues(fireVoiceDataEntries, se=> isSelected(se));
+//     displayEntries.sort(Entry.compareFiltered); // need to fix sorting
+//     ui.setListItems(entryView, displayEntries);
+// }
+//
+// function isSelected (se) { // checks if entries are selected
+//     return selectedSat.includes(se.satellite)
+// }
+////////////////////////////////////////////////
+
+/////////////////////////////////////////////
+// Data Structure FireVoiceEntry Filtering:
+/////////////////////////////////////////////
+
+// // Global filter state
+// let incidentIdFilter = '';
+//
+// function setIncidentIdFilter(id) {
+//     incidentIdFilter = id;
+//     updateEntryView();
+// }
+//
+// function updateEntryView() {
+//     displayEntries = util.filterMapValues(fireVoiceDataEntries, se => isSelected(se) && matchesFilter(se));
+//     displayEntries.sort(Entry.compareFiltered);
+//     ui.setListItems(entryView, displayEntries);
+// }
+//
+// function matchesFilter(entry) {
+//     return incidentIdFilter === '' || entry.incidentId === incidentIdFilter;
+// }
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+// Clears all the entries and sets visibility of both smoke and cloud entries to false.
+function clearEntries() {
+    console.log("Clearing entries...");
+    fireVoiceDataEntries.forEach((value, key) => { // Iterates over each entry in fireVoiceDataEntries
+        value.clear(); // Clears the individual entry
+        value.perimEntry.setVisible(false); // Sets the smoke entry visibility to false
+        value.textEntry.setVisible(false); // Sets the cloud entry visibility to false
+    });
+}
+
+////////////////////////////////////////
+// Logging Helpers
+////////////////////////////////////////
+
+function printFireVoiceDataEntries() {
+    console.log("Printing fireVoiceDataEntries:");
+    fireVoiceDataEntries.forEach((entry, id) => {
+        console.log(`Entry with ID ${id}:`, entry);
+    });
+}
+
+function logEntryStatus() {
+    console.log("************ Logging Entry Status: ************");
+    fireVoiceDataEntries.forEach((entry, id) => {
+        console.log(`Entry ID: ${id}`);
+        console.log(`  Loaded: ${entry.perimEntry.dataSource ? 'Yes' : 'No'}`);
+        console.log(`  Visible: ${entry.perimEntry.show ? 'Yes' : 'No'}`);
+        console.log(`  Date: ${entry.date}`);
+        console.log(`  Incident ID: ${entry.incidentId}`);
+        // Add more fields as required
+    });
+}
+
+
+function logCurrentDisplayStatus() {
+    console.log("Current Display Status:");
+    if (selectedEntry) {
+        console.log(`Selected Entry ID: ${selectedEntry.id}`);
+        console.log(`  Showing Perimeter: ${selectedEntry.perimEntry.show}`);
+        console.log(`  Showing Text: ${selectedEntry.textEntry.show}`);
+    } else {
+        console.log("No entry selected.");
+    }
+}
+
+function logConfigSettings() {
+    console.log("Current Configuration Settings:");
+    console.log(`  Follow Latest: ${followLatest}`);
+    console.log(`  Contour Render:`, currentContourRender);
+    // Add more configuration settings as needed
+}
+
+
+
+// websocket messages
+
+// The function that serves as the main entry point for handling WebSocket messages related to smoke layers.
+// The function takes in two arguments: msgType representing the type of the message and msg containing the actual message payload.
+// TODO: confused on how this works. the JSON pushed over the websocket does not have an explicity message type
+// ex: s"""{"msgType": "fireVoiceLayer", "fireVoiceLayer": {"id": "$id", "satellite":"$satellite", "date":${date.toEpochMillis}, "srs":"$srs", "smokeUrl":"$smokeUrl", "fireTextUrl":"$cloudUrl"}}"""
+// Inside the WebSocket message handler:
+function handleWsFireLayerMessages(msgType, msg) {
+    console.log("Received WebSocket message:", msgType, msg);
+    switch (msgType) {
+        case "fireVoiceLayer":
+            console.log("Handling fireVoiceLayer message...");
+            handleFireLayerMessage(msg.fireVoiceLayer);
+            console.log("FireVoiceLayer message handled.");
+            logEntryStatus()
+            return true;
+        // ... rest of the cases
+        default:
+            console.warn("Unhandled message type:", msgType);
+            return false;
+    }
+}
+
+
+// This function processes an individual smoke layer message.
+// The function takes in fireVoiceLayer, which contains the data for a single smoke layer.
+function handleFireLayerMessage(fireVoiceLayer) {
+    // When we call
+    console.log("Received fireVoiceLayer data:", fireVoiceLayer);
+    let se = Entry.create(fireVoiceLayer); // Creates a new Entry object from the received fireVoiceLayer data
+    console.log("Created new Entry object:", se);
+    fireVoiceDataEntries.set(fireVoiceLayer.id, se); // Stores the new entry in the fireVoiceDataEntries map using its id as the key
+    console.log("Stored the new entry in fireVoiceDataEntries map with id:", fireVoiceLayer.id);
+    printFireVoiceDataEntries();
+
+    if (isSelected(se)) {
+        updateEntryView(); // If the new entry is selected, updates the entry view.
+        console.log("Updated entry view.");
+    }
+
+    if (followLatest == true) { // Checks if followLatest flag is set to true
+        console.log("Follow latest flag is true. Clearing entries and selecting the first entry.");
+        clearEntries(); // Clears all currently visible entries
+        ui.selectFirstListItem(entryView); // Selects the first entry in the entry view. Note: It implies the need to deselect the current entry.
+    }
+}
+
+///////////////////////////// Start of Contour Rendering Logic
 
 /**
  * Initializes the contour display
@@ -640,215 +1055,4 @@ function contourAlphaChanged(event) {
         e.renderChanged();
     }
 }
-
-/**
- * resets the display settings to default
- * @param event
- */
-function resetDisplaySelections(event) {
-    currentContourRender = initDefaultColors(config.fireVoiceLayer.contourRender);
-    updateColors();
-    initContourDisplayControls();
-    selectedEntry = ui.getSelectedListItem(entryView);
-    if (selectedEntry) {
-        selectedEntry.renderChanged();
-    }
-}
-
-/**
- * Interactions - behavior for clicking boxes and filtering entries
- * @param event
- */
-function clearSelections(event){
-    // clear viewed data
-    selectedEntry = ui.getSelectedListItem(entryView);
-    if (selectedEntry) selectedEntry.clear();
-    clearEntries();
-    clearSelectionView();
-    // clear all checkboxes
-    followLatest = false;
-    updateEntryView();
-    initCheckBoxes();
-}
-
-function toggleFollowLatest(event) {
-    followLatest = ui.isCheckBoxSelected(event.target);
-    if ((followLatest==true) && (ui.getSelectedListItemIndex(entryView) != 0)) {
-        ui.selectFirstListItem(entryView);
-    }
-}
-
-function toggleShowSource(event) { // from data selection checkboxes
-    let cb = ui.getCheckBox(event.target)
-    let cbName = ui.getListItemOfElement(cb).type;
-    if (cbName == fireVoiceLayerType.TEXT) selectCloudEntries(event); // updates according to the checkbox
-    if (cbName == fireVoiceLayerType.PERIM) selectSmokeEntries(event); // updates according to the checkbox
-    let e = ui.getSelectedListItem(entryView);
-    if (e) { // sets selected layers visible and unselected to not visible
-        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.perimEntry.setVisible(true);
-        else selectedEntry.perimEntry.setVisible(false);
-        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.textEntry.setVisible(true);
-        else selectedEntry.textEntry.setVisible(false);
-    }
-}
-
-/**
- * Selects entry from the data entry list
- * @param event
- */
-function selectSmokeCloudEntry(event) {
-    selectedEntry = ui.getSelectedListItem(entryView);
-    console.log("Selected entry:", selectedEntry);
-
-    if (selectedEntry) {
-        if (selectedType.includes(fireVoiceLayerType.PERIM)) selectedEntry.perimEntry.setVisible(true);
-        if (selectedType.includes(fireVoiceLayerType.TEXT)) selectedEntry.textEntry.setVisible(true);
-        updateSelectionView(selectedEntry);
-    }
-    else {
-        clearEntries(); // ensure all entries are cleared if nothing is selected
-    }
-}
-
-/**
- * Updates selections to match the selected entry
- * @param selectedEntry
- */
-function updateSelectionView(selectedEntry) {
-    let sat = selectedEntry.satellite;
-    let date = selectedEntry.date;
-    selectionEntries.get("smoke").sat = sat;
-    selectionEntries.get("smoke").date = date;
-    selectionEntries.get("cloud").sat = sat;
-    selectionEntries.get("cloud").date = date;
-    displayEntries = util.filterMapValues(selectionEntries, se=> isSelectedEntry(selectedEntry, se));
-    ui.setListItems(selectionView, displayEntries);
-}
-
-/**
- * Clears the selections
- */
-function clearSelectionView() {
-    selectionEntries.get("smoke").sat = undefined;
-    selectionEntries.get("smoke").date = undefined;
-    selectionEntries.get("cloud").sat = undefined;
-    selectionEntries.get("cloud").date = undefined;
-    ui.setListItems(selectionView, selectionEntries);
-}
-
-function isSelectedEntry(selectedEntry, selectionEntry) { // checks if the selection matches the selected entry
-    return ((selectedEntry.date == selectionEntry.date) && (selectedEntry.satellite = selectionEntry.sat));
-}
-
-function selectCloudEntries(event) { // selects cloud layers by updating selected type variable
-    if (ui.isCheckBoxSelected(event.target)){
-        if (!selectedType.includes("cloud")) selectedType.push("cloud");
-    }
-    else {
-        var index = selectedType.indexOf("cloud");
-        if (index > -1) {
-            selectedType.splice(index, 1);
-        }
-    }
-}
-
-/**
- * Selects visible satellites to filter entry list
- * @param event
- */
-function selectSatellite(event) {
-    let cb = ui.getCheckBox(event.target);
-    let satName = ui.getCheckBoxLabel(cb)
-    if (ui.isCheckBoxSelected(event.target)){
-        if (!selectedSat.includes(satName)) selectedSat.push(satName);
-    }
-    else {
-        // update satellite list
-        var index = selectedSat.indexOf(satName);
-        if (index > -1) {
-            selectedSat.splice(index, 1);
-        }
-        // clear all entries visible from that sat
-    }
-    let e = ui.getSelectedListItem(entryView);
-    if (e) {
-        if (!selectedSat.includes(e.satellite)) {
-            e.clear();
-            clearSelectionView();
-        }
-    }
-    updateEntryView();
-    if (followLatest == true) ui.selectFirstListItem(entryView);
-}
-
-function updateEntryView() { // updates entry view
-    displayEntries = util.filterMapValues(fireVoiceDataEntries, se=> isSelected(se));
-    displayEntries.sort(Entry.compareFiltered); // need to fix sorting
-    ui.setListItems(entryView, displayEntries);
-    console.log("Updating Entry View Command")
-}
-
-function isSelected (se) { // checks if entries are selected
-    return selectedSat.includes(se.satellite)
-}
-// Clears all the entries and sets visibility of both smoke and cloud entries to false.
-function clearEntries() {
-    console.log("Clearing entries...");
-    fireVoiceDataEntries.forEach((value, key) => { // Iterates over each entry in fireVoiceDataEntries
-        value.clear(); // Clears the individual entry
-        value.perimEntry.setVisible(false); // Sets the smoke entry visibility to false
-        value.textEntry.setVisible(false); // Sets the cloud entry visibility to false
-    });
-}
-function printFireVoiceDataEntries() {
-    console.log("Printing fireVoiceDataEntries:");
-    fireVoiceDataEntries.forEach((entry, id) => {
-        console.log(`Entry with ID ${id}:`, entry);
-    });
-}
-
-// websocket messages
-
-// The function that serves as the main entry point for handling WebSocket messages related to smoke layers.
-// The function takes in two arguments: msgType representing the type of the message and msg containing the actual message payload.
-// TODO: confused on how this works. the JSON pushed over the websocket does not have an explicity message type
-// ex: s"""{"msgType": "fireVoiceLayer", "fireVoiceLayer": {"id": "$id", "satellite":"$satellite", "date":${date.toEpochMillis}, "srs":"$srs", "smokeUrl":"$smokeUrl", "fireTextUrl":"$cloudUrl"}}"""
-// Inside the WebSocket message handler:
-function handleWsFireLayerMessages(msgType, msg) {
-    console.log("Received WebSocket message:", msgType, msg);
-    switch (msgType) {
-        case "fireVoiceLayer":
-            console.log("Handling fireVoiceLayer message...");
-            handleFireLayerMessage(msg.fireVoiceLayer);
-            console.log("FireVoiceLayer message handled.");
-            return true;
-        // ... rest of the cases
-        default:
-            console.warn("Unhandled message type:", msgType);
-            return false;
-    }
-}
-
-
-// This function processes an individual smoke layer message.
-// The function takes in fireVoiceLayer, which contains the data for a single smoke layer.
-function handleFireLayerMessage(fireVoiceLayer) {
-    // When we call
-    console.log("Received fireVoiceLayer data:", fireVoiceLayer);
-    let se = Entry.create(fireVoiceLayer); // Creates a new Entry object from the received fireVoiceLayer data
-    console.log("Created new Entry object:", se);
-    fireVoiceDataEntries.set(fireVoiceLayer.id, se); // Stores the new entry in the fireVoiceDataEntries map using its id as the key
-    console.log("Stored the new entry in fireVoiceDataEntries map with id:", fireVoiceLayer.id);
-    printFireVoiceDataEntries();
-
-    if (isSelected(se)) {
-        updateEntryView(); // If the new entry is selected, updates the entry view.
-        console.log("Updated entry view.");
-    }
-
-    if (followLatest == true) { // Checks if followLatest flag is set to true
-        console.log("Follow latest flag is true. Clearing entries and selecting the first entry.");
-        clearEntries(); // Clears all currently visible entries
-        ui.selectFirstListItem(entryView); // Selects the first entry in the entry view. Note: It implies the need to deselect the current entry.
-    }
-}
+///////////////////////////// End of Contour Rendering Logic
