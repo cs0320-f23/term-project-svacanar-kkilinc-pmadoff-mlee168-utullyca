@@ -46,21 +46,20 @@ case class WildfireDataAvailable(
                                   firePerimFile: Option[File] = None
                                 ) {
   def toJsonWithTwoUrls(fireTextUrl: String, firePerimUrl: String, id: String): String = {
-    // Convert geolocation data to JSON object
     val geolocationJson = WildfireGeolocationData.toJson
-
-    // Extract the JSON content inside the outermost curly braces
     val innerJson = geolocationJson.substring(geolocationJson.indexOf("{") + 1, geolocationJson.lastIndexOf("}")).trim
 
-    // Properly format the JSON string
+    // Check if simReport is None and handle accordingly
+    val safeSimReport = Option(simReport).flatten.getOrElse("N/A")
+
     s"""{
        |  "fireVoiceLayer": {
        |    "id": "$id",
        |    $innerJson,
        |    "fireTextUrl": "$fireTextUrl",
        |    "firePerimUrl": "$firePerimUrl",
-       |    "simReportUrl": "${simReport.getOrElse("N/A")}"
-       |  }
+       |    "simReportUrl": "$safeSimReport"
+       |       |  }
        |}""".stripMargin
   }
 

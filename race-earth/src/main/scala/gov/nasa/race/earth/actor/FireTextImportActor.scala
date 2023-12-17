@@ -27,7 +27,7 @@ class FireTextDataAcquisitionThread(actorRef: ActorRef, val pollingInterval: Tim
       jsonFiles.foreach { file =>
         warning(s"Found JSON file: ${file.getName}. Sending to client.")
         sendToClient(FireTextData(file))
-        Thread.sleep(5000) // Add a 5-second sleep after sending the file
+        Thread.sleep(10000) // Add a 5-second sleep after sending the file
 
       }
     }

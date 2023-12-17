@@ -148,7 +148,7 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
     // Create 3 new layers
     // All fields are compelete (CloudFireActor creates and published wfa)
     case BusEvent(_, wfa: WildfireDataAvailable, _) =>
-      warning(s"Received WildfireDataAvailable: $wfa")
+      warning(s"Received WildfireDataAvailable Over Bus: $wfa")
       // create layers
       val textL = Layer(wfa, "text") // create the audio layer
       val perimL = Layer(wfa, "perim") // create the fire layer

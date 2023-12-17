@@ -1,0 +1,92 @@
+2023-12-16 18:24:06,177:INFO:Queue processor thread started.
+2023-12-16 18:24:06,177:INFO:Queue processor thread initialized.
+2023-12-16 18:24:06,178:INFO:Application starting...
+2023-12-16 18:24:06,178:INFO:Concurrent limit set to 3
+2023-12-16 18:24:06,178:INFO:Log file: real_cf_api.log
+2023-12-16 18:24:06,178:INFO:Responses dictionary initialized: {}
+2023-12-16 18:24:06,178:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001F0498646F0>
+2023-12-16 18:24:06,179:INFO:Application started.
+2023-12-16 18:24:06,189:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5002
+2023-12-16 18:24:06,190:INFO:[33mPress CTRL+C to quit[0m
+2023-12-16 18:24:06,196:INFO: * Restarting with stat
+2023-12-16 18:24:06,553:INFO:Queue processor thread started.
+2023-12-16 18:24:06,553:INFO:Queue processor thread initialized.
+2023-12-16 18:24:06,554:INFO:Application starting...
+2023-12-16 18:24:06,554:INFO:Concurrent limit set to 3
+2023-12-16 18:24:06,554:INFO:Log file: real_cf_api.log
+2023-12-16 18:24:06,554:INFO:Responses dictionary initialized: {}
+2023-12-16 18:24:06,554:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001E63D937870>
+2023-12-16 18:24:06,554:INFO:Application started.
+2023-12-16 18:24:06,560:WARNING: * Debugger is active!
+2023-12-16 18:24:06,566:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:37:18,764:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:37:18,859:INFO: * Restarting with stat
+2023-12-16 18:37:19,383:INFO:Queue processor thread started.
+2023-12-16 18:37:19,383:INFO:Queue processor thread initialized.
+2023-12-16 18:37:19,384:INFO:Application starting...
+2023-12-16 18:37:19,384:INFO:Concurrent limit set to 6
+2023-12-16 18:37:19,384:INFO:Log file: real_cf_api.log
+2023-12-16 18:37:19,384:INFO:Responses dictionary initialized: {}
+2023-12-16 18:37:19,384:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x00000217E41B6870>
+2023-12-16 18:37:19,384:INFO:Application started.
+2023-12-16 18:37:19,391:WARNING: * Debugger is active!
+2023-12-16 18:37:19,407:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:28,171:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:28,201:INFO: * Restarting with stat
+2023-12-16 18:38:28,563:INFO:Queue processor thread started.
+2023-12-16 18:38:28,563:INFO:Queue processor thread initialized.
+2023-12-16 18:38:28,565:INFO:Application starting...
+2023-12-16 18:38:28,565:INFO:Concurrent limit set to 6
+2023-12-16 18:38:28,565:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:28,565:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:28,565:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000021ED42D5870>
+2023-12-16 18:38:28,565:INFO:Application started.
+2023-12-16 18:38:28,569:WARNING: * Debugger is active!
+2023-12-16 18:38:28,576:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:38,696:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:38,737:INFO: * Restarting with stat
+2023-12-16 18:38:39,206:INFO:Queue processor thread started.
+2023-12-16 18:38:39,206:INFO:Queue processor thread initialized.
+2023-12-16 18:38:39,208:INFO:Application starting...
+2023-12-16 18:38:39,208:INFO:Concurrent limit set to 6
+2023-12-16 18:38:39,208:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:39,208:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:39,208:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x00000228B71D88A0>
+2023-12-16 18:38:39,208:INFO:Application started.
+2023-12-16 18:38:39,214:WARNING: * Debugger is active!
+2023-12-16 18:38:39,221:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:48,337:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:48,363:INFO: * Restarting with stat
+2023-12-16 18:38:48,731:INFO:Queue processor thread started.
+2023-12-16 18:38:48,731:INFO:Queue processor thread initialized.
+2023-12-16 18:38:48,732:INFO:Application starting...
+2023-12-16 18:38:48,732:INFO:Concurrent limit set to 6
+2023-12-16 18:38:48,732:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:48,732:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:48,732:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001DD4CEB7870>
+2023-12-16 18:38:48,732:INFO:Application started.
+2023-12-16 18:38:48,737:WARNING: * Debugger is active!
+2023-12-16 18:38:48,744:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:40:48,364:INFO:Queue processor thread started.
+2023-12-16 18:40:48,364:INFO:Queue processor thread initialized.
+2023-12-16 18:40:48,365:INFO:Application starting...
+2023-12-16 18:40:48,365:INFO:Concurrent limit set to 6
+2023-12-16 18:40:48,365:INFO:Log file: real_cf_api.log
+2023-12-16 18:40:48,365:INFO:Responses dictionary initialized: {}
+2023-12-16 18:40:48,365:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000024848E55870>
+2023-12-16 18:40:48,365:INFO:Application started.
+2023-12-16 18:40:48,380:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5002
+2023-12-16 18:40:48,380:INFO:[33mPress CTRL+C to quit[0m
+2023-12-16 18:40:48,382:INFO: * Restarting with stat
+2023-12-16 18:40:49,107:INFO:Queue processor thread started.
+2023-12-16 18:40:49,107:INFO:Queue processor thread initialized.
+2023-12-16 18:40:49,109:INFO:Application starting...
+2023-12-16 18:40:49,109:INFO:Concurrent limit set to 6
+2023-12-16 18:40:49,109:INFO:Log file: real_cf_api.log
+2023-12-16 18:40:49,109:INFO:Responses dictionary initialized: {}
+2023-12-16 18:40:49,109:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001C789335870>
+2023-12-16 18:40:49,109:INFO:Application started.
+2023-12-16 18:40:49,115:WARNING: * Debugger is active!
+2023-12-16 18:40:49,122:INFO: * Debugger PIN: 663-272-555

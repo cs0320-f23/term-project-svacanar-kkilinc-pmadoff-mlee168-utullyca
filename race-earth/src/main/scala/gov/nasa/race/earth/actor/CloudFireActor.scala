@@ -75,7 +75,7 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
 
   // Again is this the correct logging?
   val dataDir: File = new File(config.getString("data-dir"))
-  val timeout = 35.seconds
+  val timeout = 120.seconds
   val geoJsonDirPath = Paths.get(config.getString("geojson-dir"))
 
   val pythonPath: File = new File(config.getString("python-exe")) // Python executable (for versioning purposes)
@@ -398,11 +398,11 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
 
     // Log the updatedWfa using 'warning'
     // You can customize the log message as needed
-    warning(s"Publishing Wildfire Data:")
 
     //To make the publishing a BusEvent, you can directly utilize the publish method from the PublishingRaceActor trait,
     // which takes care of wrapping the message in a BusEvent
-    val channel: String = "wfa-channel" // hardcode for right now
+    val channel: String = wt // hardcode for right now
+    warning(s"Publishing Wildfire Data to channel $channel")
     publish(channel, updatedWfa) // This will automatically wrap updatedWfa in a BusEvent
   }
 

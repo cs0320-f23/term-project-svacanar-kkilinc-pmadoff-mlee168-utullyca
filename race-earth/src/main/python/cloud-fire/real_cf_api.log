@@ -1,0 +1,402 @@
+2023-12-16 18:15:19,440:INFO:Check available request received
+2023-12-16 18:15:19,441:INFO:127.0.0.1 - - [16/Dec/2023 18:15:19] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:15:21,503:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.503051
+2023-12-16 18:15:21,503:INFO:Parameters rounded for request ID 1702779321.503051: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,503:INFO:Semaphore acquired for immediate processing of request ID 1702779321.503051
+2023-12-16 18:15:21,504:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.5046504
+2023-12-16 18:15:21,504:INFO:Processing API request with ID: 1702779321.503051, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,504:INFO:Parameters rounded for request ID 1702779321.5046504: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,504:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:15:21,504:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.5046504
+2023-12-16 18:15:21,504:INFO:Semaphore acquired for immediate processing of request ID 1702779321.5046504
+2023-12-16 18:15:21,505:INFO:Parameters rounded for request ID 1702779321.5046504: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,505:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.5056558
+2023-12-16 18:15:21,506:INFO:Processing API request with ID: 1702779321.5046504, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,506:INFO:Semaphore acquired for immediate processing of request ID 1702779321.5046504
+2023-12-16 18:15:21,506:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.5066557
+2023-12-16 18:15:21,506:INFO:Parameters rounded for request ID 1702779321.5056558: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,507:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:15:21,507:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.507656
+2023-12-16 18:15:21,507:INFO:Processing API request with ID: 1702779321.5046504, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,508:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.5086555
+2023-12-16 18:15:21,508:INFO:Parameters rounded for request ID 1702779321.5066557: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,508:INFO:Request ID 1702779321.5056558 added to queue due to semaphore limit.
+2023-12-16 18:15:21,510:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.510175
+2023-12-16 18:15:21,510:INFO:Parameters rounded for request ID 1702779321.507656: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,510:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:15:21,511:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.511181
+2023-12-16 18:15:21,511:INFO:Parameters rounded for request ID 1702779321.5086555: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,511:INFO:Request ID 1702779321.5066557 added to queue due to semaphore limit.
+2023-12-16 18:15:21,511:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779321.511181
+2023-12-16 18:15:21,512:INFO:Request ID 1702779321.5056558 retrieved from queue for processing.
+2023-12-16 18:15:21,512:INFO:Parameters rounded for request ID 1702779321.510175: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,512:INFO:Request ID 1702779321.507656 added to queue due to semaphore limit.
+2023-12-16 18:15:21,512:INFO:Parameters rounded for request ID 1702779321.511181: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,512:INFO:Request ID 1702779321.5086555 added to queue due to semaphore limit.
+2023-12-16 18:15:21,513:INFO:Parameters rounded for request ID 1702779321.511181: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,513:INFO:Processing API request with ID: 1702779321.5056558, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:15:21,513:INFO:Request ID 1702779321.510175 added to queue due to semaphore limit.
+2023-12-16 18:15:21,513:INFO:Request ID 1702779321.511181 added to queue due to semaphore limit.
+2023-12-16 18:15:21,513:INFO:Request ID 1702779321.511181 added to queue due to semaphore limit.
+2023-12-16 18:15:21,514:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:16:32,451:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 70.95 seconds with status code: 200
+2023-12-16 18:16:32,451:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 70.94 seconds with status code: 200
+2023-12-16 18:16:32,453:INFO:Response for request ID 1702779321.503051 stored successfully.
+2023-12-16 18:16:32,453:INFO:Semaphore released for request ID 1702779321.503051
+2023-12-16 18:16:32,454:INFO:Response for request ID 1702779321.5046504 stored successfully.
+2023-12-16 18:16:32,454:INFO:Semaphore released for request ID 1702779321.5046504
+2023-12-16 18:16:32,455:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 70.94 seconds with status code: 200
+2023-12-16 18:16:32,456:INFO:Response for request ID 1702779321.5056558 stored successfully.
+2023-12-16 18:16:32,456:INFO:Semaphore released for request ID 1702779321.5056558
+2023-12-16 18:16:32,456:INFO:Request ID 1702779321.5056558 processing completed and marked as done in queue.
+2023-12-16 18:16:32,456:INFO:Request ID 1702779321.5066557 retrieved from queue for processing.
+2023-12-16 18:16:32,456:INFO:Processing API request with ID: 1702779321.5066557, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:16:32,456:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:16:32,476:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 70.97 seconds with status code: 200
+2023-12-16 18:16:32,477:INFO:Response for request ID 1702779321.5046504 stored successfully.
+2023-12-16 18:16:32,477:INFO:Semaphore released for request ID 1702779321.5046504
+2023-12-16 18:16:32,497:INFO:Response for request ID 1702779321.5046504 retrieved.
+2023-12-16 18:16:32,497:INFO:Sending successful response for request ID 1702779321.5046504
+2023-12-16 18:16:32,497:INFO:Response for request ID 1702779321.503051 retrieved.
+2023-12-16 18:16:32,503:INFO:127.0.0.1 - - [16/Dec/2023 18:16:32] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:16:32,504:INFO:Sending successful response for request ID 1702779321.503051
+2023-12-16 18:16:32,511:INFO:127.0.0.1 - - [16/Dec/2023 18:16:32] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:16:32,513:INFO:Response for request ID 1702779321.5056558 retrieved.
+2023-12-16 18:16:32,513:INFO:Sending successful response for request ID 1702779321.5056558
+2023-12-16 18:16:32,520:INFO:127.0.0.1 - - [16/Dec/2023 18:16:32] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:16:51,384:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 18.93 seconds with status code: 200
+2023-12-16 18:16:51,385:INFO:Response for request ID 1702779321.5066557 stored successfully.
+2023-12-16 18:16:51,385:INFO:Semaphore released for request ID 1702779321.5066557
+2023-12-16 18:16:51,385:INFO:Request ID 1702779321.5066557 processing completed and marked as done in queue.
+2023-12-16 18:16:51,385:INFO:Request ID 1702779321.507656 retrieved from queue for processing.
+2023-12-16 18:16:51,385:INFO:Processing API request with ID: 1702779321.507656, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:16:51,385:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:16:51,472:INFO:Response for request ID 1702779321.5066557 retrieved.
+2023-12-16 18:16:51,472:INFO:Sending successful response for request ID 1702779321.5066557
+2023-12-16 18:16:51,479:INFO:127.0.0.1 - - [16/Dec/2023 18:16:51] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:17:07,753:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 16.37 seconds with status code: 200
+2023-12-16 18:17:07,755:INFO:Response for request ID 1702779321.507656 stored successfully.
+2023-12-16 18:17:07,755:INFO:Semaphore released for request ID 1702779321.507656
+2023-12-16 18:17:07,755:INFO:Request ID 1702779321.507656 processing completed and marked as done in queue.
+2023-12-16 18:17:07,755:INFO:Request ID 1702779321.5086555 retrieved from queue for processing.
+2023-12-16 18:17:07,755:INFO:Processing API request with ID: 1702779321.5086555, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:17:07,755:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:17:07,819:INFO:Response for request ID 1702779321.507656 retrieved.
+2023-12-16 18:17:07,819:INFO:Sending successful response for request ID 1702779321.507656
+2023-12-16 18:17:07,828:INFO:127.0.0.1 - - [16/Dec/2023 18:17:07] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:17:23,280:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 15.53 seconds with status code: 200
+2023-12-16 18:17:23,281:INFO:Response for request ID 1702779321.5086555 stored successfully.
+2023-12-16 18:17:23,281:INFO:Semaphore released for request ID 1702779321.5086555
+2023-12-16 18:17:23,281:INFO:Request ID 1702779321.5086555 processing completed and marked as done in queue.
+2023-12-16 18:17:23,281:INFO:Request ID 1702779321.510175 retrieved from queue for processing.
+2023-12-16 18:17:23,281:INFO:Processing API request with ID: 1702779321.510175, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:17:23,281:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:17:23,338:INFO:Response for request ID 1702779321.5086555 retrieved.
+2023-12-16 18:17:23,339:INFO:Sending successful response for request ID 1702779321.5086555
+2023-12-16 18:17:23,345:INFO:127.0.0.1 - - [16/Dec/2023 18:17:23] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:17:39,132:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 15.85 seconds with status code: 200
+2023-12-16 18:17:39,134:INFO:Response for request ID 1702779321.510175 stored successfully.
+2023-12-16 18:17:39,134:INFO:Semaphore released for request ID 1702779321.510175
+2023-12-16 18:17:39,134:INFO:Response for request ID 1702779321.510175 retrieved.
+2023-12-16 18:17:39,134:INFO:Request ID 1702779321.510175 processing completed and marked as done in queue.
+2023-12-16 18:17:39,134:INFO:Sending successful response for request ID 1702779321.510175
+2023-12-16 18:17:39,134:INFO:Request ID 1702779321.511181 retrieved from queue for processing.
+2023-12-16 18:17:39,143:INFO:127.0.0.1 - - [16/Dec/2023 18:17:39] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:17:39,143:INFO:Processing API request with ID: 1702779321.511181, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:17:39,143:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:17:44,025:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\test_cf.py', reloading
+2023-12-16 18:17:44,071:INFO: * Restarting with stat
+2023-12-16 18:17:44,588:INFO:Queue processor thread started.
+2023-12-16 18:17:44,589:INFO:Queue processor thread initialized.
+2023-12-16 18:17:44,589:INFO:Application starting...
+2023-12-16 18:17:44,589:INFO:Concurrent limit set to 3
+2023-12-16 18:17:44,589:INFO:Log file: real_cf_api.log
+2023-12-16 18:17:44,589:INFO:Responses dictionary initialized: {}
+2023-12-16 18:17:44,589:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x00000254E10922A0>
+2023-12-16 18:17:44,589:INFO:Application started.
+2023-12-16 18:17:44,602:WARNING: * Debugger is active!
+2023-12-16 18:17:44,611:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:17:46,129:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779466.1293387
+2023-12-16 18:17:46,129:INFO:Parameters rounded for request ID 1702779466.1293387: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:17:46,129:INFO:Semaphore acquired for immediate processing of request ID 1702779466.1293387
+2023-12-16 18:17:46,129:INFO:Processing API request with ID: 1702779466.1293387, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:17:46,130:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:18:09,649:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 23.52 seconds with status code: 200
+2023-12-16 18:18:09,650:INFO:Response for request ID 1702779466.1293387 stored successfully.
+2023-12-16 18:18:09,650:INFO:Semaphore released for request ID 1702779466.1293387
+2023-12-16 18:18:09,657:INFO:Response for request ID 1702779466.1293387 retrieved.
+2023-12-16 18:18:09,657:INFO:Sending successful response for request ID 1702779466.1293387
+2023-12-16 18:18:09,664:INFO:127.0.0.1 - - [16/Dec/2023 18:18:09] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:20:23,744:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:20:23,786:INFO: * Restarting with stat
+2023-12-16 18:20:24,335:INFO:Queue processor thread started.
+2023-12-16 18:20:24,335:INFO:Queue processor thread initialized.
+2023-12-16 18:20:24,336:INFO:Application starting...
+2023-12-16 18:20:24,337:INFO:Concurrent limit set to 3
+2023-12-16 18:20:24,337:INFO:Log file: real_cf_api.log
+2023-12-16 18:20:24,337:INFO:Responses dictionary initialized: {}
+2023-12-16 18:20:24,337:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001AB0C8812A0>
+2023-12-16 18:20:24,337:INFO:Application started.
+2023-12-16 18:20:24,348:WARNING: * Debugger is active!
+2023-12-16 18:20:24,357:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:20:40,415:INFO:Queue processor thread started.
+2023-12-16 18:20:40,415:INFO:Queue processor thread initialized.
+2023-12-16 18:20:40,417:INFO:Application starting...
+2023-12-16 18:20:40,417:INFO:Concurrent limit set to 3
+2023-12-16 18:20:40,417:INFO:Log file: real_cf_api.log
+2023-12-16 18:20:40,417:INFO:Responses dictionary initialized: {}
+2023-12-16 18:20:40,417:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000014615EB22A0>
+2023-12-16 18:20:40,418:INFO:Application started.
+2023-12-16 18:20:40,443:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5002
+2023-12-16 18:20:40,443:INFO:[33mPress CTRL+C to quit[0m
+2023-12-16 18:20:40,448:INFO: * Restarting with stat
+2023-12-16 18:20:40,914:INFO:Queue processor thread started.
+2023-12-16 18:20:40,914:INFO:Queue processor thread initialized.
+2023-12-16 18:20:40,915:INFO:Application starting...
+2023-12-16 18:20:40,916:INFO:Concurrent limit set to 3
+2023-12-16 18:20:40,916:INFO:Log file: real_cf_api.log
+2023-12-16 18:20:40,916:INFO:Responses dictionary initialized: {}
+2023-12-16 18:20:40,916:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000029E70DD12A0>
+2023-12-16 18:20:40,916:INFO:Application started.
+2023-12-16 18:20:40,924:WARNING: * Debugger is active!
+2023-12-16 18:20:40,933:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:20:45,242:INFO:Check available request received
+2023-12-16 18:20:45,243:INFO:127.0.0.1 - - [16/Dec/2023 18:20:45] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:20:46,216:INFO:Check available request received
+2023-12-16 18:20:46,217:INFO:127.0.0.1 - - [16/Dec/2023 18:20:46] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:20:51,864:INFO:Received geolocate_fire request with Latitude: 33.6, Longitude: -117.4, Request ID: 1702779651.8640242
+2023-12-16 18:20:51,864:INFO:Parameters rounded for request ID 1702779651.8640242: Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:20:51,864:INFO:Semaphore acquired for immediate processing of request ID 1702779651.8640242
+2023-12-16 18:20:51,864:INFO:Processing API request with ID: 1702779651.8640242, Latitude: 33.6, Longitude: -117.4
+2023-12-16 18:20:51,864:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6
+2023-12-16 18:21:06,195:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-117.4&lat=33.6 completed in 14.33 seconds with status code: 200
+2023-12-16 18:21:06,197:INFO:Response for request ID 1702779651.8640242 stored successfully.
+2023-12-16 18:21:06,197:INFO:Semaphore released for request ID 1702779651.8640242
+2023-12-16 18:21:06,232:INFO:Response for request ID 1702779651.8640242 retrieved.
+2023-12-16 18:21:06,232:INFO:Sending successful response for request ID 1702779651.8640242
+2023-12-16 18:21:06,239:INFO:127.0.0.1 - - [16/Dec/2023 18:21:06] "GET /geolocate_fire?lat=33.6&lon=-117.4 HTTP/1.1" 200 -
+2023-12-16 18:21:36,606:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:21:36,635:INFO: * Restarting with stat
+2023-12-16 18:21:37,111:INFO:Queue processor thread started.
+2023-12-16 18:21:37,111:INFO:Queue processor thread initialized.
+2023-12-16 18:21:37,112:INFO:Application starting...
+2023-12-16 18:21:37,112:INFO:Concurrent limit set to 3
+2023-12-16 18:21:37,112:INFO:Log file: real_cf_api.log
+2023-12-16 18:21:37,112:INFO:Responses dictionary initialized: {}
+2023-12-16 18:21:37,112:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001E49E8A12A0>
+2023-12-16 18:21:37,112:INFO:Application started.
+2023-12-16 18:21:37,121:WARNING: * Debugger is active!
+2023-12-16 18:21:37,130:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:24:15,755:INFO:Check available request received
+2023-12-16 18:24:15,755:INFO:127.0.0.1 - - [16/Dec/2023 18:24:15] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:19,816:INFO:Check available request received
+2023-12-16 18:24:19,816:INFO:127.0.0.1 - - [16/Dec/2023 18:24:19] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:19,823:INFO:Received geolocate_fire request with Latitude: 37.503017, Longitude: -121.701133, Request ID: 1702779859.8237386
+2023-12-16 18:24:19,823:INFO:Parameters rounded for request ID 1702779859.8237386: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:19,823:INFO:Semaphore acquired for immediate processing of request ID 1702779859.8237386
+2023-12-16 18:24:19,824:INFO:Processing API request with ID: 1702779859.8237386, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:19,824:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:24:29,794:INFO:Check available request received
+2023-12-16 18:24:29,795:INFO:127.0.0.1 - - [16/Dec/2023 18:24:29] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:29,797:INFO:Received geolocate_fire request with Latitude: 37.501517, Longitude: -121.701133, Request ID: 1702779869.797312
+2023-12-16 18:24:29,797:INFO:Parameters rounded for request ID 1702779869.797312: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:29,797:INFO:Semaphore acquired for immediate processing of request ID 1702779869.797312
+2023-12-16 18:24:29,799:INFO:Processing API request with ID: 1702779869.797312, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:29,799:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:24:39,810:INFO:Check available request received
+2023-12-16 18:24:39,811:INFO:127.0.0.1 - - [16/Dec/2023 18:24:39] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:39,813:INFO:Received geolocate_fire request with Latitude: 37.503017, Longitude: -121.701133, Request ID: 1702779879.813646
+2023-12-16 18:24:39,813:INFO:Parameters rounded for request ID 1702779879.813646: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:39,813:INFO:Semaphore acquired for immediate processing of request ID 1702779879.813646
+2023-12-16 18:24:39,815:INFO:Processing API request with ID: 1702779879.813646, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:39,815:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:24:49,812:INFO:Check available request received
+2023-12-16 18:24:49,812:INFO:127.0.0.1 - - [16/Dec/2023 18:24:49] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:49,814:INFO:Received geolocate_fire request with Latitude: 37.501517, Longitude: -121.701133, Request ID: 1702779889.8140516
+2023-12-16 18:24:49,814:INFO:Parameters rounded for request ID 1702779889.8140516: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:49,814:INFO:Request ID 1702779889.8140516 added to queue due to semaphore limit.
+2023-12-16 18:24:49,814:INFO:Request ID 1702779889.8140516 retrieved from queue for processing.
+2023-12-16 18:24:49,814:INFO:Processing API request with ID: 1702779889.8140516, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:49,814:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:24:59,806:INFO:Check available request received
+2023-12-16 18:24:59,806:INFO:127.0.0.1 - - [16/Dec/2023 18:24:59] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:24:59,809:INFO:Received geolocate_fire request with Latitude: 37.500517, Longitude: -121.701633, Request ID: 1702779899.8094203
+2023-12-16 18:24:59,810:INFO:Parameters rounded for request ID 1702779899.8094203: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:24:59,810:INFO:Request ID 1702779899.8094203 added to queue due to semaphore limit.
+2023-12-16 18:25:16,206:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 36.39 seconds with status code: 200
+2023-12-16 18:25:16,208:INFO:Response for request ID 1702779879.813646 stored successfully.
+2023-12-16 18:25:16,209:INFO:Semaphore released for request ID 1702779879.813646
+2023-12-16 18:25:16,209:ERROR:HTTP request exception for request ID 1702779859.8237386 after 56.38 seconds: ('Connection broken: IncompleteRead(77463 bytes read, 12993 more expected)', IncompleteRead(77463 bytes read, 12993 more expected))
+2023-12-16 18:25:16,209:INFO:Semaphore released for request ID 1702779859.8237386
+2023-12-16 18:25:16,234:INFO:Response for request ID 1702779859.8237386 retrieved.
+2023-12-16 18:25:16,234:ERROR:ERROR: Sending response for request ID 1702779859.8237386
+2023-12-16 18:25:16,235:INFO:127.0.0.1 - - [16/Dec/2023 18:25:16] "[35m[1mGET /geolocate_fire?lon=-121.701133&lat=37.503017 HTTP/1.1[0m" 500 -
+2023-12-16 18:25:16,245:ERROR:HTTP request exception for request ID 1702779869.797312 after 46.45 seconds: ('Connection broken: IncompleteRead(77463 bytes read, 16488 more expected)', IncompleteRead(77463 bytes read, 16488 more expected))
+2023-12-16 18:25:16,245:INFO:Semaphore released for request ID 1702779869.797312
+2023-12-16 18:25:16,248:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 26.43 seconds with status code: 200
+2023-12-16 18:25:16,249:INFO:Response for request ID 1702779889.8140516 stored successfully.
+2023-12-16 18:25:16,249:INFO:Semaphore released for request ID 1702779889.8140516
+2023-12-16 18:25:16,250:INFO:Request ID 1702779889.8140516 processing completed and marked as done in queue.
+2023-12-16 18:25:16,250:INFO:Request ID 1702779899.8094203 retrieved from queue for processing.
+2023-12-16 18:25:16,250:INFO:Processing API request with ID: 1702779899.8094203, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:25:16,250:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:25:16,281:INFO:Response for request ID 1702779889.8140516 retrieved.
+2023-12-16 18:25:16,281:INFO:SUCCESS: Sending response for request ID 1702779889.8140516
+2023-12-16 18:25:16,290:INFO:127.0.0.1 - - [16/Dec/2023 18:25:16] "GET /geolocate_fire?lon=-121.701133&lat=37.501517 HTTP/1.1" 200 -
+2023-12-16 18:25:16,311:INFO:Response for request ID 1702779869.797312 retrieved.
+2023-12-16 18:25:16,312:ERROR:ERROR: Sending response for request ID 1702779869.797312
+2023-12-16 18:25:16,312:INFO:127.0.0.1 - - [16/Dec/2023 18:25:16] "[35m[1mGET /geolocate_fire?lon=-121.701133&lat=37.501517 HTTP/1.1[0m" 500 -
+2023-12-16 18:25:16,312:INFO:Response for request ID 1702779879.813646 retrieved.
+2023-12-16 18:25:16,312:INFO:SUCCESS: Sending response for request ID 1702779879.813646
+2023-12-16 18:25:16,322:INFO:127.0.0.1 - - [16/Dec/2023 18:25:16] "GET /geolocate_fire?lon=-121.701133&lat=37.503017 HTTP/1.1" 200 -
+2023-12-16 18:25:30,606:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 14.35 seconds with status code: 200
+2023-12-16 18:25:30,607:INFO:Response for request ID 1702779899.8094203 stored successfully.
+2023-12-16 18:25:30,607:INFO:Semaphore released for request ID 1702779899.8094203
+2023-12-16 18:25:30,607:INFO:Request ID 1702779899.8094203 processing completed and marked as done in queue.
+2023-12-16 18:25:30,640:INFO:Response for request ID 1702779899.8094203 retrieved.
+2023-12-16 18:25:30,640:INFO:SUCCESS: Sending response for request ID 1702779899.8094203
+2023-12-16 18:25:30,650:INFO:127.0.0.1 - - [16/Dec/2023 18:25:30] "GET /geolocate_fire?lon=-121.701633&lat=37.500517 HTTP/1.1" 200 -
+2023-12-16 18:37:19,061:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:37:19,177:INFO: * Restarting with stat
+2023-12-16 18:37:19,701:INFO:Queue processor thread started.
+2023-12-16 18:37:19,701:INFO:Queue processor thread initialized.
+2023-12-16 18:37:19,702:INFO:Application starting...
+2023-12-16 18:37:19,702:INFO:Concurrent limit set to 6
+2023-12-16 18:37:19,702:INFO:Log file: real_cf_api.log
+2023-12-16 18:37:19,702:INFO:Responses dictionary initialized: {}
+2023-12-16 18:37:19,702:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000023E317A12A0>
+2023-12-16 18:37:19,702:INFO:Application started.
+2023-12-16 18:37:19,712:WARNING: * Debugger is active!
+2023-12-16 18:37:19,721:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:27,584:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:27,642:INFO: * Restarting with stat
+2023-12-16 18:38:28,178:INFO:Queue processor thread started.
+2023-12-16 18:38:28,178:INFO:Queue processor thread initialized.
+2023-12-16 18:38:28,180:INFO:Application starting...
+2023-12-16 18:38:28,180:INFO:Concurrent limit set to 6
+2023-12-16 18:38:28,180:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:28,180:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:28,180:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001644F9212A0>
+2023-12-16 18:38:28,180:INFO:Application started.
+2023-12-16 18:38:28,189:WARNING: * Debugger is active!
+2023-12-16 18:38:28,199:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:39,384:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:39,412:INFO: * Restarting with stat
+2023-12-16 18:38:39,869:INFO:Queue processor thread started.
+2023-12-16 18:38:39,869:INFO:Queue processor thread initialized.
+2023-12-16 18:38:39,870:INFO:Application starting...
+2023-12-16 18:38:39,870:INFO:Concurrent limit set to 6
+2023-12-16 18:38:39,870:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:39,871:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:39,871:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x000001AEE51622D0>
+2023-12-16 18:38:39,871:INFO:Application started.
+2023-12-16 18:38:39,881:WARNING: * Debugger is active!
+2023-12-16 18:38:39,888:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:38:49,009:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\cloud-fire\\apiV1.py', reloading
+2023-12-16 18:38:49,053:INFO: * Restarting with stat
+2023-12-16 18:38:49,526:INFO:Queue processor thread started.
+2023-12-16 18:38:49,527:INFO:Queue processor thread initialized.
+2023-12-16 18:38:49,528:INFO:Application starting...
+2023-12-16 18:38:49,528:INFO:Concurrent limit set to 6
+2023-12-16 18:38:49,528:INFO:Log file: real_cf_api.log
+2023-12-16 18:38:49,528:INFO:Responses dictionary initialized: {}
+2023-12-16 18:38:49,528:INFO:Responses lock initialized: <unlocked _thread.lock object at 0x0000025FC93A22A0>
+2023-12-16 18:38:49,528:INFO:Application started.
+2023-12-16 18:38:49,537:WARNING: * Debugger is active!
+2023-12-16 18:38:49,545:INFO: * Debugger PIN: 663-272-555
+2023-12-16 18:40:23,082:INFO:Received geolocate_fire request with Latitude: None, Longitude: None, Request ID: 1702780823.0828142
+2023-12-16 18:40:23,082:ERROR:Missing latitude or longitude parameter in request.
+2023-12-16 18:40:23,082:INFO:127.0.0.1 - - [16/Dec/2023 18:40:23] "[31m[1mGET /geolocate_fire HTTP/1.1[0m" 400 -
+2023-12-16 18:40:57,114:INFO:Check available request received
+2023-12-16 18:40:57,114:INFO:127.0.0.1 - - [16/Dec/2023 18:40:57] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:01,182:INFO:Check available request received
+2023-12-16 18:41:01,183:INFO:127.0.0.1 - - [16/Dec/2023 18:41:01] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:01,192:INFO:Received geolocate_fire request with Latitude: 37.503017, Longitude: -121.701133, Request ID: 1702780861.1927443
+2023-12-16 18:41:01,192:INFO:Parameters rounded for request ID 1702780861.1927443: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:01,193:INFO:Semaphore acquired for immediate processing of request ID 1702780861.1927443
+2023-12-16 18:41:01,193:INFO:Processing API request with ID: 1702780861.1927443, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:01,193:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:41:11,141:INFO:Check available request received
+2023-12-16 18:41:11,141:INFO:127.0.0.1 - - [16/Dec/2023 18:41:11] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:11,144:INFO:Received geolocate_fire request with Latitude: 37.500517, Longitude: -121.701633, Request ID: 1702780871.1445835
+2023-12-16 18:41:11,145:INFO:Parameters rounded for request ID 1702780871.1445835: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:11,145:INFO:Semaphore acquired for immediate processing of request ID 1702780871.1445835
+2023-12-16 18:41:11,145:INFO:Processing API request with ID: 1702780871.1445835, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:11,145:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:41:21,144:INFO:Check available request received
+2023-12-16 18:41:21,144:INFO:127.0.0.1 - - [16/Dec/2023 18:41:21] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:21,146:INFO:Received geolocate_fire request with Latitude: 37.502517, Longitude: -121.700633, Request ID: 1702780881.1469688
+2023-12-16 18:41:21,146:INFO:Parameters rounded for request ID 1702780881.1469688: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:21,146:INFO:Semaphore acquired for immediate processing of request ID 1702780881.1469688
+2023-12-16 18:41:21,148:INFO:Processing API request with ID: 1702780881.1469688, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:21,148:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:41:21,149:INFO:Received geolocate_fire request with Latitude: 37.503517, Longitude: -121.702633, Request ID: 1702780881.1499927
+2023-12-16 18:41:21,149:INFO:Parameters rounded for request ID 1702780881.1499927: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:21,151:INFO:Semaphore acquired for immediate processing of request ID 1702780881.1499927
+2023-12-16 18:41:21,151:INFO:Processing API request with ID: 1702780881.1499927, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:21,151:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:41:21,160:INFO:Check available request received
+2023-12-16 18:41:21,161:INFO:127.0.0.1 - - [16/Dec/2023 18:41:21] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:31,149:INFO:Check available request received
+2023-12-16 18:41:31,149:INFO:127.0.0.1 - - [16/Dec/2023 18:41:31] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:31,152:INFO:Received geolocate_fire request with Latitude: 37.501517, Longitude: -121.701133, Request ID: 1702780891.15264
+2023-12-16 18:41:31,153:INFO:Parameters rounded for request ID 1702780891.15264: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:31,153:INFO:Semaphore acquired for immediate processing of request ID 1702780891.15264
+2023-12-16 18:41:31,153:INFO:Processing API request with ID: 1702780891.15264, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:31,153:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:41:41,153:INFO:Check available request received
+2023-12-16 18:41:41,153:INFO:127.0.0.1 - - [16/Dec/2023 18:41:41] "GET /check_available HTTP/1.1" 200 -
+2023-12-16 18:41:41,155:INFO:Received geolocate_fire request with Latitude: 37.503017, Longitude: -121.701133, Request ID: 1702780901.155902
+2023-12-16 18:41:41,156:INFO:Parameters rounded for request ID 1702780901.155902: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:41,156:INFO:Semaphore acquired for immediate processing of request ID 1702780901.155902
+2023-12-16 18:41:41,156:INFO:Processing API request with ID: 1702780901.155902, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:41:41,158:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:42:59,924:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 108.78 seconds with status code: 200
+2023-12-16 18:42:59,924:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 98.77 seconds with status code: 200
+2023-12-16 18:42:59,928:INFO:Response for request ID 1702780871.1445835 stored successfully.
+2023-12-16 18:42:59,928:INFO:Semaphore released for request ID 1702780881.1469688
+2023-12-16 18:42:59,929:INFO:Semaphore released for request ID 1702780861.1927443
+2023-12-16 18:42:59,929:INFO:Semaphore released for request ID 1702780871.1445835
+2023-12-16 18:42:59,929:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 78.77 seconds with status code: 200
+2023-12-16 18:42:59,931:INFO:Response for request ID 1702780881.1499927 stored successfully.
+2023-12-16 18:42:59,931:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 88.78 seconds with status code: 200
+2023-12-16 18:42:59,932:INFO:Semaphore released for request ID 1702780881.1499927
+2023-12-16 18:42:59,934:INFO:Response for request ID 1702780901.155902 stored successfully.
+2023-12-16 18:42:59,935:INFO:Semaphore released for request ID 1702780901.155902
+2023-12-16 18:42:59,937:INFO:Response for request ID 1702780891.15264 stored successfully.
+2023-12-16 18:42:59,937:INFO:Semaphore released for request ID 1702780891.15264
+2023-12-16 18:42:59,959:INFO:Response for request ID 1702780901.155902 retrieved.
+2023-12-16 18:42:59,959:INFO:SUCCESS: Sending response for request ID 1702780901.155902
+2023-12-16 18:42:59,967:INFO:127.0.0.1 - - [16/Dec/2023 18:42:59] "GET /geolocate_fire?lon=-121.701133&lat=37.503017 HTTP/1.1" 200 -
+2023-12-16 18:42:59,990:INFO:Response for request ID 1702780891.15264 retrieved.
+2023-12-16 18:42:59,990:INFO:SUCCESS: Sending response for request ID 1702780891.15264
+2023-12-16 18:42:59,990:INFO:Response for request ID 1702780871.1445835 retrieved.
+2023-12-16 18:42:59,999:INFO:127.0.0.1 - - [16/Dec/2023 18:42:59] "GET /geolocate_fire?lon=-121.701133&lat=37.501517 HTTP/1.1" 200 -
+2023-12-16 18:42:59,999:INFO:SUCCESS: Sending response for request ID 1702780871.1445835
+2023-12-16 18:43:00,010:INFO:127.0.0.1 - - [16/Dec/2023 18:43:00] "GET /geolocate_fire?lon=-121.701633&lat=37.500517 HTTP/1.1" 200 -
+2023-12-16 18:43:00,010:INFO:Response for request ID 1702780881.1499927 retrieved.
+2023-12-16 18:43:00,010:INFO:SUCCESS: Sending response for request ID 1702780881.1499927
+2023-12-16 18:43:00,021:INFO:127.0.0.1 - - [16/Dec/2023 18:43:00] "GET /geolocate_fire?lon=-121.702633&lat=37.503517 HTTP/1.1" 200 -
+2023-12-16 18:43:01,228:INFO:Received geolocate_fire request with Latitude: 37.503017, Longitude: -121.701133, Request ID: 1702780981.228548
+2023-12-16 18:43:01,228:INFO:Parameters rounded for request ID 1702780981.228548: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:43:01,228:INFO:Semaphore acquired for immediate processing of request ID 1702780981.228548
+2023-12-16 18:43:01,228:INFO:Processing API request with ID: 1702780981.228548, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:43:01,228:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:43:17,228:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 16.00 seconds with status code: 200
+2023-12-16 18:43:17,230:INFO:Response for request ID 1702780981.228548 stored successfully.
+2023-12-16 18:43:17,230:INFO:Semaphore released for request ID 1702780981.228548
+2023-12-16 18:43:17,249:INFO:Response for request ID 1702780981.228548 retrieved.
+2023-12-16 18:43:17,249:INFO:SUCCESS: Sending response for request ID 1702780981.228548
+2023-12-16 18:43:17,260:INFO:127.0.0.1 - - [16/Dec/2023 18:43:17] "GET /geolocate_fire?lon=-121.701133&lat=37.503017 HTTP/1.1" 200 -
+2023-12-16 18:43:21,231:INFO:Received geolocate_fire request with Latitude: 37.502517, Longitude: -121.700633, Request ID: 1702781001.231425
+2023-12-16 18:43:21,231:INFO:Parameters rounded for request ID 1702781001.231425: Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:43:21,231:INFO:Semaphore acquired for immediate processing of request ID 1702781001.231425
+2023-12-16 18:43:21,232:INFO:Processing API request with ID: 1702781001.231425, Latitude: 37.5, Longitude: -121.7
+2023-12-16 18:43:21,232:INFO:Making HTTP request to: http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5
+2023-12-16 18:43:36,778:INFO:HTTP request to http://firestarter.cloudfire.ai:8000/?lon=-121.7&lat=37.5 completed in 15.55 seconds with status code: 200
+2023-12-16 18:43:36,780:INFO:Response for request ID 1702781001.231425 stored successfully.
+2023-12-16 18:43:36,780:INFO:Semaphore released for request ID 1702781001.231425
+2023-12-16 18:43:36,800:INFO:Response for request ID 1702781001.231425 retrieved.
+2023-12-16 18:43:36,800:INFO:SUCCESS: Sending response for request ID 1702781001.231425
+2023-12-16 18:43:36,828:INFO:127.0.0.1 - - [16/Dec/2023 18:43:36] "GET /geolocate_fire?lon=-121.700633&lat=37.502517 HTTP/1.1" 200 -
