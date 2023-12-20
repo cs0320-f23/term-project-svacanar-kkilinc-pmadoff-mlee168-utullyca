@@ -1,0 +1,14 @@
+{
+  "Call_ID": "0145",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      32.8684,
+      -116.4689
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",
+  "Severity_Rating": "To be determined",
+  "date": "2023-12-20T05:45:14Z"
+}

@@ -1,0 +1,12 @@
+{
+  "Call_ID": "567",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    32.8365,
+    -116.5016
+  ],
+  "Incident_ID": "WFA_005",
+  "Incident_Report": "Fast-moving wildfire approaching the outskirts of Pine Valley",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T04:42:09Z"
+}

@@ -13,7 +13,7 @@
 # and add symbolic links to their hash values.
 
 my $dir = "C:\\Program Files\\Common Files\\ssl";
-my $prefix = "C:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env\\Library";
+my $prefix = "c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env\\Library";
 
 my $errorcount = 0;
 my $openssl = $ENV{OPENSSL} || "openssl";

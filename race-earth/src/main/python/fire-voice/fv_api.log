@@ -1,0 +1,223 @@
+2023-12-19 21:44:21,847:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 21:44:21,849:INFO:Created incoming messages thread: thread_kF6tGvUgb6b40pomzZYLB58o
+2023-12-19 21:44:21,940:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 21:44:21,941:INFO:Created wildfire raw messages thread: thread_3Mp3JZIA8UEtAf1m427mJFjs
+2023-12-19 21:44:22,024:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 21:44:22,025:INFO:Created wildfire messages thread: thread_UErrvcONwKAiBmbNyu9r95gr
+2023-12-19 21:44:22,164:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 21:44:22,352:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 21:44:22,491:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 21:44:22,493:INFO:Flask server started.
+2023-12-19 21:44:22,501:WARNING: * Debugger is active!
+2023-12-19 21:44:22,504:INFO: * Debugger PIN: 141-959-176
+2023-12-19 21:44:30,801:INFO:#######################################################################
+2023-12-19 21:44:30,801:INFO:Processing message: Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:44:31,034:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
+2023-12-19 21:44:31,039:INFO:Posted message to incoming messages thread. Message ID: msg_8bqVIzt4HPU89lzQpo2kOjFM
+2023-12-19 21:44:31,201:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:44:31,203:INFO:Latest Message: ThreadMessage(id='msg_8bqVIzt4HPU89lzQpo2kOjFM', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051070, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
+2023-12-19 21:44:31,204:INFO:Latest Message Value: Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:44:31,692:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
+2023-12-19 21:44:31,838:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_TseF0vtnsS5dQWj7tY1L584g "HTTP/1.1 200 OK"
+2023-12-19 21:44:31,840:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
+2023-12-19 21:44:36,984:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_TseF0vtnsS5dQWj7tY1L584g "HTTP/1.1 200 OK"
+2023-12-19 21:44:36,987:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
+2023-12-19 21:44:37,079:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:44:37,082:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': False}"), type='text')], created_at=1703051073, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_TseF0vtnsS5dQWj7tY1L584g', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', last_id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', has_more=True)
+2023-12-19 21:44:37,082:INFO:Original String: {'is_related_to_wildfires': False}
+2023-12-19 21:44:37,083:INFO:Message is related to wildfires: False
+2023-12-19 21:44:37,084:INFO:127.0.0.1 - - [19/Dec/2023 21:44:37] "POST /process HTTP/1.1" 200 -
+2023-12-19 21:44:55,549:INFO:#######################################################################
+2023-12-19 21:44:55,549:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:44:55,695:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
+2023-12-19 21:44:55,697:INFO:Posted message to incoming messages thread. Message ID: msg_ia8dfDK9v3l2KlopcQkSvRJN
+2023-12-19 21:44:55,799:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:44:55,800:INFO:Latest Message: ThreadMessage(id='msg_ia8dfDK9v3l2KlopcQkSvRJN', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051095, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
+2023-12-19 21:44:55,800:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:44:56,076:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
+2023-12-19 21:44:56,221:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_nJMyt9eMznrJTMVtGotRMBS0 "HTTP/1.1 200 OK"
+2023-12-19 21:44:56,223:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
+2023-12-19 21:45:01,545:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_nJMyt9eMznrJTMVtGotRMBS0 "HTTP/1.1 200 OK"
+2023-12-19 21:45:01,546:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
+2023-12-19 21:45:01,639:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:45:01,642:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_TBKzZHOn82KDYQUitM9k8UiA', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051096, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_nJMyt9eMznrJTMVtGotRMBS0', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_TBKzZHOn82KDYQUitM9k8UiA', last_id='msg_TBKzZHOn82KDYQUitM9k8UiA', has_more=True)
+2023-12-19 21:45:01,643:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-19 21:45:01,643:INFO:Message is related to wildfires: True
+2023-12-19 21:45:01,643:INFO:Processing wildfire-related message...
+2023-12-19 21:45:02,196:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
+2023-12-19 21:45:02,896:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_HgeQJSF1N6uBu0KlzUAnpmWh "HTTP/1.1 200 OK"
+2023-12-19 21:45:02,898:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
+2023-12-19 21:45:08,059:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_HgeQJSF1N6uBu0KlzUAnpmWh "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,061:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
+2023-12-19 21:45:08,213:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,216:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_C8gUrzocMzsTPI90xktoZXPr', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_004",\n  "Call_ID": "0145"\n}'), type='text')], created_at=1703051103, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_HgeQJSF1N6uBu0KlzUAnpmWh', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_C8gUrzocMzsTPI90xktoZXPr', last_id='msg_C8gUrzocMzsTPI90xktoZXPr', has_more=False)
+2023-12-19 21:45:08,217:INFO:Original String: {
+  "Incident_ID": "WFA_004",
+  "Call_ID": "0145"
+}
+2023-12-19 21:45:08,217:INFO:Assistant Classification: Incident ID: WFA_004, Call ID: 0145
+2023-12-19 21:45:08,302:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,304:INFO:Incident Thread ID: thread_zSXf6fOrwLKhwrDggL73OWyJ
+2023-12-19 21:45:08,465:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/messages "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,468:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-19 21:45:08,468:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:45:08,811:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,960:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs/run_9zEmVxcJI6hq7cqV5M0Yg0k9 "HTTP/1.1 200 OK"
+2023-12-19 21:45:08,961:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_zSXf6fOrwLKhwrDggL73OWyJ: In progress...
+2023-12-19 21:45:14,108:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs/run_9zEmVxcJI6hq7cqV5M0Yg0k9 "HTTP/1.1 200 OK"
+2023-12-19 21:45:14,109:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_zSXf6fOrwLKhwrDggL73OWyJ
+2023-12-19 21:45:14,260:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:45:14,264:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_wv7kVK2DqdaexC2ACTUU3B1D', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8684, -116.4689]],\n  "Address": ["Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",\n  "Severity_Rating": "To be determined"\n}'), type='text')], created_at=1703051109, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_9zEmVxcJI6hq7cqV5M0Yg0k9', thread_id='thread_zSXf6fOrwLKhwrDggL73OWyJ')], object='list', first_id='msg_wv7kVK2DqdaexC2ACTUU3B1D', last_id='msg_wv7kVK2DqdaexC2ACTUU3B1D', has_more=True)
+2023-12-19 21:45:14,264:INFO:Original String: {
+  "Coordinates": [[32.8684, -116.4689]],
+  "Address": ["Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain"],
+  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",
+  "Severity_Rating": "To be determined"
+}
+2023-12-19 21:45:14,274:INFO:Geolocation Data: {'Coordinates': [[32.8684, -116.4689]], 'Address': ['Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire reported in a remote area northeast of Pine Valley, along Highway S1', 'Severity_Rating': 'To be determined'}
+2023-12-19 21:45:14,274:INFO:Final Payload: {
+  "Call_ID": "0145",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      32.8684,
+      -116.4689
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",
+  "Severity_Rating": "To be determined",
+  "date": "2023-12-20T05:45:14Z"
+}
+2023-12-19 21:45:14,274:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\0145.json
+2023-12-19 21:45:14,275:INFO:127.0.0.1 - - [19/Dec/2023 21:45:14] "POST /process HTTP/1.1" 200 -
+2023-12-19 21:46:17,809:INFO:#######################################################################
+2023-12-19 21:46:17,809:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:46:17,975:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
+2023-12-19 21:46:17,977:INFO:Posted message to incoming messages thread. Message ID: msg_LU0S6AONADhpK0PpunN5SePC
+2023-12-19 21:46:18,073:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:46:18,076:INFO:Latest Message: ThreadMessage(id='msg_LU0S6AONADhpK0PpunN5SePC', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051177, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
+2023-12-19 21:46:18,076:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:46:18,341:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
+2023-12-19 21:46:18,494:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_DJoMYzx9D7TWI12VnbqGCsdE "HTTP/1.1 200 OK"
+2023-12-19 21:46:18,495:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
+2023-12-19 21:46:23,619:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_DJoMYzx9D7TWI12VnbqGCsdE "HTTP/1.1 200 OK"
+2023-12-19 21:46:23,622:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
+2023-12-19 21:46:23,713:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:46:23,715:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_xis9ylWUtd4G4OwTJHDulp7P', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051178, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_DJoMYzx9D7TWI12VnbqGCsdE', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_xis9ylWUtd4G4OwTJHDulp7P', last_id='msg_xis9ylWUtd4G4OwTJHDulp7P', has_more=True)
+2023-12-19 21:46:23,716:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-19 21:46:23,716:INFO:Message is related to wildfires: True
+2023-12-19 21:46:23,716:INFO:Processing wildfire-related message...
+2023-12-19 21:46:23,955:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
+2023-12-19 21:46:24,097:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_IzX1cmcRM0xRFATy405nBOAq "HTTP/1.1 200 OK"
+2023-12-19 21:46:24,098:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
+2023-12-19 21:46:29,247:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_IzX1cmcRM0xRFATy405nBOAq "HTTP/1.1 200 OK"
+2023-12-19 21:46:29,249:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
+2023-12-19 21:46:29,339:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:46:29,341:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_GtlRAkaZaz05dgdx4hknm4WD', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_003",\n  "Call_ID": "0145"\n}'), type='text')], created_at=1703051184, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_IzX1cmcRM0xRFATy405nBOAq', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_GtlRAkaZaz05dgdx4hknm4WD', last_id='msg_GtlRAkaZaz05dgdx4hknm4WD', has_more=True)
+2023-12-19 21:46:29,341:INFO:Original String: {
+  "Incident_ID": "WFA_003",
+  "Call_ID": "0145"
+}
+2023-12-19 21:46:29,341:INFO:Assistant Classification: Incident ID: WFA_003, Call ID: 0145
+2023-12-19 21:46:29,471:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ "HTTP/1.1 200 OK"
+2023-12-19 21:46:29,546:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 21:46:29,548:INFO:Incident Thread ID: thread_wBKJQzS3g4eK3kzYElc82dOd
+2023-12-19 21:46:29,714:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages "HTTP/1.1 200 OK"
+2023-12-19 21:46:29,716:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-19 21:46:29,716:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:46:30,042:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs "HTTP/1.1 200 OK"
+2023-12-19 21:46:30,189:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_TyN97kAas5kpejiE9ba9MxvP "HTTP/1.1 200 OK"
+2023-12-19 21:46:30,190:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd: In progress...
+2023-12-19 21:46:35,370:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_TyN97kAas5kpejiE9ba9MxvP "HTTP/1.1 200 OK"
+2023-12-19 21:46:35,371:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd
+2023-12-19 21:46:35,524:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:46:35,527:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_6psDYgxenpRJDqOGU2WJsjcy', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8304, -116.5116]],\n  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",\n  "Severity_Rating": "Not specified"\n}'), type='text')], created_at=1703051191, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_TyN97kAas5kpejiE9ba9MxvP', thread_id='thread_wBKJQzS3g4eK3kzYElc82dOd')], object='list', first_id='msg_6psDYgxenpRJDqOGU2WJsjcy', last_id='msg_6psDYgxenpRJDqOGU2WJsjcy', has_more=True)
+2023-12-19 21:46:35,527:INFO:Original String: {
+  "Coordinates": [[32.8304, -116.5116]],
+  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],
+  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
+  "Severity_Rating": "Not specified"
+}
+2023-12-19 21:46:35,527:INFO:Geolocation Data: {'Coordinates': [[32.8304, -116.5116]], 'Address': ['Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1', 'Severity_Rating': 'Not specified'}
+2023-12-19 21:46:35,527:INFO:Final Payload: {
+  "Call_ID": "0145",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      32.8304,
+      -116.5116
+    ]
+  ],
+  "Incident_ID": "WFA_003",
+  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
+  "Severity_Rating": "Not specified",
+  "date": "2023-12-20T05:46:35Z"
+}
+2023-12-19 21:46:35,529:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_003\0145.json
+2023-12-19 21:46:35,529:INFO:127.0.0.1 - - [19/Dec/2023 21:46:35] "POST /process HTTP/1.1" 200 -
+2023-12-19 21:58:08,580:INFO:#######################################################################
+2023-12-19 21:58:08,580:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:58:08,798:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
+2023-12-19 21:58:08,801:INFO:Posted message to incoming messages thread. Message ID: msg_8VDI9I8fhPlRE3U0zCJjmzwU
+2023-12-19 21:58:08,951:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:58:08,954:INFO:Latest Message: ThreadMessage(id='msg_8VDI9I8fhPlRE3U0zCJjmzwU', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051888, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
+2023-12-19 21:58:08,954:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:58:09,272:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
+2023-12-19 21:58:09,419:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_7QaZvDonBIm6BKDjbDlDmloR "HTTP/1.1 200 OK"
+2023-12-19 21:58:09,420:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
+2023-12-19 21:58:14,608:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_7QaZvDonBIm6BKDjbDlDmloR "HTTP/1.1 200 OK"
+2023-12-19 21:58:14,609:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
+2023-12-19 21:58:14,741:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:58:14,743:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051890, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_7QaZvDonBIm6BKDjbDlDmloR', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', last_id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', has_more=True)
+2023-12-19 21:58:14,743:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-19 21:58:14,744:INFO:Message is related to wildfires: True
+2023-12-19 21:58:14,744:INFO:Processing wildfire-related message...
+2023-12-19 21:58:15,102:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
+2023-12-19 21:58:15,283:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_WQsTXbgiJZtFLeokOOCh0UO5 "HTTP/1.1 200 OK"
+2023-12-19 21:58:15,284:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
+2023-12-19 21:58:20,453:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_WQsTXbgiJZtFLeokOOCh0UO5 "HTTP/1.1 200 OK"
+2023-12-19 21:58:20,455:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
+2023-12-19 21:58:20,611:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:58:20,613:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_GqptBSIsp9GHvZqZb3Xup9hu', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_003",\n  "Call_ID": "0176"\n}'), type='text')], created_at=1703051896, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_WQsTXbgiJZtFLeokOOCh0UO5', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_GqptBSIsp9GHvZqZb3Xup9hu', last_id='msg_GqptBSIsp9GHvZqZb3Xup9hu', has_more=True)
+2023-12-19 21:58:20,613:INFO:Original String: {
+  "Incident_ID": "WFA_003",
+  "Call_ID": "0176"
+}
+2023-12-19 21:58:20,613:INFO:Assistant Classification: Incident ID: WFA_003, Call ID: 0176
+2023-12-19 21:58:20,760:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ "HTTP/1.1 200 OK"
+2023-12-19 21:58:20,927:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd "HTTP/1.1 200 OK"
+2023-12-19 21:58:20,928:INFO:Incident Thread ID: thread_wBKJQzS3g4eK3kzYElc82dOd
+2023-12-19 21:58:21,120:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages "HTTP/1.1 200 OK"
+2023-12-19 21:58:21,123:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-19 21:58:21,123:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
+2023-12-19 21:58:21,433:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs "HTTP/1.1 200 OK"
+2023-12-19 21:58:21,577:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_0vClZntpM66idLu3tjHqu6h9 "HTTP/1.1 200 OK"
+2023-12-19 21:58:21,579:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd: In progress...
+2023-12-19 21:58:27,270:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_0vClZntpM66idLu3tjHqu6h9 "HTTP/1.1 200 OK"
+2023-12-19 21:58:27,271:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd
+2023-12-19 21:58:27,413:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 21:58:27,418:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8304, -116.5116]],\n  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",\n  "Severity_Rating": "Not specified"\n}'), type='text')], created_at=1703051902, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_0vClZntpM66idLu3tjHqu6h9', thread_id='thread_wBKJQzS3g4eK3kzYElc82dOd')], object='list', first_id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', last_id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', has_more=True)
+2023-12-19 21:58:27,418:INFO:Original String: {
+  "Coordinates": [[32.8304, -116.5116]],
+  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],
+  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
+  "Severity_Rating": "Not specified"
+}
+2023-12-19 21:58:27,419:INFO:Geolocation Data: {'Coordinates': [[32.8304, -116.5116]], 'Address': ['Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1', 'Severity_Rating': 'Not specified'}
+2023-12-19 21:58:27,419:INFO:Final Payload: {
+  "Call_ID": "0176",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      32.8304,
+      -116.5116
+    ]
+  ],
+  "Incident_ID": "WFA_003",
+  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
+  "Severity_Rating": "Not specified",
+  "date": "2023-12-20T05:58:27Z"
+}
+2023-12-19 21:58:27,421:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_003\0176.json
+2023-12-19 21:58:27,422:INFO:127.0.0.1 - - [19/Dec/2023 21:58:27] "POST /process HTTP/1.1" 200 -

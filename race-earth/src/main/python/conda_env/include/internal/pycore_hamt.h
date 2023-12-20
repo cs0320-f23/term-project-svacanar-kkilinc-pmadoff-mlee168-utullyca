@@ -20,7 +20,7 @@ This constant is used to define a datastucture for storing iteration state.
 #define _Py_HAMT_MAX_TREE_DEPTH 8
 
 
-#define PyHamt_Check(o) (Py_TYPE(o) == &_PyHamt_Type)
+#define PyHamt_Check(o) Py_IS_TYPE(o, &_PyHamt_Type)
 
 
 /* Abstract tree node. */

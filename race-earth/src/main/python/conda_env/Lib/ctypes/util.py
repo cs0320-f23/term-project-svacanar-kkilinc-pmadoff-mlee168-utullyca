@@ -342,13 +342,13 @@ elif os.name == "posix":
             so_name = _get_soname(_findLib_prefix(name)) or name
             if so_name != name:
                 return _findLib_prefix(so_name) or \
-                        _findLib_prefix(name) or \
-                        _findSoname_ldconfig(name) or \
-                        _get_soname(_findLib_gcc(name) or _findLib_ld(name))
+                       _findLib_prefix(name) or \
+                       _findSoname_ldconfig(name) or \
+                       _get_soname(_findLib_gcc(name)) or _get_soname(_findLib_ld(name))
             else:
-                return _findLib_prefix(name) or \
+                 return _findLib_prefix(name) or \
                         _findSoname_ldconfig(name) or \
-                        _get_soname(_findLib_gcc(name) or _findLib_ld(name))
+                        _get_soname(_findLib_gcc(name)) or _get_soname(_findLib_ld(name))
 
 ################################################################
 # test code

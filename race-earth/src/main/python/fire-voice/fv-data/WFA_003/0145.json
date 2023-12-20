@@ -1,0 +1,14 @@
+{
+  "Call_ID": "0145",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      32.8304,
+      -116.5116
+    ]
+  ],
+  "Incident_ID": "WFA_003",
+  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
+  "Severity_Rating": "Not specified",
+  "date": "2023-12-20T05:46:35Z"
+}

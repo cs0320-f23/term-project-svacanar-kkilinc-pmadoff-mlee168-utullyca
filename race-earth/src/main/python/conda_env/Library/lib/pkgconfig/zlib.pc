@@ -1,0 +1,13 @@
+prefix=c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env/Library
+exec_prefix=c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env/Library
+libdir=c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env/Library/lib
+sharedlibdir=c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env/Library/lib
+includedir=c:/Users/mason/Desktop/test/ODIN-Fire-Lee/race-earth/src/main/python/conda_env/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
