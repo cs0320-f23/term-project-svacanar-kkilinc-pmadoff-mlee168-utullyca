@@ -1,0 +1,14 @@
+{
+  "Call_ID": "012",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.2129,
+      -118.9614
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Wildfire near Pine Forest on Route 20 and old mill on Highway 34",
+  "Severity_Rating": "Moderate",
+  "date": "2023-12-20T08:23:12Z"
+}

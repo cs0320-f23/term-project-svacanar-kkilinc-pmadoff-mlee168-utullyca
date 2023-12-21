@@ -1,223 +1,563 @@
-2023-12-19 21:44:21,847:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
-2023-12-19 21:44:21,849:INFO:Created incoming messages thread: thread_kF6tGvUgb6b40pomzZYLB58o
-2023-12-19 21:44:21,940:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
-2023-12-19 21:44:21,941:INFO:Created wildfire raw messages thread: thread_3Mp3JZIA8UEtAf1m427mJFjs
-2023-12-19 21:44:22,024:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
-2023-12-19 21:44:22,025:INFO:Created wildfire messages thread: thread_UErrvcONwKAiBmbNyu9r95gr
-2023-12-19 21:44:22,164:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
-2023-12-19 21:44:22,352:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
-2023-12-19 21:44:22,491:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
-2023-12-19 21:44:22,493:INFO:Flask server started.
-2023-12-19 21:44:22,501:WARNING: * Debugger is active!
-2023-12-19 21:44:22,504:INFO: * Debugger PIN: 141-959-176
-2023-12-19 21:44:30,801:INFO:#######################################################################
-2023-12-19 21:44:30,801:INFO:Processing message: Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:44:31,034:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
-2023-12-19 21:44:31,039:INFO:Posted message to incoming messages thread. Message ID: msg_8bqVIzt4HPU89lzQpo2kOjFM
-2023-12-19 21:44:31,201:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:44:31,203:INFO:Latest Message: ThreadMessage(id='msg_8bqVIzt4HPU89lzQpo2kOjFM', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051070, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
-2023-12-19 21:44:31,204:INFO:Latest Message Value: Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:44:31,692:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
-2023-12-19 21:44:31,838:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_TseF0vtnsS5dQWj7tY1L584g "HTTP/1.1 200 OK"
-2023-12-19 21:44:31,840:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
-2023-12-19 21:44:36,984:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_TseF0vtnsS5dQWj7tY1L584g "HTTP/1.1 200 OK"
-2023-12-19 21:44:36,987:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
-2023-12-19 21:44:37,079:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:44:37,082:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': False}"), type='text')], created_at=1703051073, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_TseF0vtnsS5dQWj7tY1L584g', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', last_id='msg_BjGfv5XwqGtbcE1HVzQesHHZ', has_more=True)
-2023-12-19 21:44:37,082:INFO:Original String: {'is_related_to_wildfires': False}
-2023-12-19 21:44:37,083:INFO:Message is related to wildfires: False
-2023-12-19 21:44:37,084:INFO:127.0.0.1 - - [19/Dec/2023 21:44:37] "POST /process HTTP/1.1" 200 -
-2023-12-19 21:44:55,549:INFO:#######################################################################
-2023-12-19 21:44:55,549:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:44:55,695:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
-2023-12-19 21:44:55,697:INFO:Posted message to incoming messages thread. Message ID: msg_ia8dfDK9v3l2KlopcQkSvRJN
-2023-12-19 21:44:55,799:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:44:55,800:INFO:Latest Message: ThreadMessage(id='msg_ia8dfDK9v3l2KlopcQkSvRJN', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051095, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
-2023-12-19 21:44:55,800:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:44:56,076:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
-2023-12-19 21:44:56,221:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_nJMyt9eMznrJTMVtGotRMBS0 "HTTP/1.1 200 OK"
-2023-12-19 21:44:56,223:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
-2023-12-19 21:45:01,545:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_nJMyt9eMznrJTMVtGotRMBS0 "HTTP/1.1 200 OK"
-2023-12-19 21:45:01,546:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
-2023-12-19 21:45:01,639:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:45:01,642:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_TBKzZHOn82KDYQUitM9k8UiA', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051096, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_nJMyt9eMznrJTMVtGotRMBS0', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_TBKzZHOn82KDYQUitM9k8UiA', last_id='msg_TBKzZHOn82KDYQUitM9k8UiA', has_more=True)
-2023-12-19 21:45:01,643:INFO:Original String: {'is_related_to_wildfires': True}
-2023-12-19 21:45:01,643:INFO:Message is related to wildfires: True
-2023-12-19 21:45:01,643:INFO:Processing wildfire-related message...
-2023-12-19 21:45:02,196:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
-2023-12-19 21:45:02,896:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_HgeQJSF1N6uBu0KlzUAnpmWh "HTTP/1.1 200 OK"
-2023-12-19 21:45:02,898:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
-2023-12-19 21:45:08,059:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_HgeQJSF1N6uBu0KlzUAnpmWh "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,061:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
-2023-12-19 21:45:08,213:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,216:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_C8gUrzocMzsTPI90xktoZXPr', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_004",\n  "Call_ID": "0145"\n}'), type='text')], created_at=1703051103, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_HgeQJSF1N6uBu0KlzUAnpmWh', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_C8gUrzocMzsTPI90xktoZXPr', last_id='msg_C8gUrzocMzsTPI90xktoZXPr', has_more=False)
-2023-12-19 21:45:08,217:INFO:Original String: {
+2023-12-20 11:17:40,697:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-20 11:17:40,700:INFO:Created incoming messages thread: thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:17:40,786:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-20 11:17:40,788:INFO:Created wildfire raw messages thread: thread_3hBhjN98sDnI1QFoCnKpI7pE
+2023-12-20 11:17:40,880:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-20 11:17:40,882:INFO:Created wildfire messages thread: thread_G6YWHzWosOKFHlrCnG0ZSnKD
+2023-12-20 11:17:41,050:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-20 11:17:41,182:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-20 11:17:41,312:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-20 11:17:41,467:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-20 11:17:41,469:INFO:Flask server started.
+2023-12-20 11:17:41,477:WARNING: * Debugger is active!
+2023-12-20 11:17:41,494:INFO: * Debugger PIN: 663-272-555
+2023-12-20 11:17:45,022:INFO:Received test GET request
+2023-12-20 11:17:45,023:INFO:127.0.0.1 - - [20/Dec/2023 11:17:45] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:17:58,635:INFO:Received test GET request
+2023-12-20 11:17:58,635:INFO:127.0.0.1 - - [20/Dec/2023 11:17:58] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:17:58,640:INFO:Attempting to read from: C:\Users\mason\Desktop\test\ODIN-Fire-Lee\race-earth\src\main\python\fire-voice-mocked\mockedRawFireTextDataJson\mocked_0.json
+2023-12-20 11:17:58,642:INFO:#######################################################################
+2023-12-20 11:17:58,642:INFO:Processing message: {
+  "text": "Dispatcher: '911, what's your emergency?' Caller: 'Hi, I'm driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!' Dispatcher: 'Can you describe what you're seeing?' Caller: 'There's a lot of smoke, and I can see flames. They're pretty big, and it looks like it's spreading fast.' Dispatcher: 'Are you in any immediate danger?' Caller: 'No, I'm on the road, but it looks really close to the woods.' Dispatcher: 'We're dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?' Caller: 'Yes, it's right past the mile marker 27, near the old hiking trail entrance.' Dispatcher: 'Got it, we've notified the fire department. Please stay on the line, we may need more information.' Caller: 'Okay, I'll stay here. I can see a few cars stopping; people are watching the fire.' Dispatcher: 'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.' Caller: 'Sure thing, I hope they can put it out soon. It looks really bad.' Dispatcher: 'Help is on the way. Please stay safe and clear of the area.'"
+}
+
+2023-12-20 11:17:58,856:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages "HTTP/1.1 200 OK"
+2023-12-20 11:17:58,861:INFO:Posted message to incoming messages thread. Message ID: msg_u2W7wh4VcO6s8SYOkY5VL1nS
+2023-12-20 11:17:59,016:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:17:59,019:INFO:Latest Message: ThreadMessage(id='msg_u2W7wh4VcO6s8SYOkY5VL1nS', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='{\n  "text": "Dispatcher: \'911, what\'s your emergency?\' Caller: \'Hi, I\'m driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!\' Dispatcher: \'Can you describe what you\'re seeing?\' Caller: \'There\'s a lot of smoke, and I can see flames. They\'re pretty big, and it looks like it\'s spreading fast.\' Dispatcher: \'Are you in any immediate danger?\' Caller: \'No, I\'m on the road, but it looks really close to the woods.\' Dispatcher: \'We\'re dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?\' Caller: \'Yes, it\'s right past the mile marker 27, near the old hiking trail entrance.\' Dispatcher: \'Got it, we\'ve notified the fire department. Please stay on the line, we may need more information.\' Caller: \'Okay, I\'ll stay here. I can see a few cars stopping; people are watching the fire.\' Dispatcher: \'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.\' Caller: \'Sure thing, I hope they can put it out soon. It looks really bad.\' Dispatcher: \'Help is on the way. Please stay safe and clear of the area.\'"\n}\n'), type='text')], created_at=1703099878, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')
+2023-12-20 11:17:59,019:INFO:Latest Message Value: {
+  "text": "Dispatcher: '911, what's your emergency?' Caller: 'Hi, I'm driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!' Dispatcher: 'Can you describe what you're seeing?' Caller: 'There's a lot of smoke, and I can see flames. They're pretty big, and it looks like it's spreading fast.' Dispatcher: 'Are you in any immediate danger?' Caller: 'No, I'm on the road, but it looks really close to the woods.' Dispatcher: 'We're dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?' Caller: 'Yes, it's right past the mile marker 27, near the old hiking trail entrance.' Dispatcher: 'Got it, we've notified the fire department. Please stay on the line, we may need more information.' Caller: 'Okay, I'll stay here. I can see a few cars stopping; people are watching the fire.' Dispatcher: 'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.' Caller: 'Sure thing, I hope they can put it out soon. It looks really bad.' Dispatcher: 'Help is on the way. Please stay safe and clear of the area.'"
+}
+
+2023-12-20 11:17:59,323:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs "HTTP/1.1 200 OK"
+2023-12-20 11:17:59,481:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_SyuymZKnKgTg7bHmwI7a82Yh "HTTP/1.1 200 OK"
+2023-12-20 11:17:59,483:INFO:run_assistant_json asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a: In progress...
+2023-12-20 11:18:04,610:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_SyuymZKnKgTg7bHmwI7a82Yh "HTTP/1.1 200 OK"
+2023-12-20 11:18:04,611:INFO:Run completed asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:18:04,702:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:04,706:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_8uPDtJRTACvWUx3tviicatwj', assistant_id='asst_31Ug6nGp29WPRjWH70dufjiH', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703099880, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_SyuymZKnKgTg7bHmwI7a82Yh', thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')], object='list', first_id='msg_8uPDtJRTACvWUx3tviicatwj', last_id='msg_8uPDtJRTACvWUx3tviicatwj', has_more=True)
+2023-12-20 11:18:04,707:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-20 11:18:04,707:INFO:Message is related to wildfires: True
+2023-12-20 11:18:04,707:INFO:Processing wildfire-related message...
+2023-12-20 11:18:05,012:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:05,160:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_zC65uTeuqitUSWsub6ifZKIO "HTTP/1.1 200 OK"
+2023-12-20 11:18:05,162:INFO:run_assistant_json asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD: In progress...
+2023-12-20 11:18:08,632:INFO:Received test GET request
+2023-12-20 11:18:08,633:INFO:Attempting to read from: C:\Users\mason\Desktop\test\ODIN-Fire-Lee\race-earth\src\main\python\fire-voice-mocked\mockedRawFireTextDataJson\mocked_1.json
+2023-12-20 11:18:08,633:INFO:127.0.0.1 - - [20/Dec/2023 11:18:08] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:18:08,634:INFO:#######################################################################
+2023-12-20 11:18:08,634:INFO:Processing message: {
+  "incident_id": "FH20231101",
+  "caller_name": "John Doe",
+  "call_time": "2023-11-01T15:30:00",
+  "location": "123 Main St, Springfield",
+  "description": "House fire reported with visible flames and smoke. No injuries reported. Caller is the neighbor.",
+  "severity": "high",
+  "units_dispatched": ["Engine 1", "Ladder 2", "Rescue 3"],
+  "dispatcher_notes": "Evacuate neighboring houses. Confirm with caller if everyone is out of the house."
+}
+
+2023-12-20 11:18:08,744:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:08,747:INFO:Posted message to incoming messages thread. Message ID: msg_18GBXQBqkgZWG5EX0iovB7Lc
+2023-12-20 11:18:08,837:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:08,839:INFO:Latest Message: ThreadMessage(id='msg_18GBXQBqkgZWG5EX0iovB7Lc', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='{\n  "incident_id": "FH20231101",\n  "caller_name": "John Doe",\n  "call_time": "2023-11-01T15:30:00",\n  "location": "123 Main St, Springfield",\n  "description": "House fire reported with visible flames and smoke. No injuries reported. Caller is the neighbor.",\n  "severity": "high",\n  "units_dispatched": ["Engine 1", "Ladder 2", "Rescue 3"],\n  "dispatcher_notes": "Evacuate neighboring houses. Confirm with caller if everyone is out of the house."\n}\n'), type='text')], created_at=1703099887, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')
+2023-12-20 11:18:08,839:INFO:Latest Message Value: {
+  "incident_id": "FH20231101",
+  "caller_name": "John Doe",
+  "call_time": "2023-11-01T15:30:00",
+  "location": "123 Main St, Springfield",
+  "description": "House fire reported with visible flames and smoke. No injuries reported. Caller is the neighbor.",
+  "severity": "high",
+  "units_dispatched": ["Engine 1", "Ladder 2", "Rescue 3"],
+  "dispatcher_notes": "Evacuate neighboring houses. Confirm with caller if everyone is out of the house."
+}
+
+2023-12-20 11:18:09,080:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:09,220:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_csxCM6XM0tvw1izr8f79yDKV "HTTP/1.1 200 OK"
+2023-12-20 11:18:09,221:INFO:run_assistant_json asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a: In progress...
+2023-12-20 11:18:10,281:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_zC65uTeuqitUSWsub6ifZKIO "HTTP/1.1 200 OK"
+2023-12-20 11:18:10,283:INFO:Run completed asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD
+2023-12-20 11:18:10,422:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:10,425:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_Fq4m6CYR94mCmkurG50TlRdx', assistant_id='asst_d8CFlL46eNmIbKmYFE1P8bpX', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_003",\n  "Call_ID": "0025"\n}'), type='text')], created_at=1703099885, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_zC65uTeuqitUSWsub6ifZKIO', thread_id='thread_G6YWHzWosOKFHlrCnG0ZSnKD')], object='list', first_id='msg_Fq4m6CYR94mCmkurG50TlRdx', last_id='msg_Fq4m6CYR94mCmkurG50TlRdx', has_more=False)
+2023-12-20 11:18:10,425:INFO:Original String: {
+  "Incident_ID": "WFA_003",
+  "Call_ID": "0025"
+}
+2023-12-20 11:18:10,426:INFO:Assistant Classification: Incident ID: WFA_003, Call ID: 0025
+2023-12-20 11:18:10,503:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-20 11:18:10,504:INFO:Incident Thread ID: thread_YxStmlWKNZVo4dIVAQG6PHra
+2023-12-20 11:18:10,694:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:10,697:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-20 11:18:10,697:INFO:Processing message: {
+  "text": "Dispatcher: '911, what's your emergency?' Caller: 'Hi, I'm driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!' Dispatcher: 'Can you describe what you're seeing?' Caller: 'There's a lot of smoke, and I can see flames. They're pretty big, and it looks like it's spreading fast.' Dispatcher: 'Are you in any immediate danger?' Caller: 'No, I'm on the road, but it looks really close to the woods.' Dispatcher: 'We're dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?' Caller: 'Yes, it's right past the mile marker 27, near the old hiking trail entrance.' Dispatcher: 'Got it, we've notified the fire department. Please stay on the line, we may need more information.' Caller: 'Okay, I'll stay here. I can see a few cars stopping; people are watching the fire.' Dispatcher: 'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.' Caller: 'Sure thing, I hope they can put it out soon. It looks really bad.' Dispatcher: 'Help is on the way. Please stay safe and clear of the area.'"
+}
+
+2023-12-20 11:18:11,029:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:11,183:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_ETAcErDI5YXECxGgVt1d8s6p "HTTP/1.1 200 OK"
+2023-12-20 11:18:11,186:INFO:run_assistant_json asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra: In progress...
+2023-12-20 11:18:14,332:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_csxCM6XM0tvw1izr8f79yDKV "HTTP/1.1 200 OK"
+2023-12-20 11:18:14,336:INFO:Run completed asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:18:14,441:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:14,446:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_r6PveQfYTRFDxenkU66KkgsW', assistant_id='asst_31Ug6nGp29WPRjWH70dufjiH', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': False}"), type='text')], created_at=1703099889, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_csxCM6XM0tvw1izr8f79yDKV', thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')], object='list', first_id='msg_r6PveQfYTRFDxenkU66KkgsW', last_id='msg_r6PveQfYTRFDxenkU66KkgsW', has_more=True)
+2023-12-20 11:18:14,446:INFO:Original String: {'is_related_to_wildfires': False}
+2023-12-20 11:18:14,447:INFO:Message is related to wildfires: False
+2023-12-20 11:18:14,447:INFO:Final payload: {'status': 'Not related to wildfires'}
+2023-12-20 11:18:14,448:INFO:127.0.0.1 - - [20/Dec/2023 11:18:14] "POST /process HTTP/1.1" 200 -
+2023-12-20 11:18:16,293:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_ETAcErDI5YXECxGgVt1d8s6p "HTTP/1.1 200 OK"
+2023-12-20 11:18:16,301:INFO:Run completed asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra
+2023-12-20 11:18:16,453:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:16,462:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_xIjrpDaZ0WP1zTyRsyqvNtWv', assistant_id='asst_eYql7FNoMtfW5xImXZLlXHyE', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],\n  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],\n  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",\n  "Severity_Rating": "High"\n}'), type='text')], created_at=1703099891, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_ETAcErDI5YXECxGgVt1d8s6p', thread_id='thread_YxStmlWKNZVo4dIVAQG6PHra')], object='list', first_id='msg_xIjrpDaZ0WP1zTyRsyqvNtWv', last_id='msg_xIjrpDaZ0WP1zTyRsyqvNtWv', has_more=True)
+2023-12-20 11:18:16,463:INFO:Original String: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:16,474:INFO:Error parsing JSON string: Expecting value: line 2 column 73 (char 74)
+2023-12-20 11:18:16,474:INFO:Error JSON string: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:16,474:INFO:Geolocation Data: None
+2023-12-20 11:18:16,474:INFO:Attempt 1 failed with error: Geolocation data not found.
+2023-12-20 11:18:16,474:INFO:%%%%%%%%%%% 2%%%%%%%%%%%%
+2023-12-20 11:18:16,474:INFO:Processing message: {
+  "text": "Dispatcher: '911, what's your emergency?' Caller: 'Hi, I'm driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!' Dispatcher: 'Can you describe what you're seeing?' Caller: 'There's a lot of smoke, and I can see flames. They're pretty big, and it looks like it's spreading fast.' Dispatcher: 'Are you in any immediate danger?' Caller: 'No, I'm on the road, but it looks really close to the woods.' Dispatcher: 'We're dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?' Caller: 'Yes, it's right past the mile marker 27, near the old hiking trail entrance.' Dispatcher: 'Got it, we've notified the fire department. Please stay on the line, we may need more information.' Caller: 'Okay, I'll stay here. I can see a few cars stopping; people are watching the fire.' Dispatcher: 'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.' Caller: 'Sure thing, I hope they can put it out soon. It looks really bad.' Dispatcher: 'Help is on the way. Please stay safe and clear of the area.'"
+}
+
+2023-12-20 11:18:16,718:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:16,873:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_piYcQg0eeI4h8rX6lor4HSfI "HTTP/1.1 200 OK"
+2023-12-20 11:18:16,875:INFO:run_assistant_json asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra: In progress...
+2023-12-20 11:18:18,649:INFO:Received test GET request
+2023-12-20 11:18:18,649:INFO:Attempting to read from: C:\Users\mason\Desktop\test\ODIN-Fire-Lee\race-earth\src\main\python\fire-voice-mocked\mockedRawFireTextDataJson\mocked_2.json
+2023-12-20 11:18:18,650:INFO:127.0.0.1 - - [20/Dec/2023 11:18:18] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:18:18,678:INFO:#######################################################################
+2023-12-20 11:18:18,678:INFO:Processing message: {
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
+}
+
+2023-12-20 11:18:18,798:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:18,802:INFO:Posted message to incoming messages thread. Message ID: msg_4oWYWWDOfQXTjdRpbuSvR09b
+2023-12-20 11:18:18,911:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:18,916:INFO:Latest Message: ThreadMessage(id='msg_4oWYWWDOfQXTjdRpbuSvR09b', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='{\n  "incident_id": "FW20231102",\n  "caller_name": "Alice Johnson",\n  "call_time": "2023-11-02T10:20:00",\n  "location": "Near Pine Forest, Route 20",\n  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",\n  "severity": "moderate",\n  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],\n  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."\n}\n'), type='text')], created_at=1703099898, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')
+2023-12-20 11:18:18,917:INFO:Latest Message Value: {
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
+}
+
+2023-12-20 11:18:19,210:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:19,358:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_ltlyFHn8VW9gL7K4TlIgqVQF "HTTP/1.1 200 OK"
+2023-12-20 11:18:19,361:INFO:run_assistant_json asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a: In progress...
+2023-12-20 11:18:21,983:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_piYcQg0eeI4h8rX6lor4HSfI "HTTP/1.1 200 OK"
+2023-12-20 11:18:21,986:INFO:Run completed asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra
+2023-12-20 11:18:22,300:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:22,303:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_IBaiiwhEKEmEVp6bZNnkKDE7', assistant_id='asst_eYql7FNoMtfW5xImXZLlXHyE', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],\n  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],\n  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",\n  "Severity_Rating": "High"\n}'), type='text')], created_at=1703099897, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_piYcQg0eeI4h8rX6lor4HSfI', thread_id='thread_YxStmlWKNZVo4dIVAQG6PHra')], object='list', first_id='msg_IBaiiwhEKEmEVp6bZNnkKDE7', last_id='msg_IBaiiwhEKEmEVp6bZNnkKDE7', has_more=True)
+2023-12-20 11:18:22,303:INFO:Original String: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:22,303:INFO:Error parsing JSON string: Expecting value: line 2 column 73 (char 74)
+2023-12-20 11:18:22,303:INFO:Error JSON string: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:22,303:INFO:Geolocation Data: None
+2023-12-20 11:18:22,304:INFO:Attempt 2 failed with error: Geolocation data not found.
+2023-12-20 11:18:22,304:INFO:%%%%%%%%%%% 3%%%%%%%%%%%%
+2023-12-20 11:18:22,304:INFO:Processing message: {
+  "text": "Dispatcher: '911, what's your emergency?' Caller: 'Hi, I'm driving on Highway 34 near the old mill, and I can see what looks like a wildfire in the woods!' Dispatcher: 'Can you describe what you're seeing?' Caller: 'There's a lot of smoke, and I can see flames. They're pretty big, and it looks like it's spreading fast.' Dispatcher: 'Are you in any immediate danger?' Caller: 'No, I'm on the road, but it looks really close to the woods.' Dispatcher: 'We're dispatching units to your location now. Please stay safe and keep a safe distance. Can you provide any landmarks or specific locations?' Caller: 'Yes, it's right past the mile marker 27, near the old hiking trail entrance.' Dispatcher: 'Got it, we've notified the fire department. Please stay on the line, we may need more information.' Caller: 'Okay, I'll stay here. I can see a few cars stopping; people are watching the fire.' Dispatcher: 'Please advise them to keep a safe distance. Emergency services are on their way. Thank you for calling this in.' Caller: 'Sure thing, I hope they can put it out soon. It looks really bad.' Dispatcher: 'Help is on the way. Please stay safe and clear of the area.'"
+}
+
+2023-12-20 11:18:22,572:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:22,728:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_dupY9E9SQTqPKsOU4KYEp5mM "HTTP/1.1 200 OK"
+2023-12-20 11:18:22,730:INFO:run_assistant_json asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra: In progress...
+2023-12-20 11:18:24,468:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_ltlyFHn8VW9gL7K4TlIgqVQF "HTTP/1.1 200 OK"
+2023-12-20 11:18:24,472:INFO:Run completed asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:18:24,574:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:24,578:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_wzEdJpElwiC2wiFflHIof7NW', assistant_id='asst_31Ug6nGp29WPRjWH70dufjiH', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703099899, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_ltlyFHn8VW9gL7K4TlIgqVQF', thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')], object='list', first_id='msg_wzEdJpElwiC2wiFflHIof7NW', last_id='msg_wzEdJpElwiC2wiFflHIof7NW', has_more=True)
+2023-12-20 11:18:24,578:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-20 11:18:24,578:INFO:Message is related to wildfires: True
+2023-12-20 11:18:24,578:INFO:Processing wildfire-related message...
+2023-12-20 11:18:24,814:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:24,958:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_hkgtM4xJO4qajxOh7Mpz4ysP "HTTP/1.1 200 OK"
+2023-12-20 11:18:24,960:INFO:run_assistant_json asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD: In progress...
+2023-12-20 11:18:27,824:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/runs/run_dupY9E9SQTqPKsOU4KYEp5mM "HTTP/1.1 200 OK"
+2023-12-20 11:18:27,828:INFO:Run completed asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_YxStmlWKNZVo4dIVAQG6PHra
+2023-12-20 11:18:27,920:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:27,929:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_aJmLGjPFpbDnHeAkAJnAGSP7', assistant_id='asst_eYql7FNoMtfW5xImXZLlXHyE', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],\n  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],\n  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",\n  "Severity_Rating": "High"\n}'), type='text')], created_at=1703099902, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_dupY9E9SQTqPKsOU4KYEp5mM', thread_id='thread_YxStmlWKNZVo4dIVAQG6PHra')], object='list', first_id='msg_aJmLGjPFpbDnHeAkAJnAGSP7', last_id='msg_aJmLGjPFpbDnHeAkAJnAGSP7', has_more=True)
+2023-12-20 11:18:27,929:INFO:Original String: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:27,931:INFO:Error parsing JSON string: Expecting value: line 2 column 73 (char 74)
+2023-12-20 11:18:27,931:INFO:Error JSON string: {
+  "Coordinates": [["Highway 34, near the old mill", "Mile Marker 27"], [latitude, longitude]],
+  "Address": ["Highway 34, near the old mill, Mile Marker 27, Hiking trail entrance"],
+  "Incident_Report": "Wildfire near Highway 34, close to the old mill and mile marker 27, spreading fast with large flames and smoke",
+  "Severity_Rating": "High"
+}
+2023-12-20 11:18:27,931:INFO:Geolocation Data: None
+2023-12-20 11:18:27,931:INFO:Attempt 3 failed with error: Geolocation data not found.
+2023-12-20 11:18:27,931:INFO:Max retries reached. Unable to process the message.
+2023-12-20 11:18:27,931:INFO:Final payload: None
+2023-12-20 11:18:27,932:INFO:127.0.0.1 - - [20/Dec/2023 11:18:27] "POST /process HTTP/1.1" 200 -
+2023-12-20 11:18:28,660:INFO:Received test GET request
+2023-12-20 11:18:28,662:INFO:127.0.0.1 - - [20/Dec/2023 11:18:28] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:18:28,664:INFO:Attempting to read from: C:\Users\mason\Desktop\test\ODIN-Fire-Lee\race-earth\src\main\python\fire-voice-mocked\mockedRawFireTextDataJson\mocked_3.json
+2023-12-20 11:18:28,666:INFO:#######################################################################
+2023-12-20 11:18:28,666:INFO:Processing message: {
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
+}
+
+2023-12-20 11:18:28,776:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:28,781:INFO:Posted message to incoming messages thread. Message ID: msg_kqHLBykyNRQUOx71b0P2iq4E
+2023-12-20 11:18:28,874:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:28,878:INFO:Latest Message: ThreadMessage(id='msg_kqHLBykyNRQUOx71b0P2iq4E', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='{\n  "incident_id": "FW20231102",\n  "caller_name": "Alice Johnson",\n  "call_time": "2023-11-02T10:20:00",\n  "location": "Near Pine Forest, Route 20",\n  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",\n  "severity": "moderate",\n  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],\n  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."\n}\n'), type='text')], created_at=1703099907, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')
+2023-12-20 11:18:28,878:INFO:Latest Message Value: {
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
+}
+
+2023-12-20 11:18:29,139:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:29,304:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_BTeF0SKDuODjqIXPF28OQUDC "HTTP/1.1 200 OK"
+2023-12-20 11:18:29,307:INFO:run_assistant_json asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a: In progress...
+2023-12-20 11:18:30,085:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_hkgtM4xJO4qajxOh7Mpz4ysP "HTTP/1.1 200 OK"
+2023-12-20 11:18:30,090:INFO:Run completed asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD
+2023-12-20 11:18:30,184:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:30,198:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_5ekJ7aJaYRWMvyt5QV0LL7ip', assistant_id='asst_d8CFlL46eNmIbKmYFE1P8bpX', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_004",\n  "Call_ID": "0043"\n}'), type='text')], created_at=1703099905, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_hkgtM4xJO4qajxOh7Mpz4ysP', thread_id='thread_G6YWHzWosOKFHlrCnG0ZSnKD')], object='list', first_id='msg_5ekJ7aJaYRWMvyt5QV0LL7ip', last_id='msg_5ekJ7aJaYRWMvyt5QV0LL7ip', has_more=True)
+2023-12-20 11:18:30,199:INFO:Original String: {
   "Incident_ID": "WFA_004",
-  "Call_ID": "0145"
+  "Call_ID": "0043"
 }
-2023-12-19 21:45:08,217:INFO:Assistant Classification: Incident ID: WFA_004, Call ID: 0145
-2023-12-19 21:45:08,302:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,304:INFO:Incident Thread ID: thread_zSXf6fOrwLKhwrDggL73OWyJ
-2023-12-19 21:45:08,465:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/messages "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,468:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
-2023-12-19 21:45:08,468:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:45:08,811:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,960:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs/run_9zEmVxcJI6hq7cqV5M0Yg0k9 "HTTP/1.1 200 OK"
-2023-12-19 21:45:08,961:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_zSXf6fOrwLKhwrDggL73OWyJ: In progress...
-2023-12-19 21:45:14,108:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/runs/run_9zEmVxcJI6hq7cqV5M0Yg0k9 "HTTP/1.1 200 OK"
-2023-12-19 21:45:14,109:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_zSXf6fOrwLKhwrDggL73OWyJ
-2023-12-19 21:45:14,260:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:45:14,264:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_wv7kVK2DqdaexC2ACTUU3B1D', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8684, -116.4689]],\n  "Address": ["Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",\n  "Severity_Rating": "To be determined"\n}'), type='text')], created_at=1703051109, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_9zEmVxcJI6hq7cqV5M0Yg0k9', thread_id='thread_zSXf6fOrwLKhwrDggL73OWyJ')], object='list', first_id='msg_wv7kVK2DqdaexC2ACTUU3B1D', last_id='msg_wv7kVK2DqdaexC2ACTUU3B1D', has_more=True)
-2023-12-19 21:45:14,264:INFO:Original String: {
-  "Coordinates": [[32.8684, -116.4689]],
-  "Address": ["Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain"],
-  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",
-  "Severity_Rating": "To be determined"
+2023-12-20 11:18:30,199:INFO:Assistant Classification: Incident ID: WFA_004, Call ID: 0043
+2023-12-20 11:18:30,343:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra "HTTP/1.1 200 OK"
+2023-12-20 11:18:30,443:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-20 11:18:30,446:INFO:Incident Thread ID: thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:30,609:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:30,613:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-20 11:18:30,614:INFO:Processing message: {
+  "incident_id": "FW20231102",
+  "caller_name": "Alice Johnson",
+  "call_time": "2023-11-02T10:20:00",
+  "location": "Near Pine Forest, Route 20",
+  "description": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "severity": "moderate",
+  "units_dispatched": ["Forest Fire Unit 5", "Helicopter Water Drop"],
+  "dispatcher_notes": "Coordinate with forest service. Check for hiking groups in the area."
 }
-2023-12-19 21:45:14,274:INFO:Geolocation Data: {'Coordinates': [[32.8684, -116.4689]], 'Address': ['Northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1, northwest of the intersection with Old Highway 80, in a remote area north of the Cottonwood Falls area and southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire reported in a remote area northeast of Pine Valley, along Highway S1', 'Severity_Rating': 'To be determined'}
-2023-12-19 21:45:14,274:INFO:Final Payload: {
-  "Call_ID": "0145",
+
+2023-12-20 11:18:30,906:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:31,074:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_iSkOFyGMji7qnQS4wTcvHyZl "HTTP/1.1 200 OK"
+2023-12-20 11:18:31,076:INFO:run_assistant_json asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1: In progress...
+2023-12-20 11:18:34,400:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_BTeF0SKDuODjqIXPF28OQUDC "HTTP/1.1 200 OK"
+2023-12-20 11:18:34,403:INFO:Run completed asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:18:34,506:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:34,511:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_Cb0JJOyxdUCC1DfsgpfNYUja', assistant_id='asst_31Ug6nGp29WPRjWH70dufjiH', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703099909, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_BTeF0SKDuODjqIXPF28OQUDC', thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')], object='list', first_id='msg_Cb0JJOyxdUCC1DfsgpfNYUja', last_id='msg_Cb0JJOyxdUCC1DfsgpfNYUja', has_more=True)
+2023-12-20 11:18:34,511:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-20 11:18:34,512:INFO:Message is related to wildfires: True
+2023-12-20 11:18:34,512:INFO:Processing wildfire-related message...
+2023-12-20 11:18:34,763:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:34,910:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_6Xvq9XuSNrO5If3UDkSoJNbJ "HTTP/1.1 200 OK"
+2023-12-20 11:18:34,912:INFO:run_assistant_json asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD: In progress...
+2023-12-20 11:18:36,172:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_iSkOFyGMji7qnQS4wTcvHyZl "HTTP/1.1 200 OK"
+2023-12-20 11:18:36,174:INFO:Run completed asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:36,317:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:36,319:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_dZ8ZJtYQ0gy8Z4IoZjCDPO4I', assistant_id='asst_eYql7FNoMtfW5xImXZLlXHyE', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": ["Near Pine Forest, Route 20"],\n  "Address": [],\n  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",\n  "Severity_Rating": "Moderate"\n}'), type='text')], created_at=1703099910, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_iSkOFyGMji7qnQS4wTcvHyZl', thread_id='thread_XPjVwPddzmwFJY5b8vnoZ0X1')], object='list', first_id='msg_dZ8ZJtYQ0gy8Z4IoZjCDPO4I', last_id='msg_dZ8ZJtYQ0gy8Z4IoZjCDPO4I', has_more=True)
+2023-12-20 11:18:36,319:INFO:Original String: {
+  "Coordinates": ["Near Pine Forest, Route 20"],
+  "Address": [],
+  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "Severity_Rating": "Moderate"
+}
+2023-12-20 11:18:36,319:INFO:Geolocation Data: {'Coordinates': ['Near Pine Forest, Route 20'], 'Address': [], 'Incident_Report': 'Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.', 'Severity_Rating': 'Moderate'}
+2023-12-20 11:18:36,600:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:36,757:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_4pZhUEpiAjXenTX81BI6pCjI "HTTP/1.1 200 OK"
+2023-12-20 11:18:36,760:INFO:run_assistant_json asst_5wJgdVPM5ZFYvjK309g8Agvy and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1: In progress...
+2023-12-20 11:18:38,658:INFO:Received test GET request
+2023-12-20 11:18:38,658:INFO:127.0.0.1 - - [20/Dec/2023 11:18:38] "GET /process HTTP/1.1" 200 -
+2023-12-20 11:18:38,659:INFO:Attempting to read from: C:\Users\mason\Desktop\test\ODIN-Fire-Lee\race-earth\src\main\python\fire-voice-mocked\mockedRawFireTextDataJson\mocked_4-multiple.json
+2023-12-20 11:18:38,661:INFO:#######################################################################
+2023-12-20 11:18:38,662:INFO:Processing message: [
+  {
+      "Street Address": "86309 Mary Station",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Missing Person",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? It's, um, 86309 Mary Station, Oakland... yes, 86309 Mary Station. Can you please clarify the city? Is it Oakland? And is Mary Station an avenue, street, or drive? Alright, thank you. Can I have your name please? Sorry, I'm a bit distressed... my name is... um... Lisa. There's, um, a missing person near 86309 Mary Station in Oakland. I think it's spelled M-I-S-S-I-N-G P-E-R-S-O-N. No, wait, I mean M-I-S-S-I-N-G P-E-R-S-O-N. Sorry, I'm just really anxious right now. There's a missing person near the woods behind the house! Please help! Are there any other people in danger? How many people are involved? Is everyone safe? Please hurry! There's a lot of noise in the background... voices... chaos... Oh no, I can't believe this is happening! Please, hurry!"
+  },
+  {
+      "Street Address": "2638 Rasmussen Ways",
+      "City": "Los Angeles",
+      "County": "Los Angeles County",
+      "Incident": "Car Accident",
+      "Synthetic Call": "This is the Los Angeles County 911 center. What is the location of the emergency? Um, it's, um, 2638 Rasmussen Ways, yes, 2638 Rasmussen Ways. Could you please clarify whether it's an avenue, street, or drive? Okay, Rasmussen Ways, got it. Can I please have your name? I'm sorry, I didn't quite catch that. Could you repeat your name again? Okay, thank you. Now, what seems to be the nature of the incident? There's a, um, car, no, I mean, a car accident. There's been a car accident. Oh no, I can't believe this is happening! Is everyone involved in the accident okay? How many people are involved? Are they safe? Just to clarify, how many people are injured? Are they conscious? Sir, could you please try to speak louder? I can barely hear you. Is there anyone who needs immediate medical attention? Please hurry! I'm sorry, but I'm having trouble hearing you clearly. Is there any unusual background noise or voices you can hear? Maybe from the accident scene? If you can, please try to describe the situation again. It's really hard to make out what you're saying. Oh no, I'm sorry, I seem to have misunderstood you. Did you say there's a fire? Is there a fire near the accident location? Is the fire spreading? Please provide any additional information about the fire. I'm sorry, I didn't quite catch that. Is there anyone trapped inside the vehicles? Can you confirm if all individuals are out of harm's way? Are there any other potential hazards I should be aware of at the accident scene? I'm sorry, but I'm having difficulty understanding your last statement. Could you please repeat that? And can you provide any information about the vehicles involved in the accident? Such as the number of vehicles or their color? I understand that you're in distress, but please try to remain calm. Help is on the way. Emergency services have been dispatched to your location. Please stay on the line with me until they arrive."
+  },
+  {
+      "Street Address": "2211 Grace Underpass",
+      "City": "San Diego",
+      "County": "San Diego County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the San Diego County 911 center. What is the location of the emergency? Um, it's, um, 2211 Grace Underpass... yes, 2211 Grace Underpass. Can you please confirm the city? Is it San Diego? And is it an avenue, street, or drive? Okay, thank you for confirming. May I have your name, please? You sound a bit distressed, is everything alright? Alright, um, take your time. My name is Alex and I'm here to help you. What seems to be the problem? Oh no, I can't believe this is happening! There's a, um, wildfure? No, I mean, wildfire near the woods behind the house! It's spreading really fast! Please hurry! Are you safe? Is everyone in the house safe? How many people are in immediate danger? I need to assess the level of safety and urgency for the responding units. Please let me know. I apologize if there is some background noise, it's quite chaotic right now. I'm doing my best to stay focused. Just gather yourself and take a deep breath. We will get through this. Okay, I need you to stay calm and follow my instructions. First, I want you to evacuate the house immediately and make your way to a safe distance from the fire. Do not attempt to put out the fire yourself. I repeat, do not attempt to put out the fire. Please keep yourself and others away from the fire. Are there any nearby fire hydrants that the firefighters can use? This will help them in their efforts to extinguish the flames. Can you see any? If not, don't worry, the fire department will handle it. I understand that this is an incredibly stressful situation. Help is on the way, and I want you to know that we are doing everything we can to get there as quickly as possible. Just stay calm and let the firefighters handle the situation. They are trained professionals and they will take care of you. Please continue to update me on any changes or developments in the situation. The fire department is on its way, and they will arrive as soon as possible. Stay safe and try to remain calm."
+  },
+  {
+      "Street Address": "437 Mack Loaf",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? Um... It's, um, 437 Mack Loaf... yes, 437 Mack Loaf in Oakland. Can you please confirm that? Wait, let me double-check... yes, it's 437 Mack Loaf in Oakland. Sorry about that confusion. Is it an avenue, street, or drive? I'm sorry, I'm a little bit panicked right now. I'm not sure if it's an avenue, street, or drive. Can you please send help quickly? And may I have your name please? Sorry, I'm a little bit distressed. My name is... um, John. Yes, John. Please, I need help! There's a, um, wildfure? No, I mean, wildfire near the woods... behind the house! Oh no, I can't believe this is happening! Please hurry! Are there any people at risk or in immediate danger? How many people are involved? I'm not sure. There might be people in the house nearby. I think everyone is safe for now, but I'm not sure. Please send firefighters quickly! Hold on, please. Let me get this information to the fire department. Just one moment... [background noise and muffled voices] Okay, John, we have dispatched the firefighters. They will be there as soon as possible. In the meantime, please evacuate the area if it's safe to do so. Keep yourself and others away from the fire. Wait, what do you mean evacuate? I mean, we can't leave the neighborhood, can we? [crying in the background] Please, hurry! We need help! I'm scared! Oh no, this is terrible! I understand your concern, John, but it's important to prioritize your safety. If the firefighters arrive and it's safe to stay, they will assess the situation and provide further instructions. Please stay calm and stay on the line with me. Help is on the way."
+  },
+  {
+      "Street Address": "041 Dylan Estate",
+      "City": "San Francisco",
+      "County": "San Francisco County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "San Francisco County Dispatch, please state the nature of your emergency. Um, I'm near... um... 041 Dylan Estate? No, wait, yes, 041 Dylan Estate! There's a structure fire! I think... it looks like a building might be on fire? Or just really smoky? I'm not sure! Please send help! My name is... um... sorry, I... I can't remember right now, I'm just really scared! There's so much smoke! I'm worried about the people inside and their pets! Oh God, what should I do? Is someone else there with you? I heard shouting. No, no, I'm alone, it was probably just me screaming. I'm so sorry, I'm just really scared. Please hurry! The address is 041 Dylan Estate, San Francisco. I think it's a structure fire. Is that on Elm Street or Elm Avenue? Um, I'm not sure, I think... maybe... Elm Avenue? Can you please clarify? Oh, God, there's a massive... wildf-fire, or, wildfire in the woods! I can see it from where I am! It's spreading quickly! I'm so scared for my safety and my belongings! Please send help right away, I don't know what to do! Oh, my God, what if it reaches my house? Can you please tell me what to do?"
+  }
+]
+
+2023-12-20 11:18:38,793:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:38,795:INFO:Posted message to incoming messages thread. Message ID: msg_q5CP5pr7eWeCAqT09aJfeSnG
+2023-12-20 11:18:38,886:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:38,888:INFO:Latest Message: ThreadMessage(id='msg_q5CP5pr7eWeCAqT09aJfeSnG', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='[\n  {\n      "Street Address": "86309 Mary Station",\n      "City": "Oakland",\n      "County": "Alameda County",\n      "Incident": "Missing Person",\n      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? It\'s, um, 86309 Mary Station, Oakland... yes, 86309 Mary Station. Can you please clarify the city? Is it Oakland? And is Mary Station an avenue, street, or drive? Alright, thank you. Can I have your name please? Sorry, I\'m a bit distressed... my name is... um... Lisa. There\'s, um, a missing person near 86309 Mary Station in Oakland. I think it\'s spelled M-I-S-S-I-N-G P-E-R-S-O-N. No, wait, I mean M-I-S-S-I-N-G P-E-R-S-O-N. Sorry, I\'m just really anxious right now. There\'s a missing person near the woods behind the house! Please help! Are there any other people in danger? How many people are involved? Is everyone safe? Please hurry! There\'s a lot of noise in the background... voices... chaos... Oh no, I can\'t believe this is happening! Please, hurry!"\n  },\n  {\n      "Street Address": "2638 Rasmussen Ways",\n      "City": "Los Angeles",\n      "County": "Los Angeles County",\n      "Incident": "Car Accident",\n      "Synthetic Call": "This is the Los Angeles County 911 center. What is the location of the emergency? Um, it\'s, um, 2638 Rasmussen Ways, yes, 2638 Rasmussen Ways. Could you please clarify whether it\'s an avenue, street, or drive? Okay, Rasmussen Ways, got it. Can I please have your name? I\'m sorry, I didn\'t quite catch that. Could you repeat your name again? Okay, thank you. Now, what seems to be the nature of the incident? There\'s a, um, car, no, I mean, a car accident. There\'s been a car accident. Oh no, I can\'t believe this is happening! Is everyone involved in the accident okay? How many people are involved? Are they safe? Just to clarify, how many people are injured? Are they conscious? Sir, could you please try to speak louder? I can barely hear you. Is there anyone who needs immediate medical attention? Please hurry! I\'m sorry, but I\'m having trouble hearing you clearly. Is there any unusual background noise or voices you can hear? Maybe from the accident scene? If you can, please try to describe the situation again. It\'s really hard to make out what you\'re saying. Oh no, I\'m sorry, I seem to have misunderstood you. Did you say there\'s a fire? Is there a fire near the accident location? Is the fire spreading? Please provide any additional information about the fire. I\'m sorry, I didn\'t quite catch that. Is there anyone trapped inside the vehicles? Can you confirm if all individuals are out of harm\'s way? Are there any other potential hazards I should be aware of at the accident scene? I\'m sorry, but I\'m having difficulty understanding your last statement. Could you please repeat that? And can you provide any information about the vehicles involved in the accident? Such as the number of vehicles or their color? I understand that you\'re in distress, but please try to remain calm. Help is on the way. Emergency services have been dispatched to your location. Please stay on the line with me until they arrive."\n  },\n  {\n      "Street Address": "2211 Grace Underpass",\n      "City": "San Diego",\n      "County": "San Diego County",\n      "Incident": "Structure Fire",\n      "Synthetic Call": "This is the San Diego County 911 center. What is the location of the emergency? Um, it\'s, um, 2211 Grace Underpass... yes, 2211 Grace Underpass. Can you please confirm the city? Is it San Diego? And is it an avenue, street, or drive? Okay, thank you for confirming. May I have your name, please? You sound a bit distressed, is everything alright? Alright, um, take your time. My name is Alex and I\'m here to help you. What seems to be the problem? Oh no, I can\'t believe this is happening! There\'s a, um, wildfure? No, I mean, wildfire near the woods behind the house! It\'s spreading really fast! Please hurry! Are you safe? Is everyone in the house safe? How many people are in immediate danger? I need to assess the level of safety and urgency for the responding units. Please let me know. I apologize if there is some background noise, it\'s quite chaotic right now. I\'m doing my best to stay focused. Just gather yourself and take a deep breath. We will get through this. Okay, I need you to stay calm and follow my instructions. First, I want you to evacuate the house immediately and make your way to a safe distance from the fire. Do not attempt to put out the fire yourself. I repeat, do not attempt to put out the fire. Please keep yourself and others away from the fire. Are there any nearby fire hydrants that the firefighters can use? This will help them in their efforts to extinguish the flames. Can you see any? If not, don\'t worry, the fire department will handle it. I understand that this is an incredibly stressful situation. Help is on the way, and I want you to know that we are doing everything we can to get there as quickly as possible. Just stay calm and let the firefighters handle the situation. They are trained professionals and they will take care of you. Please continue to update me on any changes or developments in the situation. The fire department is on its way, and they will arrive as soon as possible. Stay safe and try to remain calm."\n  },\n  {\n      "Street Address": "437 Mack Loaf",\n      "City": "Oakland",\n      "County": "Alameda County",\n      "Incident": "Structure Fire",\n      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? Um... It\'s, um, 437 Mack Loaf... yes, 437 Mack Loaf in Oakland. Can you please confirm that? Wait, let me double-check... yes, it\'s 437 Mack Loaf in Oakland. Sorry about that confusion. Is it an avenue, street, or drive? I\'m sorry, I\'m a little bit panicked right now. I\'m not sure if it\'s an avenue, street, or drive. Can you please send help quickly? And may I have your name please? Sorry, I\'m a little bit distressed. My name is... um, John. Yes, John. Please, I need help! There\'s a, um, wildfure? No, I mean, wildfire near the woods... behind the house! Oh no, I can\'t believe this is happening! Please hurry! Are there any people at risk or in immediate danger? How many people are involved? I\'m not sure. There might be people in the house nearby. I think everyone is safe for now, but I\'m not sure. Please send firefighters quickly! Hold on, please. Let me get this information to the fire department. Just one moment... [background noise and muffled voices] Okay, John, we have dispatched the firefighters. They will be there as soon as possible. In the meantime, please evacuate the area if it\'s safe to do so. Keep yourself and others away from the fire. Wait, what do you mean evacuate? I mean, we can\'t leave the neighborhood, can we? [crying in the background] Please, hurry! We need help! I\'m scared! Oh no, this is terrible! I understand your concern, John, but it\'s important to prioritize your safety. If the firefighters arrive and it\'s safe to stay, they will assess the situation and provide further instructions. Please stay calm and stay on the line with me. Help is on the way."\n  },\n  {\n      "Street Address": "041 Dylan Estate",\n      "City": "San Francisco",\n      "County": "San Francisco County",\n      "Incident": "Structure Fire",\n      "Synthetic Call": "San Francisco County Dispatch, please state the nature of your emergency. Um, I\'m near... um... 041 Dylan Estate? No, wait, yes, 041 Dylan Estate! There\'s a structure fire! I think... it looks like a building might be on fire? Or just really smoky? I\'m not sure! Please send help! My name is... um... sorry, I... I can\'t remember right now, I\'m just really scared! There\'s so much smoke! I\'m worried about the people inside and their pets! Oh God, what should I do? Is someone else there with you? I heard shouting. No, no, I\'m alone, it was probably just me screaming. I\'m so sorry, I\'m just really scared. Please hurry! The address is 041 Dylan Estate, San Francisco. I think it\'s a structure fire. Is that on Elm Street or Elm Avenue? Um, I\'m not sure, I think... maybe... Elm Avenue? Can you please clarify? Oh, God, there\'s a massive... wildf-fire, or, wildfire in the woods! I can see it from where I am! It\'s spreading quickly! I\'m so scared for my safety and my belongings! Please send help right away, I don\'t know what to do! Oh, my God, what if it reaches my house? Can you please tell me what to do?"\n  }\n]\n'), type='text')], created_at=1703099918, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')
+2023-12-20 11:18:38,888:INFO:Latest Message Value: [
+  {
+      "Street Address": "86309 Mary Station",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Missing Person",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? It's, um, 86309 Mary Station, Oakland... yes, 86309 Mary Station. Can you please clarify the city? Is it Oakland? And is Mary Station an avenue, street, or drive? Alright, thank you. Can I have your name please? Sorry, I'm a bit distressed... my name is... um... Lisa. There's, um, a missing person near 86309 Mary Station in Oakland. I think it's spelled M-I-S-S-I-N-G P-E-R-S-O-N. No, wait, I mean M-I-S-S-I-N-G P-E-R-S-O-N. Sorry, I'm just really anxious right now. There's a missing person near the woods behind the house! Please help! Are there any other people in danger? How many people are involved? Is everyone safe? Please hurry! There's a lot of noise in the background... voices... chaos... Oh no, I can't believe this is happening! Please, hurry!"
+  },
+  {
+      "Street Address": "2638 Rasmussen Ways",
+      "City": "Los Angeles",
+      "County": "Los Angeles County",
+      "Incident": "Car Accident",
+      "Synthetic Call": "This is the Los Angeles County 911 center. What is the location of the emergency? Um, it's, um, 2638 Rasmussen Ways, yes, 2638 Rasmussen Ways. Could you please clarify whether it's an avenue, street, or drive? Okay, Rasmussen Ways, got it. Can I please have your name? I'm sorry, I didn't quite catch that. Could you repeat your name again? Okay, thank you. Now, what seems to be the nature of the incident? There's a, um, car, no, I mean, a car accident. There's been a car accident. Oh no, I can't believe this is happening! Is everyone involved in the accident okay? How many people are involved? Are they safe? Just to clarify, how many people are injured? Are they conscious? Sir, could you please try to speak louder? I can barely hear you. Is there anyone who needs immediate medical attention? Please hurry! I'm sorry, but I'm having trouble hearing you clearly. Is there any unusual background noise or voices you can hear? Maybe from the accident scene? If you can, please try to describe the situation again. It's really hard to make out what you're saying. Oh no, I'm sorry, I seem to have misunderstood you. Did you say there's a fire? Is there a fire near the accident location? Is the fire spreading? Please provide any additional information about the fire. I'm sorry, I didn't quite catch that. Is there anyone trapped inside the vehicles? Can you confirm if all individuals are out of harm's way? Are there any other potential hazards I should be aware of at the accident scene? I'm sorry, but I'm having difficulty understanding your last statement. Could you please repeat that? And can you provide any information about the vehicles involved in the accident? Such as the number of vehicles or their color? I understand that you're in distress, but please try to remain calm. Help is on the way. Emergency services have been dispatched to your location. Please stay on the line with me until they arrive."
+  },
+  {
+      "Street Address": "2211 Grace Underpass",
+      "City": "San Diego",
+      "County": "San Diego County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the San Diego County 911 center. What is the location of the emergency? Um, it's, um, 2211 Grace Underpass... yes, 2211 Grace Underpass. Can you please confirm the city? Is it San Diego? And is it an avenue, street, or drive? Okay, thank you for confirming. May I have your name, please? You sound a bit distressed, is everything alright? Alright, um, take your time. My name is Alex and I'm here to help you. What seems to be the problem? Oh no, I can't believe this is happening! There's a, um, wildfure? No, I mean, wildfire near the woods behind the house! It's spreading really fast! Please hurry! Are you safe? Is everyone in the house safe? How many people are in immediate danger? I need to assess the level of safety and urgency for the responding units. Please let me know. I apologize if there is some background noise, it's quite chaotic right now. I'm doing my best to stay focused. Just gather yourself and take a deep breath. We will get through this. Okay, I need you to stay calm and follow my instructions. First, I want you to evacuate the house immediately and make your way to a safe distance from the fire. Do not attempt to put out the fire yourself. I repeat, do not attempt to put out the fire. Please keep yourself and others away from the fire. Are there any nearby fire hydrants that the firefighters can use? This will help them in their efforts to extinguish the flames. Can you see any? If not, don't worry, the fire department will handle it. I understand that this is an incredibly stressful situation. Help is on the way, and I want you to know that we are doing everything we can to get there as quickly as possible. Just stay calm and let the firefighters handle the situation. They are trained professionals and they will take care of you. Please continue to update me on any changes or developments in the situation. The fire department is on its way, and they will arrive as soon as possible. Stay safe and try to remain calm."
+  },
+  {
+      "Street Address": "437 Mack Loaf",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? Um... It's, um, 437 Mack Loaf... yes, 437 Mack Loaf in Oakland. Can you please confirm that? Wait, let me double-check... yes, it's 437 Mack Loaf in Oakland. Sorry about that confusion. Is it an avenue, street, or drive? I'm sorry, I'm a little bit panicked right now. I'm not sure if it's an avenue, street, or drive. Can you please send help quickly? And may I have your name please? Sorry, I'm a little bit distressed. My name is... um, John. Yes, John. Please, I need help! There's a, um, wildfure? No, I mean, wildfire near the woods... behind the house! Oh no, I can't believe this is happening! Please hurry! Are there any people at risk or in immediate danger? How many people are involved? I'm not sure. There might be people in the house nearby. I think everyone is safe for now, but I'm not sure. Please send firefighters quickly! Hold on, please. Let me get this information to the fire department. Just one moment... [background noise and muffled voices] Okay, John, we have dispatched the firefighters. They will be there as soon as possible. In the meantime, please evacuate the area if it's safe to do so. Keep yourself and others away from the fire. Wait, what do you mean evacuate? I mean, we can't leave the neighborhood, can we? [crying in the background] Please, hurry! We need help! I'm scared! Oh no, this is terrible! I understand your concern, John, but it's important to prioritize your safety. If the firefighters arrive and it's safe to stay, they will assess the situation and provide further instructions. Please stay calm and stay on the line with me. Help is on the way."
+  },
+  {
+      "Street Address": "041 Dylan Estate",
+      "City": "San Francisco",
+      "County": "San Francisco County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "San Francisco County Dispatch, please state the nature of your emergency. Um, I'm near... um... 041 Dylan Estate? No, wait, yes, 041 Dylan Estate! There's a structure fire! I think... it looks like a building might be on fire? Or just really smoky? I'm not sure! Please send help! My name is... um... sorry, I... I can't remember right now, I'm just really scared! There's so much smoke! I'm worried about the people inside and their pets! Oh God, what should I do? Is someone else there with you? I heard shouting. No, no, I'm alone, it was probably just me screaming. I'm so sorry, I'm just really scared. Please hurry! The address is 041 Dylan Estate, San Francisco. I think it's a structure fire. Is that on Elm Street or Elm Avenue? Um, I'm not sure, I think... maybe... Elm Avenue? Can you please clarify? Oh, God, there's a massive... wildf-fire, or, wildfire in the woods! I can see it from where I am! It's spreading quickly! I'm so scared for my safety and my belongings! Please send help right away, I don't know what to do! Oh, my God, what if it reaches my house? Can you please tell me what to do?"
+  }
+]
+
+2023-12-20 11:18:39,136:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:39,290:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_l3h6hDzdQKkTamiQjBZJUkSH "HTTP/1.1 200 OK"
+2023-12-20 11:18:39,291:INFO:run_assistant_json asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a: In progress...
+2023-12-20 11:18:40,001:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_6Xvq9XuSNrO5If3UDkSoJNbJ "HTTP/1.1 200 OK"
+2023-12-20 11:18:40,005:INFO:Run completed asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD
+2023-12-20 11:18:40,096:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:40,099:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_YD6iRZd35L1ZW27ephKl88u0', assistant_id='asst_d8CFlL46eNmIbKmYFE1P8bpX', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_004",\n  "Call_ID": "0059"\n}'), type='text')], created_at=1703099915, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_6Xvq9XuSNrO5If3UDkSoJNbJ', thread_id='thread_G6YWHzWosOKFHlrCnG0ZSnKD')], object='list', first_id='msg_YD6iRZd35L1ZW27ephKl88u0', last_id='msg_YD6iRZd35L1ZW27ephKl88u0', has_more=True)
+2023-12-20 11:18:40,100:INFO:Original String: {
+  "Incident_ID": "WFA_004",
+  "Call_ID": "0059"
+}
+2023-12-20 11:18:40,100:INFO:Assistant Classification: Incident ID: WFA_004, Call ID: 0059
+2023-12-20 11:18:40,183:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra "HTTP/1.1 200 OK"
+2023-12-20 11:18:40,315:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1 "HTTP/1.1 200 OK"
+2023-12-20 11:18:40,317:INFO:Incident Thread ID: thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:40,407:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages "HTTP/1.1 400 Bad Request"
+2023-12-20 11:18:40,407:ERROR:Error during processing: Error code: 400 - {'error': {'message': "Can't add messages to thread_XPjVwPddzmwFJY5b8vnoZ0X1 while a run run_4pZhUEpiAjXenTX81BI6pCjI is active.", 'type': 'invalid_request_error', 'param': None, 'code': None}}
+2023-12-20 11:18:40,409:INFO:127.0.0.1 - - [20/Dec/2023 11:18:40] "[35m[1mPOST /process HTTP/1.1[0m" 500 -
+2023-12-20 11:18:41,876:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_4pZhUEpiAjXenTX81BI6pCjI "HTTP/1.1 200 OK"
+2023-12-20 11:18:41,879:INFO:Run completed asst_5wJgdVPM5ZFYvjK309g8Agvy and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:41,963:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:41,968:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_kOtUI0w4JY1QPktb8lxh8CgM', assistant_id='asst_5wJgdVPM5ZFYvjK309g8Agvy', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "FW20231102",\n  "Call_ID": "20231102-1020-3456",\n  "Coordinates": [34.2257, -118.0329],\n  "Address": "Near Pine Forest, Route 20",\n  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",\n  "Severity_Rating": "Moderate",\n  "Environmental_Conditions": "Dry weather, moderate winds",\n  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched. Coordinate with forest service. Check for hiking groups in the area.",\n  "Evacuation_Advisories": []\n}'), type='text')], created_at=1703099917, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_4pZhUEpiAjXenTX81BI6pCjI', thread_id='thread_XPjVwPddzmwFJY5b8vnoZ0X1')], object='list', first_id='msg_kOtUI0w4JY1QPktb8lxh8CgM', last_id='msg_kOtUI0w4JY1QPktb8lxh8CgM', has_more=True)
+2023-12-20 11:18:41,968:INFO:Original String: {
+  "Incident_ID": "FW20231102",
+  "Call_ID": "20231102-1020-3456",
+  "Coordinates": [34.2257, -118.0329],
+  "Address": "Near Pine Forest, Route 20",
+  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "Severity_Rating": "Moderate",
+  "Environmental_Conditions": "Dry weather, moderate winds",
+  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched. Coordinate with forest service. Check for hiking groups in the area.",
+  "Evacuation_Advisories": []
+}
+2023-12-20 11:18:41,971:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\inc_rep_0043.json
+2023-12-20 11:18:41,971:INFO:Standardized file path: race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0043.json
+2023-12-20 11:18:41,972:INFO:Final Payload: {
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0043.json",
+  "Call_ID": "0043",
   "Coordinate_Type": "GPS",
   "Coordinates": [
     [
-      32.8684,
-      -116.4689
+      "Near Pine Forest, Route 20"
     ]
   ],
   "Incident_ID": "WFA_004",
-  "Incident_Report": "Wildfire reported in a remote area northeast of Pine Valley, along Highway S1",
-  "Severity_Rating": "To be determined",
-  "date": "2023-12-20T05:45:14Z"
+  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "Severity_Rating": "Moderate",
+  "date": "2023-12-20T19:18:41Z"
 }
-2023-12-19 21:45:14,274:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\0145.json
-2023-12-19 21:45:14,275:INFO:127.0.0.1 - - [19/Dec/2023 21:45:14] "POST /process HTTP/1.1" 200 -
-2023-12-19 21:46:17,809:INFO:#######################################################################
-2023-12-19 21:46:17,809:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:46:17,975:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
-2023-12-19 21:46:17,977:INFO:Posted message to incoming messages thread. Message ID: msg_LU0S6AONADhpK0PpunN5SePC
-2023-12-19 21:46:18,073:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:46:18,076:INFO:Latest Message: ThreadMessage(id='msg_LU0S6AONADhpK0PpunN5SePC', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051177, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
-2023-12-19 21:46:18,076:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:46:18,341:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
-2023-12-19 21:46:18,494:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_DJoMYzx9D7TWI12VnbqGCsdE "HTTP/1.1 200 OK"
-2023-12-19 21:46:18,495:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
-2023-12-19 21:46:23,619:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_DJoMYzx9D7TWI12VnbqGCsdE "HTTP/1.1 200 OK"
-2023-12-19 21:46:23,622:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
-2023-12-19 21:46:23,713:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:46:23,715:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_xis9ylWUtd4G4OwTJHDulp7P', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051178, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_DJoMYzx9D7TWI12VnbqGCsdE', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_xis9ylWUtd4G4OwTJHDulp7P', last_id='msg_xis9ylWUtd4G4OwTJHDulp7P', has_more=True)
-2023-12-19 21:46:23,716:INFO:Original String: {'is_related_to_wildfires': True}
-2023-12-19 21:46:23,716:INFO:Message is related to wildfires: True
-2023-12-19 21:46:23,716:INFO:Processing wildfire-related message...
-2023-12-19 21:46:23,955:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
-2023-12-19 21:46:24,097:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_IzX1cmcRM0xRFATy405nBOAq "HTTP/1.1 200 OK"
-2023-12-19 21:46:24,098:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
-2023-12-19 21:46:29,247:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_IzX1cmcRM0xRFATy405nBOAq "HTTP/1.1 200 OK"
-2023-12-19 21:46:29,249:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
-2023-12-19 21:46:29,339:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:46:29,341:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_GtlRAkaZaz05dgdx4hknm4WD', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_003",\n  "Call_ID": "0145"\n}'), type='text')], created_at=1703051184, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_IzX1cmcRM0xRFATy405nBOAq', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_GtlRAkaZaz05dgdx4hknm4WD', last_id='msg_GtlRAkaZaz05dgdx4hknm4WD', has_more=True)
-2023-12-19 21:46:29,341:INFO:Original String: {
-  "Incident_ID": "WFA_003",
-  "Call_ID": "0145"
+2023-12-20 11:18:41,973:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\0043.json
+2023-12-20 11:18:41,973:INFO:Standardized file path: race-earth/src/main/python/fire-voice/fv-data/WFA_004/0043.json
+2023-12-20 11:18:41,973:INFO:Final payload: {'fireTextFile': 'race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0043.json', 'Call_ID': '0043', 'Coordinate_Type': 'GPS', 'Coordinates': [['Near Pine Forest, Route 20']], 'Incident_ID': 'WFA_004', 'Incident_Report': 'Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.', 'Severity_Rating': 'Moderate', 'date': '2023-12-20T19:18:41Z'}
+2023-12-20 11:18:41,974:INFO:127.0.0.1 - - [20/Dec/2023 11:18:41] "POST /process HTTP/1.1" 200 -
+2023-12-20 11:18:44,394:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/runs/run_l3h6hDzdQKkTamiQjBZJUkSH "HTTP/1.1 200 OK"
+2023-12-20 11:18:44,397:INFO:Run completed asst_31Ug6nGp29WPRjWH70dufjiH and thread thread_5cyljpwsXBcfLXmtC9Vcyh5a
+2023-12-20 11:18:44,486:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_5cyljpwsXBcfLXmtC9Vcyh5a/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:44,491:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_WuUGILe0yu7Ux24hHB6ghuBB', assistant_id='asst_31Ug6nGp29WPRjWH70dufjiH', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703099919, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_l3h6hDzdQKkTamiQjBZJUkSH', thread_id='thread_5cyljpwsXBcfLXmtC9Vcyh5a')], object='list', first_id='msg_WuUGILe0yu7Ux24hHB6ghuBB', last_id='msg_WuUGILe0yu7Ux24hHB6ghuBB', has_more=True)
+2023-12-20 11:18:44,491:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-20 11:18:44,492:INFO:Message is related to wildfires: True
+2023-12-20 11:18:44,492:INFO:Processing wildfire-related message...
+2023-12-20 11:18:44,774:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:44,919:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_ZqAHaJD4ivApcvZyPfxOSEr4 "HTTP/1.1 200 OK"
+2023-12-20 11:18:44,921:INFO:run_assistant_json asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD: In progress...
+2023-12-20 11:18:50,062:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/runs/run_ZqAHaJD4ivApcvZyPfxOSEr4 "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,063:INFO:Run completed asst_d8CFlL46eNmIbKmYFE1P8bpX and thread thread_G6YWHzWosOKFHlrCnG0ZSnKD
+2023-12-20 11:18:50,154:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_G6YWHzWosOKFHlrCnG0ZSnKD/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,157:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_Bltr0xRmKuzd5DAion27B4Ev', assistant_id='asst_d8CFlL46eNmIbKmYFE1P8bpX', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_004",\n  "Call_ID": "0078"\n}'), type='text')], created_at=1703099924, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_ZqAHaJD4ivApcvZyPfxOSEr4', thread_id='thread_G6YWHzWosOKFHlrCnG0ZSnKD')], object='list', first_id='msg_Bltr0xRmKuzd5DAion27B4Ev', last_id='msg_Bltr0xRmKuzd5DAion27B4Ev', has_more=True)
+2023-12-20 11:18:50,157:INFO:Original String: {
+  "Incident_ID": "WFA_004",
+  "Call_ID": "0078"
 }
-2023-12-19 21:46:29,341:INFO:Assistant Classification: Incident ID: WFA_003, Call ID: 0145
-2023-12-19 21:46:29,471:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ "HTTP/1.1 200 OK"
-2023-12-19 21:46:29,546:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
-2023-12-19 21:46:29,548:INFO:Incident Thread ID: thread_wBKJQzS3g4eK3kzYElc82dOd
-2023-12-19 21:46:29,714:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages "HTTP/1.1 200 OK"
-2023-12-19 21:46:29,716:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
-2023-12-19 21:46:29,716:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:46:30,042:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs "HTTP/1.1 200 OK"
-2023-12-19 21:46:30,189:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_TyN97kAas5kpejiE9ba9MxvP "HTTP/1.1 200 OK"
-2023-12-19 21:46:30,190:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd: In progress...
-2023-12-19 21:46:35,370:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_TyN97kAas5kpejiE9ba9MxvP "HTTP/1.1 200 OK"
-2023-12-19 21:46:35,371:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd
-2023-12-19 21:46:35,524:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:46:35,527:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_6psDYgxenpRJDqOGU2WJsjcy', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8304, -116.5116]],\n  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",\n  "Severity_Rating": "Not specified"\n}'), type='text')], created_at=1703051191, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_TyN97kAas5kpejiE9ba9MxvP', thread_id='thread_wBKJQzS3g4eK3kzYElc82dOd')], object='list', first_id='msg_6psDYgxenpRJDqOGU2WJsjcy', last_id='msg_6psDYgxenpRJDqOGU2WJsjcy', has_more=True)
-2023-12-19 21:46:35,527:INFO:Original String: {
-  "Coordinates": [[32.8304, -116.5116]],
-  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],
-  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
-  "Severity_Rating": "Not specified"
+2023-12-20 11:18:50,157:INFO:Assistant Classification: Incident ID: WFA_004, Call ID: 0078
+2023-12-20 11:18:50,241:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YxStmlWKNZVo4dIVAQG6PHra "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,317:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1 "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,318:INFO:Incident Thread ID: thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:50,437:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,441:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
+2023-12-20 11:18:50,441:INFO:Processing message: [
+  {
+      "Street Address": "86309 Mary Station",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Missing Person",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? It's, um, 86309 Mary Station, Oakland... yes, 86309 Mary Station. Can you please clarify the city? Is it Oakland? And is Mary Station an avenue, street, or drive? Alright, thank you. Can I have your name please? Sorry, I'm a bit distressed... my name is... um... Lisa. There's, um, a missing person near 86309 Mary Station in Oakland. I think it's spelled M-I-S-S-I-N-G P-E-R-S-O-N. No, wait, I mean M-I-S-S-I-N-G P-E-R-S-O-N. Sorry, I'm just really anxious right now. There's a missing person near the woods behind the house! Please help! Are there any other people in danger? How many people are involved? Is everyone safe? Please hurry! There's a lot of noise in the background... voices... chaos... Oh no, I can't believe this is happening! Please, hurry!"
+  },
+  {
+      "Street Address": "2638 Rasmussen Ways",
+      "City": "Los Angeles",
+      "County": "Los Angeles County",
+      "Incident": "Car Accident",
+      "Synthetic Call": "This is the Los Angeles County 911 center. What is the location of the emergency? Um, it's, um, 2638 Rasmussen Ways, yes, 2638 Rasmussen Ways. Could you please clarify whether it's an avenue, street, or drive? Okay, Rasmussen Ways, got it. Can I please have your name? I'm sorry, I didn't quite catch that. Could you repeat your name again? Okay, thank you. Now, what seems to be the nature of the incident? There's a, um, car, no, I mean, a car accident. There's been a car accident. Oh no, I can't believe this is happening! Is everyone involved in the accident okay? How many people are involved? Are they safe? Just to clarify, how many people are injured? Are they conscious? Sir, could you please try to speak louder? I can barely hear you. Is there anyone who needs immediate medical attention? Please hurry! I'm sorry, but I'm having trouble hearing you clearly. Is there any unusual background noise or voices you can hear? Maybe from the accident scene? If you can, please try to describe the situation again. It's really hard to make out what you're saying. Oh no, I'm sorry, I seem to have misunderstood you. Did you say there's a fire? Is there a fire near the accident location? Is the fire spreading? Please provide any additional information about the fire. I'm sorry, I didn't quite catch that. Is there anyone trapped inside the vehicles? Can you confirm if all individuals are out of harm's way? Are there any other potential hazards I should be aware of at the accident scene? I'm sorry, but I'm having difficulty understanding your last statement. Could you please repeat that? And can you provide any information about the vehicles involved in the accident? Such as the number of vehicles or their color? I understand that you're in distress, but please try to remain calm. Help is on the way. Emergency services have been dispatched to your location. Please stay on the line with me until they arrive."
+  },
+  {
+      "Street Address": "2211 Grace Underpass",
+      "City": "San Diego",
+      "County": "San Diego County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the San Diego County 911 center. What is the location of the emergency? Um, it's, um, 2211 Grace Underpass... yes, 2211 Grace Underpass. Can you please confirm the city? Is it San Diego? And is it an avenue, street, or drive? Okay, thank you for confirming. May I have your name, please? You sound a bit distressed, is everything alright? Alright, um, take your time. My name is Alex and I'm here to help you. What seems to be the problem? Oh no, I can't believe this is happening! There's a, um, wildfure? No, I mean, wildfire near the woods behind the house! It's spreading really fast! Please hurry! Are you safe? Is everyone in the house safe? How many people are in immediate danger? I need to assess the level of safety and urgency for the responding units. Please let me know. I apologize if there is some background noise, it's quite chaotic right now. I'm doing my best to stay focused. Just gather yourself and take a deep breath. We will get through this. Okay, I need you to stay calm and follow my instructions. First, I want you to evacuate the house immediately and make your way to a safe distance from the fire. Do not attempt to put out the fire yourself. I repeat, do not attempt to put out the fire. Please keep yourself and others away from the fire. Are there any nearby fire hydrants that the firefighters can use? This will help them in their efforts to extinguish the flames. Can you see any? If not, don't worry, the fire department will handle it. I understand that this is an incredibly stressful situation. Help is on the way, and I want you to know that we are doing everything we can to get there as quickly as possible. Just stay calm and let the firefighters handle the situation. They are trained professionals and they will take care of you. Please continue to update me on any changes or developments in the situation. The fire department is on its way, and they will arrive as soon as possible. Stay safe and try to remain calm."
+  },
+  {
+      "Street Address": "437 Mack Loaf",
+      "City": "Oakland",
+      "County": "Alameda County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "This is the Alameda County 911 center. What is the location of the emergency? Um... It's, um, 437 Mack Loaf... yes, 437 Mack Loaf in Oakland. Can you please confirm that? Wait, let me double-check... yes, it's 437 Mack Loaf in Oakland. Sorry about that confusion. Is it an avenue, street, or drive? I'm sorry, I'm a little bit panicked right now. I'm not sure if it's an avenue, street, or drive. Can you please send help quickly? And may I have your name please? Sorry, I'm a little bit distressed. My name is... um, John. Yes, John. Please, I need help! There's a, um, wildfure? No, I mean, wildfire near the woods... behind the house! Oh no, I can't believe this is happening! Please hurry! Are there any people at risk or in immediate danger? How many people are involved? I'm not sure. There might be people in the house nearby. I think everyone is safe for now, but I'm not sure. Please send firefighters quickly! Hold on, please. Let me get this information to the fire department. Just one moment... [background noise and muffled voices] Okay, John, we have dispatched the firefighters. They will be there as soon as possible. In the meantime, please evacuate the area if it's safe to do so. Keep yourself and others away from the fire. Wait, what do you mean evacuate? I mean, we can't leave the neighborhood, can we? [crying in the background] Please, hurry! We need help! I'm scared! Oh no, this is terrible! I understand your concern, John, but it's important to prioritize your safety. If the firefighters arrive and it's safe to stay, they will assess the situation and provide further instructions. Please stay calm and stay on the line with me. Help is on the way."
+  },
+  {
+      "Street Address": "041 Dylan Estate",
+      "City": "San Francisco",
+      "County": "San Francisco County",
+      "Incident": "Structure Fire",
+      "Synthetic Call": "San Francisco County Dispatch, please state the nature of your emergency. Um, I'm near... um... 041 Dylan Estate? No, wait, yes, 041 Dylan Estate! There's a structure fire! I think... it looks like a building might be on fire? Or just really smoky? I'm not sure! Please send help! My name is... um... sorry, I... I can't remember right now, I'm just really scared! There's so much smoke! I'm worried about the people inside and their pets! Oh God, what should I do? Is someone else there with you? I heard shouting. No, no, I'm alone, it was probably just me screaming. I'm so sorry, I'm just really scared. Please hurry! The address is 041 Dylan Estate, San Francisco. I think it's a structure fire. Is that on Elm Street or Elm Avenue? Um, I'm not sure, I think... maybe... Elm Avenue? Can you please clarify? Oh, God, there's a massive... wildf-fire, or, wildfire in the woods! I can see it from where I am! It's spreading quickly! I'm so scared for my safety and my belongings! Please send help right away, I don't know what to do! Oh, my God, what if it reaches my house? Can you please tell me what to do?"
+  }
+]
+
+2023-12-20 11:18:50,707:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,854:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_ZSMFBJMWJ2qd0476uGgWwtfJ "HTTP/1.1 200 OK"
+2023-12-20 11:18:50,857:INFO:run_assistant_json asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1: In progress...
+2023-12-20 11:18:56,029:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_ZSMFBJMWJ2qd0476uGgWwtfJ "HTTP/1.1 200 OK"
+2023-12-20 11:18:56,031:INFO:Run completed asst_eYql7FNoMtfW5xImXZLlXHyE and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:18:56,131:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:18:56,135:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_5yPN8t1wO0MVaQ0YYmH5GbfO', assistant_id='asst_eYql7FNoMtfW5xImXZLlXHyE', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [34.1914, -118.3921],\n  "Address": ["Pine Forest, Route 20", "2211 Grace Underpass"],\n  "Incident_Report": "Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.",\n  "Severity_Rating": "High"\n}'), type='text')], created_at=1703099930, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_ZSMFBJMWJ2qd0476uGgWwtfJ', thread_id='thread_XPjVwPddzmwFJY5b8vnoZ0X1')], object='list', first_id='msg_5yPN8t1wO0MVaQ0YYmH5GbfO', last_id='msg_5yPN8t1wO0MVaQ0YYmH5GbfO', has_more=True)
+2023-12-20 11:18:56,135:INFO:Original String: {
+  "Coordinates": [34.1914, -118.3921],
+  "Address": ["Pine Forest, Route 20", "2211 Grace Underpass"],
+  "Incident_Report": "Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.",
+  "Severity_Rating": "High"
 }
-2023-12-19 21:46:35,527:INFO:Geolocation Data: {'Coordinates': [[32.8304, -116.5116]], 'Address': ['Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1', 'Severity_Rating': 'Not specified'}
-2023-12-19 21:46:35,527:INFO:Final Payload: {
-  "Call_ID": "0145",
+2023-12-20 11:18:56,135:INFO:Geolocation Data: {'Coordinates': [34.1914, -118.3921], 'Address': ['Pine Forest, Route 20', '2211 Grace Underpass'], 'Incident_Report': 'Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.', 'Severity_Rating': 'High'}
+2023-12-20 11:18:56,405:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs "HTTP/1.1 200 OK"
+2023-12-20 11:18:56,561:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_kbutFR8xyAXYy93QXUaA9DJ3 "HTTP/1.1 200 OK"
+2023-12-20 11:18:56,562:INFO:run_assistant_json asst_5wJgdVPM5ZFYvjK309g8Agvy and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1: In progress...
+2023-12-20 11:19:01,714:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/runs/run_kbutFR8xyAXYy93QXUaA9DJ3 "HTTP/1.1 200 OK"
+2023-12-20 11:19:01,716:INFO:Run completed asst_5wJgdVPM5ZFYvjK309g8Agvy and thread thread_XPjVwPddzmwFJY5b8vnoZ0X1
+2023-12-20 11:19:01,815:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_XPjVwPddzmwFJY5b8vnoZ0X1/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-20 11:19:01,818:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_MtNwWTka4DLcpk6jB6R78IdX', assistant_id='asst_5wJgdVPM5ZFYvjK309g8Agvy', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WF20231102",\n  "Call_ID": "20231102-1020-3456",\n  "Coordinates": [[34.2257, -118.0329], [34.1914, -118.3921]],\n  "Address": ["Near Pine Forest, Route 20", "2211 Grace Underpass"],\n  "Incident_Report": "Multiple reports of wildfires in different locations: Pine Forest, Route 20 and 2211 Grace Underpass.",\n  "Severity_Rating": "High",\n  "Environmental_Conditions": "Dry weather, moderate winds",\n  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched to Pine Forest, Route 20. Deploy additional aerial firefighting units to 2211 Grace Underpass. Immediate evacuation advised for both areas.",\n  "Evacuation_Advisories": ["Mandatory evacuation for areas near Pine Forest, Route 20 and 2211 Grace Underpass"]\n}'), type='text')], created_at=1703099937, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_kbutFR8xyAXYy93QXUaA9DJ3', thread_id='thread_XPjVwPddzmwFJY5b8vnoZ0X1')], object='list', first_id='msg_MtNwWTka4DLcpk6jB6R78IdX', last_id='msg_MtNwWTka4DLcpk6jB6R78IdX', has_more=True)
+2023-12-20 11:19:01,818:INFO:Original String: {
+  "Incident_ID": "WF20231102",
+  "Call_ID": "20231102-1020-3456",
+  "Coordinates": [[34.2257, -118.0329], [34.1914, -118.3921]],
+  "Address": ["Near Pine Forest, Route 20", "2211 Grace Underpass"],
+  "Incident_Report": "Multiple reports of wildfires in different locations: Pine Forest, Route 20 and 2211 Grace Underpass.",
+  "Severity_Rating": "High",
+  "Environmental_Conditions": "Dry weather, moderate winds",
+  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched to Pine Forest, Route 20. Deploy additional aerial firefighting units to 2211 Grace Underpass. Immediate evacuation advised for both areas.",
+  "Evacuation_Advisories": ["Mandatory evacuation for areas near Pine Forest, Route 20 and 2211 Grace Underpass"]
+}
+2023-12-20 11:19:01,819:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\inc_rep_0078.json
+2023-12-20 11:19:01,819:INFO:Standardized file path: race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0078.json
+2023-12-20 11:19:01,819:INFO:Final Payload: {
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0078.json",
+  "Call_ID": "0078",
   "Coordinate_Type": "GPS",
   "Coordinates": [
     [
-      32.8304,
-      -116.5116
+      34.1914,
+      -118.3921
     ]
   ],
-  "Incident_ID": "WFA_003",
-  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
-  "Severity_Rating": "Not specified",
-  "date": "2023-12-20T05:46:35Z"
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T19:19:01Z"
 }
-2023-12-19 21:46:35,529:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_003\0145.json
-2023-12-19 21:46:35,529:INFO:127.0.0.1 - - [19/Dec/2023 21:46:35] "POST /process HTTP/1.1" 200 -
-2023-12-19 21:58:08,580:INFO:#######################################################################
-2023-12-19 21:58:08,580:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:58:08,798:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages "HTTP/1.1 200 OK"
-2023-12-19 21:58:08,801:INFO:Posted message to incoming messages thread. Message ID: msg_8VDI9I8fhPlRE3U0zCJjmzwU
-2023-12-19 21:58:08,951:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:58:08,954:INFO:Latest Message: ThreadMessage(id='msg_8VDI9I8fhPlRE3U0zCJjmzwU', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value="Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach."), type='text')], created_at=1703051888, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')
-2023-12-19 21:58:08,954:INFO:Latest Message Value: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:58:09,272:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs "HTTP/1.1 200 OK"
-2023-12-19 21:58:09,419:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_7QaZvDonBIm6BKDjbDlDmloR "HTTP/1.1 200 OK"
-2023-12-19 21:58:09,420:INFO:run_assistant_json asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o: In progress...
-2023-12-19 21:58:14,608:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/runs/run_7QaZvDonBIm6BKDjbDlDmloR "HTTP/1.1 200 OK"
-2023-12-19 21:58:14,609:INFO:Run completed asst_KifyXoCttDyIoYfMHqfLYWEQ and thread thread_kF6tGvUgb6b40pomzZYLB58o
-2023-12-19 21:58:14,741:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_kF6tGvUgb6b40pomzZYLB58o/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:58:14,743:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', assistant_id='asst_KifyXoCttDyIoYfMHqfLYWEQ', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703051890, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_7QaZvDonBIm6BKDjbDlDmloR', thread_id='thread_kF6tGvUgb6b40pomzZYLB58o')], object='list', first_id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', last_id='msg_AJPExxvsxnkn9eOuGsV3ohoJ', has_more=True)
-2023-12-19 21:58:14,743:INFO:Original String: {'is_related_to_wildfires': True}
-2023-12-19 21:58:14,744:INFO:Message is related to wildfires: True
-2023-12-19 21:58:14,744:INFO:Processing wildfire-related message...
-2023-12-19 21:58:15,102:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs "HTTP/1.1 200 OK"
-2023-12-19 21:58:15,283:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_WQsTXbgiJZtFLeokOOCh0UO5 "HTTP/1.1 200 OK"
-2023-12-19 21:58:15,284:INFO:run_assistant_json asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr: In progress...
-2023-12-19 21:58:20,453:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/runs/run_WQsTXbgiJZtFLeokOOCh0UO5 "HTTP/1.1 200 OK"
-2023-12-19 21:58:20,455:INFO:Run completed asst_jpE4Mn3qZAAS8ZjP7mN8PypZ and thread thread_UErrvcONwKAiBmbNyu9r95gr
-2023-12-19 21:58:20,611:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_UErrvcONwKAiBmbNyu9r95gr/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:58:20,613:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_GqptBSIsp9GHvZqZb3Xup9hu', assistant_id='asst_jpE4Mn3qZAAS8ZjP7mN8PypZ', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Incident_ID": "WFA_003",\n  "Call_ID": "0176"\n}'), type='text')], created_at=1703051896, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_WQsTXbgiJZtFLeokOOCh0UO5', thread_id='thread_UErrvcONwKAiBmbNyu9r95gr')], object='list', first_id='msg_GqptBSIsp9GHvZqZb3Xup9hu', last_id='msg_GqptBSIsp9GHvZqZb3Xup9hu', has_more=True)
-2023-12-19 21:58:20,613:INFO:Original String: {
-  "Incident_ID": "WFA_003",
-  "Call_ID": "0176"
-}
-2023-12-19 21:58:20,613:INFO:Assistant Classification: Incident ID: WFA_003, Call ID: 0176
-2023-12-19 21:58:20,760:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_zSXf6fOrwLKhwrDggL73OWyJ "HTTP/1.1 200 OK"
-2023-12-19 21:58:20,927:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd "HTTP/1.1 200 OK"
-2023-12-19 21:58:20,928:INFO:Incident Thread ID: thread_wBKJQzS3g4eK3kzYElc82dOd
-2023-12-19 21:58:21,120:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages "HTTP/1.1 200 OK"
-2023-12-19 21:58:21,123:INFO:%%%%%%%%%%% 1%%%%%%%%%%%%
-2023-12-19 21:58:21,123:INFO:Processing message: Fire Engines there is a fire. Please proceed to the marked area located northeast of Pine Valley, along the Sunrise National Scenic Byway, also known as Highway S1. The location is slightly northwest of the point where the Scenic Byway intersects with Old Highway 80. It is situated in a remote area that appears to be within a short radius north of the Cottonwood Falls area and southeast of Arrowhead Mountain. Make sure to prepare for potentially limited access and rough terrain, as it's away from dense residential zones. The exact coordinates for the red pin will be provided for precise navigation and approach.
-2023-12-19 21:58:21,433:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs "HTTP/1.1 200 OK"
-2023-12-19 21:58:21,577:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_0vClZntpM66idLu3tjHqu6h9 "HTTP/1.1 200 OK"
-2023-12-19 21:58:21,579:INFO:run_assistant_json asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd: In progress...
-2023-12-19 21:58:27,270:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/runs/run_0vClZntpM66idLu3tjHqu6h9 "HTTP/1.1 200 OK"
-2023-12-19 21:58:27,271:INFO:Run completed asst_XlYevmdHzGER3kxXn3FjboIA and thread thread_wBKJQzS3g4eK3kzYElc82dOd
-2023-12-19 21:58:27,413:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wBKJQzS3g4eK3kzYElc82dOd/messages?limit=1&order=desc "HTTP/1.1 200 OK"
-2023-12-19 21:58:27,418:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', assistant_id='asst_XlYevmdHzGER3kxXn3FjboIA', content=[MessageContentText(text=Text(annotations=[], value='{\n  "Coordinates": [[32.8304, -116.5116]],\n  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],\n  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",\n  "Severity_Rating": "Not specified"\n}'), type='text')], created_at=1703051902, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_0vClZntpM66idLu3tjHqu6h9', thread_id='thread_wBKJQzS3g4eK3kzYElc82dOd')], object='list', first_id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', last_id='msg_jQoQCH9uNw3mZCHSZAAlSH1H', has_more=True)
-2023-12-19 21:58:27,418:INFO:Original String: {
-  "Coordinates": [[32.8304, -116.5116]],
-  "Address": ["Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain"],
-  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
-  "Severity_Rating": "Not specified"
-}
-2023-12-19 21:58:27,419:INFO:Geolocation Data: {'Coordinates': [[32.8304, -116.5116]], 'Address': ['Northeast of Pine Valley along Sunrise National Scenic Byway, Old Highway 80 intersection, Cottonwood Falls area, southeast of Arrowhead Mountain'], 'Incident_Report': 'Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1', 'Severity_Rating': 'Not specified'}
-2023-12-19 21:58:27,419:INFO:Final Payload: {
-  "Call_ID": "0176",
-  "Coordinate_Type": "GPS",
-  "Coordinates": [
-    [
-      32.8304,
-      -116.5116
-    ]
-  ],
-  "Incident_ID": "WFA_003",
-  "Incident_Report": "Wildfire located northeast of Pine Valley along Sunrise National Scenic Byway, also known as Highway S1",
-  "Severity_Rating": "Not specified",
-  "date": "2023-12-20T05:58:27Z"
-}
-2023-12-19 21:58:27,421:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_003\0176.json
-2023-12-19 21:58:27,422:INFO:127.0.0.1 - - [19/Dec/2023 21:58:27] "POST /process HTTP/1.1" 200 -
+2023-12-20 11:19:01,820:INFO:Payload saved to race-earth/src/main/python/fire-voice/fv-data\WFA_004\0078.json
+2023-12-20 11:19:01,820:INFO:Standardized file path: race-earth/src/main/python/fire-voice/fv-data/WFA_004/0078.json
+2023-12-20 11:19:01,820:INFO:Final payload: {'fireTextFile': 'race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0078.json', 'Call_ID': '0078', 'Coordinate_Type': 'GPS', 'Coordinates': [[34.1914, -118.3921]], 'Incident_ID': 'WFA_004', 'Incident_Report': 'Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.', 'Severity_Rating': 'High', 'date': '2023-12-20T19:19:01Z'}
+2023-12-20 11:19:01,821:INFO:127.0.0.1 - - [20/Dec/2023 11:19:01] "POST /process HTTP/1.1" 200 -
+2023-12-20 11:20:40,433:INFO: * Detected change in 'C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee\\race-earth\\src\\main\\python\\fire-voice\\apiV1.py', reloading
+2023-12-20 11:20:40,682:INFO: * Restarting with stat

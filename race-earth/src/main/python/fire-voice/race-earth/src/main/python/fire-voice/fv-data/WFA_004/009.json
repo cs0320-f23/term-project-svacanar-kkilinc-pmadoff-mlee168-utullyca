@@ -1,0 +1,26 @@
+{
+  "Call_ID": "009",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.2732,
+      -118.7818
+    ],
+    [
+      34.2129,
+      -118.9614
+    ],
+    [
+      32.7157,
+      -117.1611
+    ],
+    [
+      37.7749,
+      -122.4194
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Multiple wildfires and other emergencies reported",
+  "Severity_Rating": "Varies",
+  "date": "2023-12-20T08:06:21Z"
+}

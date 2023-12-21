@@ -1,0 +1,20 @@
+{
+  "Incident_ID": "WFA_789",
+  "Call_ID": "FW20231102",
+  "Coordinates": [
+    [
+      34.2324,
+      -117.5942
+    ]
+  ],
+  "Address": [
+    "Near Pine Forest, Route 20, California"
+  ],
+  "Incident_Report": "Wildfire reported near Pine Forest, Route 20, California. Moderate severity reported with smoke and flames in the forest area. No immediate danger to the caller, but potential risk to hiking groups in the area.",
+  "Severity_Rating": "Moderate",
+  "Environmental_Conditions": "Dry weather reported in the area, contributing to potential wildfire spread",
+  "Evacuation_Advisories": [
+    "Advisory for hikers and any nearby settlements to be prepared for potential evacuation"
+  ],
+  "Unit_Dispatch_Instructions": "Continue coordinating with forest service. Prioritize aerial resources for reconnaissance and potential water drop operations in the area near Pine Forest, Route 20."
+}

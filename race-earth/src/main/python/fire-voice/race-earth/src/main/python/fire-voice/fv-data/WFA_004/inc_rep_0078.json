@@ -1,0 +1,25 @@
+{
+  "Incident_ID": "WF20231102",
+  "Call_ID": "20231102-1020-3456",
+  "Coordinates": [
+    [
+      34.2257,
+      -118.0329
+    ],
+    [
+      34.1914,
+      -118.3921
+    ]
+  ],
+  "Address": [
+    "Near Pine Forest, Route 20",
+    "2211 Grace Underpass"
+  ],
+  "Incident_Report": "Multiple reports of wildfires in different locations: Pine Forest, Route 20 and 2211 Grace Underpass.",
+  "Severity_Rating": "High",
+  "Environmental_Conditions": "Dry weather, moderate winds",
+  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched to Pine Forest, Route 20. Deploy additional aerial firefighting units to 2211 Grace Underpass. Immediate evacuation advised for both areas.",
+  "Evacuation_Advisories": [
+    "Mandatory evacuation for areas near Pine Forest, Route 20 and 2211 Grace Underpass"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0078.json",
+  "Call_ID": "0078",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.1914,
+      -118.3921
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Large wildfire spotted near the woods behind the houses. Caller reported the fire is spreading fast. Immediate evacuation advised.",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T19:19:01Z"
+}

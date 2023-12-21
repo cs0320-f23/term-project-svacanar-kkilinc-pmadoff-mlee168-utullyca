@@ -1,0 +1,19 @@
+{
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data\\WFA_005\\inc_rep_OOL400.json",
+  "Call_ID": "OOL400",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.1973,
+      -117.5758
+    ],
+    [
+      34.2324,
+      -117.5942
+    ]
+  ],
+  "Incident_ID": "WFA_005",
+  "Incident_Report": "Wildfires reported near Highway 34, the old mill, and Pine Forest, close to mile marker 27, the old hiking trail entrance, and Route 20.",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T18:34:14Z"
+}

@@ -52,7 +52,7 @@ random.shuffle(mocked_data)
 #########################################################
 ## Flask Functions
 def initialize_fireVoice(config):
-    global client, assistantWildfireClassifier, assistantFireVoice, assistantFireGeolocation, data_dir
+    global client, assistantWildfireClassifier, assistantFireVoice, assistantFireGeolocation, assistantIncidentReport, data_dir
     global incoming_messages_thread_id, wildfire_raw_messages_thread_id, wildfire_messages_thread_id
 
     client = openai.Client(api_key=config['openai_api_key'])
@@ -116,6 +116,15 @@ def initialize_fireVoice(config):
         model="gpt-3.5-turbo-1106"
     )
 
+    assistantIncidentReport = client.beta.assistants.create(
+        name="Incident Report Assistant",
+        instructions=(
+            "Your vital role is to synthesize all available information from the entire thread, focusing predominantly on the most recent messages, to generate a detailed and technical incident report pertaining to a wildfire. This report should assist in evacuation and unit dispatching efforts. Your output must be a thorough JSON object containing keys like 'Incident_ID', 'Call_ID', 'Coordinates', 'Address', 'Incident_Report', 'Severity_Rating', 'Environmental_Conditions', 'Evacuation_Advisories', and 'Unit_Dispatch_Instructions'. Each key should be filled with the most current and relevant data, extracted and inferred from the thread. For instance, your response might look like {'Incident_ID': 'WFA_345', 'Call_ID': '3456', 'Coordinates': [[34.0522, -118.2437]], 'Address': ['456 Hillcrest Ave'], 'Incident_Report': 'Rapidly spreading wildfire in northern Los Angeles', 'Severity_Rating': 'Critical', 'Environmental_Conditions': 'Strong winds, dry weather', 'Evacuation_Advisories': ['Mandatory evacuation for areas north of Sunset Blvd'], 'Unit_Dispatch_Instructions': 'Deploy additional aerial firefighting units to northern sector'}. Focus on providing actionable intelligence, predicting wildfire spread, and detailing environmental conditions. Ensure your analysis is comprehensive, technical, and aids in making informed decisions for emergency response. Write as much as you can."
+        ),
+        model="gpt-3.5-turbo-1106"
+    )
+
+
 def process_incoming_message(incoming_message):
     """
     Processes an incoming message and returns the final payload.
@@ -170,12 +179,17 @@ def process_incoming_message(incoming_message):
                 if geolocation_data is None:
                   raise ValueError(f"Geolocation data not found.")
 
+                incident_report = generate_incident_report(incident_thread_id)
+                inc_fp = save_payload(incident_id, call_id,incident_report, inc_rep=True)
+
                 # Prepare the final output payload
                 current_date = datetime.utcnow().strftime(f"%Y-%m-%dT%H:%M:%SZ")
+                proc_coords = post_process_coordinates(geolocation_data.get("Coordinates", []))
                 final_payload = {
+                    "fireTextFile": inc_fp,
                     "Call_ID": call_id,
                     "Coordinate_Type": "GPS",
-                    "Coordinates": geolocation_data.get(f"Coordinates", []),
+                    "Coordinates": proc_coords,
                     "Incident_ID": incident_id,
                     "Incident_Report": geolocation_data.get(f"Incident_Report", ""),
                     "Severity_Rating": geolocation_data.get(f"Severity_Rating", ""),
@@ -358,6 +372,25 @@ def process_json(raw_string):
         logging.info(f"Error JSON string: {formatted_string}")
 
         return None
+
+def post_process_coordinates(coordinates):
+    """
+    Processes the coordinates to ensure they are in the format of a list of lists.
+
+    Args:
+    coordinates (list): The coordinates to be processed, can be a list or a list of lists.
+
+    Returns:
+    list: Processed coordinates in the format of a list of lists.
+    """
+    # Check if the coordinates are already in the correct format (list of lists)
+    if all(isinstance(coord, list) for coord in coordinates):
+        return coordinates
+    # If coordinates are a single list (incorrect format), convert to list of lists
+    elif isinstance(coordinates, list):
+        return [coordinates]
+    else:
+        raise ValueError("Invalid format for coordinates")
 #######################################################################################
 # Function to simulate wildfire text classification
 # Will run on a single thread of all incoming messages (only one message that is contiunually altered)
@@ -373,12 +406,15 @@ def get_incident_id(thread_id):
     response = run_assistant_json(assistantFireVoice.id, thread_id)
     return response.get(f"Incident_ID"), response.get(f"Call_ID")
 
-
 # Function to geolocate the coordinates / addressed from all data within a certain thread of Incident ID
 # The messages should be pushed to the thread before this is called
 # Multiple Threads (one for each Incident ID)
 def geolocate_incident(thread_id):
     response = run_assistant_json(assistantFireGeolocation.id, thread_id)
+    return response
+
+def generate_incident_report(thread_id):
+    response = run_assistant_json(assistantIncidentReport.id, thread_id)
     return response
 
 #########################################################################################
@@ -539,20 +575,43 @@ def delete_all_threads():
     for thread in all_threads:
         delete_thread(thread['id'])
 
+def post_process_fp(file_path):
+    """
+    Standardize the file path for cross-platform compatibility and handle edge cases.
+    """
+    # Replace backslashes with forward slashes for cross-platform compatibility
+    standardized_fp = file_path.replace('\\', '/')
+
+    # Remove leading and trailing whitespaces
+    standardized_fp = standardized_fp.strip()
+
+    # Replace any occurrences of double slashes with a single slash
+    standardized_fp = standardized_fp.replace('//', '/')
+
+    # Additional processing can be added here if needed
+
+    return standardized_fp
 
 # New function to handle file system operations
-def save_payload(incident_id, call_id, payload):
+def save_payload(incident_id, call_id, payload, inc_rep=False):
     # Ensure the data directory for the incident exists
     incident_dir = os.path.join(data_dir, incident_id)
     if not os.path.exists(incident_dir):
         os.makedirs(incident_dir)
 
+    # Determine the filename, prefixing if inc_rep is True
+    filename_prefix = "inc_rep_" if inc_rep else ""
+    payload_filename = os.path.join(incident_dir, f"{filename_prefix}{call_id}.json")
+
     # Save the payload to a file
-    payload_filename = os.path.join(incident_dir, f"{call_id}.json")
     with open(payload_filename, 'w') as file:
         json.dump(payload, file, indent=2)
     logging.info(f"Payload saved to {payload_filename}")
 
+    # Process the file path for standardization
+    standardized_fp = post_process_fp(payload_filename)
+    logging.info(f"Standardized file path: {standardized_fp}")
+    return standardized_fp
 
 def generate_random_call_id():
     """Generate a random call ID with 3 uppercase letters followed by 3 digits."""
@@ -586,6 +645,7 @@ def ensure_unique_call_id(incident_id, call_id):
     incident_call_ids[incident_id].append(call_id)
 
     return call_id
+
 def print_all_text_in_thread(thread_id):
     """
     Prints all text from the messages in a specified thread.
@@ -639,7 +699,7 @@ def process_messages():
 
 
 # Define the path to the log file
-log_file = 'race-earth/src/main/python/fire-voice/fv_api.log'
+log_file = 'fv_api.log'
 
 # Check if the log file exists
 if os.path.exists(log_file):
@@ -674,8 +734,15 @@ incoming_queue = queue.Queue()
 # @app.before_first_request
 # def initialize():
 #     initialize_fireVoice(mocked_config)
+#
+# import os
+# import logging
+# from flask import Flask, request, jsonify, Response
 
-# Function to process and respond to a call
+app = Flask(__name__)
+
+# Set the root directory of your repository here
+
 @app.route('/process', methods=['GET', 'POST'])
 def process_call():
     if request.method == 'GET':
@@ -683,21 +750,42 @@ def process_call():
         return Response(status=200)
 
     try:
-        incoming_message = request.json.get('message')
+        incoming_message = request.json.get('message') if request.json else None
+
+        if not incoming_message:
+            file_path = request.json.get('file') if request.json else None
+            if file_path:
+                # Normalize the file path to avoid issues with path separators on Windows
+                file_path = os.path.normpath(file_path)
+
+                # Check for unsafe path patterns
+                if '..' in file_path or file_path.startswith(('/', '\\')):
+                    raise ValueError("Unsafe file path provided")
+
+                # Construct the absolute file path
+                full_file_path = os.path.join(REPOSITORY_ROOT, file_path.lstrip('\\/'))
+
+                logging.info(f"Attempting to read from: {full_file_path}")
+
+                if os.path.isfile(full_file_path):
+                    with open(full_file_path, 'r') as file:
+                        incoming_message = file.read()
+                else:
+                    raise FileNotFoundError(f"File not found: {full_file_path}")
+
         if incoming_message:
-            # Process the message to generate final_payload
+
             final_payload = process_incoming_message(incoming_message)
             logging.info(f"Final payload: {final_payload}")
-            # Return the final_payload as the response
             return jsonify(final_payload)
         else:
-            # Handle the case where no message is provided
-            raise ValueError("No message provided")
+            raise ValueError("No message or file provided")
+
     except Exception as e:
-        # Handle any exceptions or errors that occur during processing
         error_message = str(e)
         logging.error(f"Error during processing: {error_message}")
         return jsonify({"error": error_message}), 500
+
 
 @app.route('/stopServer', methods=['GET'])
 def shutdown():
@@ -721,13 +809,15 @@ client = None
 assistantWildfireClassifier = None
 assistantFireVoice = None
 assistantFireGeolocation = None
-
+assistantIncidentReport = None
 
 # Mocked config data as a Python dictionary
 mocked_config = {
     "openai_api_key": "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",
-    "data_dir": "race-earth/src/main/python/fire-voice/fv-data"
+    "data_dir": "race-earth/src/main/python/fire-voice/fv-data",
+    "repo_root": "C:\\Users\\mason\\Desktop\\test\\ODIN-Fire-Lee"
 }
+REPOSITORY_ROOT = mocked_config["repo_root"]
 
 # Queue to hold the incoming messages
 incoming_queue = queue.Queue()

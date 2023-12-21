@@ -1,0 +1,14 @@
+{
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data/WFA_004/inc_rep_0043.json",
+  "Call_ID": "0043",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      "Near Pine Forest, Route 20"
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "Severity_Rating": "Moderate",
+  "date": "2023-12-20T19:18:41Z"
+}

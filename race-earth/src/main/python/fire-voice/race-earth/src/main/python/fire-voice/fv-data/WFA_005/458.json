@@ -1,0 +1,15 @@
+{
+  "fireTextFile": "race-earth/src/main/python/fire-voice/fv-data\\WFA_005\\inc_rep_458.json",
+  "Call_ID": "458",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.1973,
+      -117.5758
+    ]
+  ],
+  "Incident_ID": "WFA_005",
+  "Incident_Report": "Wildfire near Highway 34 and the old mill, close to mile marker 27 and the old hiking trail entrance.",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T18:33:50Z"
+}

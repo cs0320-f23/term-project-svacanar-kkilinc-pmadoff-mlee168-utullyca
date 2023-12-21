@@ -1,0 +1,14 @@
+{
+  "Incident_ID": "FW20231102",
+  "Call_ID": "20231102-1020-3456",
+  "Coordinates": [
+    34.2257,
+    -118.0329
+  ],
+  "Address": "Near Pine Forest, Route 20",
+  "Incident_Report": "Caller reports seeing smoke and flames in the forest area while hiking. No immediate danger to the caller.",
+  "Severity_Rating": "Moderate",
+  "Environmental_Conditions": "Dry weather, moderate winds",
+  "Unit_Dispatch_Instructions": "Forest Fire Unit 5 and Helicopter Water Drop dispatched. Coordinate with forest service. Check for hiking groups in the area.",
+  "Evacuation_Advisories": []
+}

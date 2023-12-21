@@ -1,0 +1,20 @@
+{
+  "Incident_ID": "WFA_789",
+  "Call_ID": "911-5678",
+  "Coordinates": [
+    [
+      34.1973,
+      -117.5758
+    ]
+  ],
+  "Address": [
+    "Highway 34 near the old mill, California"
+  ],
+  "Incident_Report": "Rapidly spreading wildfire in the woods near Highway 34 and the old mill, close to mile marker 27 and the old hiking trail entrance. Large flames and significant smoke reported, spreading rapidly.",
+  "Severity_Rating": "Critical",
+  "Environmental_Conditions": "Strong winds and dry weather contributing to rapid spread",
+  "Evacuation_Advisories": [
+    "Mandatory evacuation for nearby areas along Highway 34 and the old mill"
+  ],
+  "Unit_Dispatch_Instructions": "Dispatch additional firefighting units to the area near mile marker 27 and the old hiking trail entrance. Prioritize aerial firefighting resources due to rapid spread caused by strong winds."
+}

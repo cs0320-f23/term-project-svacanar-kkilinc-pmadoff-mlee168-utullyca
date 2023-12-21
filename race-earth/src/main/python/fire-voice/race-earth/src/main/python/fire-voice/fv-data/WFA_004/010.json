@@ -1,0 +1,14 @@
+{
+  "Call_ID": "010",
+  "Coordinate_Type": "GPS",
+  "Coordinates": [
+    [
+      34.2732,
+      -118.7818
+    ]
+  ],
+  "Incident_ID": "WFA_004",
+  "Incident_Report": "Wildfire near old mill on Highway 34",
+  "Severity_Rating": "High",
+  "date": "2023-12-20T08:22:42Z"
+}
