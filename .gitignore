@@ -10,6 +10,7 @@ _book/
 **/local.conf
 node_modules/
 doc/reports/
+race-earth/src/main/python/conda_env
 **/.gitignore
 **/.race
 .cache/

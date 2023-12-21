@@ -36,8 +36,8 @@ class FireTextDataAcquisitionThread(actorRef: ActorRef, val pollingInterval: Tim
 
 
 class FireTextImportActor(val config: Config) extends PublishingRaceActor {
-  val interval = Milliseconds(config.getDuration("polling-interval").toMillis)
 
+  val interval = Milliseconds(config.getDuration("polling-interval").toMillis)
   val dataDir = FileUtils.ensureWritableDir(config.getString("data-dir")).getOrElse {
     throw new RuntimeException("Failed to create or access the data directory.")
   }

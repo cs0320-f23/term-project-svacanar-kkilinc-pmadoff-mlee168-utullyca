@@ -1,0 +1,60 @@
+2023-12-19 20:24:29,532:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 20:24:29,534:INFO:Created incoming messages thread: thread_27Ap6JVrzcKgoD1S4eA34EQp
+2023-12-19 20:24:29,623:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 20:24:29,624:INFO:Created wildfire raw messages thread: thread_rJP7G34JEctq0sbaJgkbB529
+2023-12-19 20:24:29,699:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-19 20:24:29,700:INFO:Created wildfire messages thread: thread_OC0B94MkovCYNwu3xBwaC4VA
+2023-12-19 20:24:29,838:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 20:24:29,970:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 20:24:30,108:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-19 20:24:30,110:INFO:Flask server started.
+2023-12-19 20:24:30,118:WARNING: * Debugger is active!
+2023-12-19 20:24:30,122:INFO: * Debugger PIN: 141-959-176
+2023-12-19 20:24:32,372:INFO:#######################################################################
+2023-12-19 20:24:32,372:INFO:Processing message: Firefighters requested at 1313 Maple Street, Pine Valley, for evacuation assistance. Elderly residents need help.
+2023-12-19 20:24:32,553:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/messages "HTTP/1.1 200 OK"
+2023-12-19 20:24:32,555:INFO:Posted message to incoming messages thread. Message ID: msg_pW8xWIZQ1w3W6ZdQAWMQdNNP
+2023-12-19 20:24:32,711:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 20:24:32,713:INFO:Latest Message: ThreadMessage(id='msg_pW8xWIZQ1w3W6ZdQAWMQdNNP', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='Firefighters requested at 1313 Maple Street, Pine Valley, for evacuation assistance. Elderly residents need help.'), type='text')], created_at=1703046272, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_4pV2NSu42aC1TtRCSClEwrHy')
+2023-12-19 20:24:32,713:INFO:Latest Message Value: Firefighters requested at 1313 Maple Street, Pine Valley, for evacuation assistance. Elderly residents need help.
+2023-12-19 20:24:32,997:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs "HTTP/1.1 200 OK"
+2023-12-19 20:24:33,149:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs/run_IxIXf7O7cYbuN94QDceZWJR5 "HTTP/1.1 200 OK"
+2023-12-19 20:24:33,151:INFO:run_assistant_json asst_YH59ZsDqdeyIO9c9xIc2WiH3 and thread thread_4pV2NSu42aC1TtRCSClEwrHy: In progress...
+2023-12-19 20:24:34,229:INFO:#######################################################################
+2023-12-19 20:24:34,229:INFO:Processing message: Multiple reports of a fast-moving wildfire approaching the outskirts of Pine Valley. Immediate assistance required.
+2023-12-19 20:24:34,390:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/messages "HTTP/1.1 200 OK"
+2023-12-19 20:24:34,392:INFO:Posted message to incoming messages thread. Message ID: msg_NKdCVdS4ujrsAs9s6rq0AV0i
+2023-12-19 20:24:34,543:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 20:24:34,544:INFO:Latest Message: ThreadMessage(id='msg_NKdCVdS4ujrsAs9s6rq0AV0i', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='Multiple reports of a fast-moving wildfire approaching the outskirts of Pine Valley. Immediate assistance required.'), type='text')], created_at=1703046274, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_27Ap6JVrzcKgoD1S4eA34EQp')
+2023-12-19 20:24:34,544:INFO:Latest Message Value: Multiple reports of a fast-moving wildfire approaching the outskirts of Pine Valley. Immediate assistance required.
+2023-12-19 20:24:34,921:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/runs "HTTP/1.1 200 OK"
+2023-12-19 20:24:35,078:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/runs/run_cURhEMExzITDWfxtIJVXLu1g "HTTP/1.1 200 OK"
+2023-12-19 20:24:35,079:INFO:run_assistant_json asst_bdjrqzMg7tRZ3Kikyiunk46i and thread thread_27Ap6JVrzcKgoD1S4eA34EQp: In progress...
+2023-12-19 20:24:38,250:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs/run_IxIXf7O7cYbuN94QDceZWJR5 "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,251:INFO:Run completed asst_YH59ZsDqdeyIO9c9xIc2WiH3 and thread thread_4pV2NSu42aC1TtRCSClEwrHy
+2023-12-19 20:24:38,332:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,335:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_RZRh5FNCleNJvJOanIydlh6Y', assistant_id='asst_YH59ZsDqdeyIO9c9xIc2WiH3', content=[MessageContentText(text=Text(annotations=[], value='{"is_related_to_wildfires": false}'), type='text')], created_at=1703046273, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_IxIXf7O7cYbuN94QDceZWJR5', thread_id='thread_4pV2NSu42aC1TtRCSClEwrHy')], object='list', first_id='msg_RZRh5FNCleNJvJOanIydlh6Y', last_id='msg_RZRh5FNCleNJvJOanIydlh6Y', has_more=True)
+2023-12-19 20:24:38,335:INFO:Original String: {"is_related_to_wildfires": false}
+2023-12-19 20:24:38,335:INFO:Message is related to wildfires: False
+2023-12-19 20:24:38,335:INFO:#######################################################################
+2023-12-19 20:24:38,335:INFO:Processing message: Resident at 1010 Cedar Lane reports seeing thick smoke rising from the nearby forest. Urgent evaluation needed.
+2023-12-19 20:24:38,444:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/messages "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,446:INFO:Posted message to incoming messages thread. Message ID: msg_dhv38IWfQr0bUKXVJavq61Jw
+2023-12-19 20:24:38,533:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,535:INFO:Latest Message: ThreadMessage(id='msg_dhv38IWfQr0bUKXVJavq61Jw', assistant_id=None, content=[MessageContentText(text=Text(annotations=[], value='Resident at 1010 Cedar Lane reports seeing thick smoke rising from the nearby forest. Urgent evaluation needed.'), type='text')], created_at=1703046278, file_ids=[], metadata={}, object='thread.message', role='user', run_id=None, thread_id='thread_4pV2NSu42aC1TtRCSClEwrHy')
+2023-12-19 20:24:38,535:INFO:Latest Message Value: Resident at 1010 Cedar Lane reports seeing thick smoke rising from the nearby forest. Urgent evaluation needed.
+2023-12-19 20:24:38,809:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,965:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs/run_0HP9uMyZiTUPpKajGl15R24A "HTTP/1.1 200 OK"
+2023-12-19 20:24:38,966:INFO:run_assistant_json asst_YH59ZsDqdeyIO9c9xIc2WiH3 and thread thread_4pV2NSu42aC1TtRCSClEwrHy: In progress...
+2023-12-19 20:24:40,251:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/runs/run_cURhEMExzITDWfxtIJVXLu1g "HTTP/1.1 200 OK"
+2023-12-19 20:24:40,252:INFO:Run completed asst_bdjrqzMg7tRZ3Kikyiunk46i and thread thread_27Ap6JVrzcKgoD1S4eA34EQp
+2023-12-19 20:24:40,367:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_27Ap6JVrzcKgoD1S4eA34EQp/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-19 20:24:40,369:INFO:SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_oXfr75WmBrLfR5KPVdj63Ewc', assistant_id='asst_bdjrqzMg7tRZ3Kikyiunk46i', content=[MessageContentText(text=Text(annotations=[], value="{'is_related_to_wildfires': True}"), type='text')], created_at=1703046276, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_cURhEMExzITDWfxtIJVXLu1g', thread_id='thread_27Ap6JVrzcKgoD1S4eA34EQp')], object='list', first_id='msg_oXfr75WmBrLfR5KPVdj63Ewc', last_id='msg_oXfr75WmBrLfR5KPVdj63Ewc', has_more=True)
+2023-12-19 20:24:40,369:INFO:Original String: {'is_related_to_wildfires': True}
+2023-12-19 20:24:40,371:INFO:Message is related to wildfires: True
+2023-12-19 20:24:40,371:INFO:Processing wildfire-related message...
+2023-12-19 20:24:40,669:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_OC0B94MkovCYNwu3xBwaC4VA/runs "HTTP/1.1 200 OK"
+2023-12-19 20:24:40,823:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_OC0B94MkovCYNwu3xBwaC4VA/runs/run_t8z4VlHYu0wLhzWtmL7kXgNB "HTTP/1.1 200 OK"
+2023-12-19 20:24:40,825:INFO:run_assistant_json asst_0yVg9TUQFv0BX8EBhKAf22Xm and thread thread_OC0B94MkovCYNwu3xBwaC4VA: In progress...
+2023-12-19 20:24:44,053:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_4pV2NSu42aC1TtRCSClEwrHy/runs/run_0HP9uMyZiTUPpKajGl15R24A "HTTP/1.1 200 OK"
+2023-12-19 20:24:44,054:INFO:run_assistant_json asst_YH59ZsDqdeyIO9c9xIc2WiH3 and thread thread_4pV2NSu42aC1TtRCSClEwrHy: In progress...

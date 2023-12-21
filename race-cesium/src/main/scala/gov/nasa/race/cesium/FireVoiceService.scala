@@ -253,46 +253,46 @@ trait FireVoiceService extends CesiumService with FileServerRoute with PushWSRac
         }
       }
     } ~    // the function fireVoiceRoute is defined as handling only GET requests, as indicated by the get directive.
-    get {
-      // Handles requests for single files (json, geojson, etc)
-      pathPrefix("fire-data-single" ~ Slash) { // This directive captures the starting segment of the URL path. It is used to group multiple routes that share a common path prefix.
-        // Extract the remaining part of the URL
-        extractUnmatchedPath { p => // This directive is used to capture the rest of the URL path after the prefix. It puts the unmatched portion into a variable (p in this case).
-          val pathName = p.toString()
-          warning(s"Attempting to access single fire data for path: $pathName")
-
-          // Try to find the Layer object corresponding to this path
-          layers.get(pathName) match {
-            // If a Layer object is found, complete the request with the file content
-            // Here we are delivering the ACTUAL contents the GeoJSON data (not the reference class)
-            case Some(sl) =>
-              warning(s"Found single fire data layer for path: $pathName")
-              completeWithFileContent(sl.file.get) // file information is stored in the layer
-
-            // If not found, return a 404 status
-            case None =>
-              warning(s"Single fire data layer not found for path: $pathName")
-              complete(StatusCodes.NotFound, pathName)
-
-          }
-        }
-      } ~ // This symbol is used to concatenate multiple routes. When a request comes in, Akka HTTP will try each of these routes in the order they are defined until it finds a match.
-        // Accesses the firePerimLayers (with multiple file paths and serves all of them)
-        pathPrefix("fire-data-combined" ~ Slash) {
+      get {
+        // Handles requests for single files (json, geojson, etc)
+        pathPrefix("fire-data-single" ~ Slash) { // This directive captures the starting segment of the URL path. It is used to group multiple routes that share a common path prefix.
           // Extract the remaining part of the URL
-          extractUnmatchedPath { p =>
-            val pathName = s"fire-data-combined/$p"
-            warning(s"Attempting to access combined fire data for path: $pathName")
+          extractUnmatchedPath { p => // This directive is used to capture the rest of the URL path after the prefix. It puts the unmatched portion into a variable (p in this case).
+            val pathName = p.toString()
+            warning(s"Attempting to access single fire data for path: $pathName")
 
-            // Complete the request by sending the file content to the client
-            complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
+            // Try to find the Layer object corresponding to this path
+            layers.get(pathName) match {
+              // If a Layer object is found, complete the request with the file content
+              // Here we are delivering the ACTUAL contents the GeoJSON data (not the reference class)
+              case Some(sl) =>
+                warning(s"Found single fire data layer for path: $pathName")
+                completeWithFileContent(sl.file.get) // file information is stored in the layer
+
+              // If not found, return a 404 status
+              case None =>
+                warning(s"Single fire data layer not found for path: $pathName")
+                complete(StatusCodes.NotFound, pathName)
+
+            }
           }
-        } ~
-        // Serves the JavaScript module to the client
-        fileAssetPath(jsModule) ~
-        // Serves the icon to the client
-        fileAssetPath(icon)
-    }
+        } ~ // This symbol is used to concatenate multiple routes. When a request comes in, Akka HTTP will try each of these routes in the order they are defined until it finds a match.
+          // Accesses the firePerimLayers (with multiple file paths and serves all of them)
+          pathPrefix("fire-data-combined" ~ Slash) {
+            // Extract the remaining part of the URL
+            extractUnmatchedPath { p =>
+              val pathName = s"fire-data-combined/$p"
+              warning(s"Attempting to access combined fire data for path: $pathName")
+
+              // Complete the request by sending the file content to the client
+              complete(ResponseData.forPathName(pathName, getFileAssetContent(pathName)))
+            }
+          } ~
+          // Serves the JavaScript module to the client
+          fileAssetPath(jsModule) ~
+          // Serves the icon to the client
+          fileAssetPath(icon)
+      }
   }
 
   // Include this route in your overall HTTP route setup

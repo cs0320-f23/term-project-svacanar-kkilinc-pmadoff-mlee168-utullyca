@@ -47,7 +47,7 @@ import scala.concurrent.duration.{Duration, DurationInt}
 import scala.concurrent.{Await, Future}
 import scala.language.postfixOps
 import scala.sys.process.Process
-import scala.util.{Failure, Success}
+import scala.util.{Failure, Success, Try}
 import scala.collection.mutable
 
 trait  FireVoiceActor extends PublishingRaceActor with SubscribingRaceActor{
@@ -335,10 +335,15 @@ class FireVoiceImportActor(val config: Config) extends FireVoiceActor with HttpA
           warning(s"makeRequest: download http request payload complete: ${data}")
 
           // The FireVoice API should give enough JSON information to parse into a WildfireDataAvailable Object
-          // Return the case class WFA object and then publish it to the message bus
-          var wgd = processResponse(data, importedFireTextData) // can be changed
-          warning(s"Synchronizing FireVoiceImportActor: ${wgd.getClass.getName} + ${wgd} + a")
-          self ! wgd // Effectively a synchronization thread: allows us to not care about the execution of
+          val wgd = processResponse(data, importedFireTextData)
+
+          if (wgd.Coordinates.isDefined) {
+            warning(s"Synchronizing FireVoiceImportActor: ${wgd.getClass.getName} + ${wgd} + a")
+            self ! wgd
+          } else {
+            warning("NOT FIRE DATA: Invalid payload or no coordinates found. Message will not be sent.")
+          }
+
         case Failure(x) =>
           warning(s"download failed: $x")
       }
@@ -531,7 +536,7 @@ class WgdParser extends StringJsonPullParser {
   val INCIDENT_REPORT = asc("Incident_Report")
   val SEVERITY_RATING = asc("Severity_Rating")
   val COORDINATE_TYPE = asc("Coordinate_Type")
-
+  val FIRE_TEXT = asc("fireTextFile")
   private val latitudeSlice = asc("latitude")
   private val longitudeSlice = asc("longitude")
 
@@ -560,8 +565,14 @@ class WgdParser extends StringJsonPullParser {
     var incidentReport: Option[String] = None
     var severityRating: Option[String] = None
     var coordinateType: Option[String] = None
+    var fireTextPath: Option[String] = None
 
     foreachMemberInCurrentObject {
+      case FIRE_TEXT =>
+        println("Parsing FIRE_TEXT as file path...")
+        fireTextPath = Some(quotedValue.toString)
+        println(s"Parsed FIRE_TEXT file path: ${fireTextPath.get}")
+      // Other cases remain the same
       case DATE =>
         println("Parsing date...")
         val dateStr = quotedValue.toString
@@ -594,9 +605,20 @@ class WgdParser extends StringJsonPullParser {
         coordinateType = Some(quotedValue.toString)
         println(s"Parsed Coordinate_Type: ${coordinateType.get}")
     }
+    // Read the file if fireText is None
+    // Convert fireTextPath to File if not None, else use importedFireTextData
+    val fireTextFile: Option[File] = if (fireTextPath.isDefined) {
+      println("Using fireTextPath to create File.")
+      Some(new File(fireTextPath.get))
+    } else {
+      println("fireTextPath is not defined. Using importedFireTextData.")
+      Some(importedFireTextData)
+    }
+
 
     Some(WildfireGeolocationData(
-      fireTextFile = Some(importedFireTextData),
+      // TODO: if fireText is none then use importedFireTextData
+      fireTextFile = fireTextFile,
       date = date,
       Incident_ID = incidentId,
       Call_ID = callId,

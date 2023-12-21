@@ -428,7 +428,7 @@ class CloudFireImportActor(val config: Config) extends CloudFireActor with HttpA
         publishWildfireData(wfa, fireFile)
       } catch {
         case e: Exception =>
-          error(s"Failed to handle GeoJSON for Incident_ID: ${wfa.Incident_ID}, Call_ID: ${wfa.Call_ID}, Coordinates: ${wfa.Coordinates}, Error: ${e.getMessage}")
+          //error(s"Failed to handle GeoJSON for Incident_ID: ${wfa.Incident_ID}, Call_ID: ${wfa.Call_ID}, Coordinates: ${wfa.Coordinates}, Error: ${e.getMessage}")
       }
     }
   }

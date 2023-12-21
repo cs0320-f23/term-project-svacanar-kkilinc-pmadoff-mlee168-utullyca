@@ -59,7 +59,7 @@ case class WildfireDataAvailable(
        |    "fireTextUrl": "$fireTextUrl",
        |    "firePerimUrl": "$firePerimUrl",
        |    "simReportUrl": "$safeSimReport"
-       |       |  }
+       |       }
        |}""".stripMargin
   }
 
